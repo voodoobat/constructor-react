@@ -122,7 +122,7 @@ function Canvas ({
       if (size > 1 && size < MAX_STRETCH_LEN) map.forEach((y, index) => {
         canvas[y].forEach(cell => {
           cell.preview.stretch = cell.selected
-            ? asset(`svg/loop/s/${size}/${index}.svg`)
+            ? `svg/loop/s/${size}/${index}.svg`
             : null
         })
       })

@@ -25,7 +25,7 @@ function LoopsPanel ({
     <div className={classNames(className, scss._)}>
       {view(base)}
       <StretchLoop className={scss.button} />
-      <span className={scss.separator}></span>
+      <span className={scss.separator} />
       {view(complex)}
     </div>
   )

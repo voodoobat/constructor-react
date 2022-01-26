@@ -59,7 +59,7 @@ export const StretchLoop = connect(state => ({ ...state }))(({
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
          onClick={onClick}>
       <div className={classNames(scss.button, scss.button_main)}>
-        <Loop icon={asset('svg/loop/s.svg')} />
+        <Loop icon={'svg/loop/s.svg'} />
         <Hint
           className={classNames(scss.hint_down)}
           title="вытянутая петля" />
