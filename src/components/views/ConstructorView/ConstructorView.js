@@ -24,7 +24,7 @@ function ConstructorView ({
   const { uid } = useParams()
 
   useEffect(() => {
-    dispatch(store.setSchemesList())
+    if (isAuth) dispatch(store.setSchemesList())
     dispatch(store.setSchemeByUid(uid))
   }, [])
 
