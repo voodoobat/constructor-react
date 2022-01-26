@@ -44,15 +44,15 @@ function Footer ({ config }) {
           </div>
           <div className={scss.sm_list}>
             <a href={socials.instagram} target="_blank">
-              <ReactSVG src={asset('svg/sm/in.svg')} />
+              <ReactSVG src={'svg/sm/in.svg'} />
             </a>
             <a href={socials.vk} target="_blank">
-              <ReactSVG src={asset('svg/sm/vk.svg')} />
+              <ReactSVG src={'svg/sm/vk.svg'} />
             </a>
             <a href={socials.youtube} target="_blank">
-              <ReactSVG src={asset('svg/sm/yt.svg')} />
+              <ReactSVG src={'svg/sm/yt.svg'} />
             </a>
-          </div> 
+          </div>
         </nav>
       </Container>
     </footer>
