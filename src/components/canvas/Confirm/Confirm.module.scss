@@ -1,0 +1,33 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  @include position(absolute, -0.75em 0.5em);
+  display: flex;
+  transition: opacity .15s ease-in;
+  z-index: 350;
+}
+
+.offset_0 {
+  right: -10em;
+}
+
+.offset_1 {
+  right: -9em;
+}
+
+.offset_2 {
+  right: -8em;
+}
+
+.offset_3 {
+  right: -6em;
+}
+
+.offset_4 {
+  right: -5em;
+}
+
+.offset_5 {
+  right: -4em;
+}

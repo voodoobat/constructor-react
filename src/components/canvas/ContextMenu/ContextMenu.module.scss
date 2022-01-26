@@ -1,0 +1,9 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: fixed;
+  background: $body-bg;
+  box-shadow: 0 0 3px rgba(black, 25%);
+  z-index: 150;
+}

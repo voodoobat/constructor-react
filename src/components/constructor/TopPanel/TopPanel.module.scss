@@ -1,0 +1,27 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.undo_redo {
+  margin-right: $toolbar-offset;
+}
+
+.loops {
+  flex-grow: 10;
+  padding-bottom: 1em;
+}
+
+.controls {
+  display: flex;
+  padding-left: 0.5em;
+}
+
+.offer_button {
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+}

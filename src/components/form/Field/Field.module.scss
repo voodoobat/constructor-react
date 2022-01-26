@@ -1,0 +1,21 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  padding: .75em 0;
+
+  &.is_required {
+    .label::after {
+      @include position(relative, -0.1em -0.1em);
+      content: '*';
+      display: inline-block;
+      font-size: 0.85em;
+      color: $medium-red;
+    }
+  }
+}
+
+.input {
+  flex-grow: 10;
+}

@@ -1,0 +1,72 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$text-color: lighten($text-color, 30%);
+
+._ {
+  padding: 3em 0 2.5em;
+  background-color: $snow-gray;
+  box-shadow: inset 0 4px 4px rgba(black, 0.25);
+  color: $text-color;
+}
+
+.logo {
+
+  path {
+    transition: fill .15s ease-in;
+  }
+
+  &:hover {
+    path {
+      fill: $medium-red;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  min-width: 60%;
+  flex-wrap: wrap;
+}
+
+.nav_item {
+  min-width: 50%;
+
+  > a {
+    text-decoration: none;
+    color: $text-color;
+    font-weight: 600;
+    transition: color .15s ease-in;
+
+    &:hover {
+      color: $medium-red;
+    }
+  }
+}
+
+.sm {
+  // ...
+}
+
+.sm_caption {
+  font-weight: 600;
+  padding-bottom: 1.2em;
+}
+
+.sm_list {
+  display: flex;
+
+  > a {
+    @include size(3.2rem);
+    margin-right: 0.5em;
+
+    &:last-child {
+      width: 4.6rem;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+  margin-top: $canvas-cell-height;
+  max-width: 100%;
+}

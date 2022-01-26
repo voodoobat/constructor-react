@@ -1,0 +1,169 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  font-size: $text-sm;
+}
+
+.box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em;
+  margin-left: -0.4em;
+  border: 1px solid transparent;
+  border-radius: $radius;
+
+  &:not(.is_preview) {
+    &:hover,
+    &.is_active {
+      border-color: $medium-blue;
+    }
+  }
+
+  &.is_hidden {
+    .cell,
+    .separator,
+    .input {
+      opacity: 0.35;
+    }
+
+    &.is_preview {
+      display: none;
+    }
+  }
+}
+
+.separator {
+  margin: 0 0.25em;
+}
+
+.input, .name {
+}
+
+.hint {
+  position: relative;
+}
+
+.name {
+  display: inline-block;
+  padding-right: 0.1em;
+  opacity: 0;
+
+  .is_preview & {
+    opacity: 1;
+  }
+}
+
+.input {
+  @include size(100%);
+  @include position(absolute, 0 0 0 0);
+
+  &:disabled {
+    color: $text-color;
+  }
+}
+
+.controls {
+  @include position(absolute, 7px 0);
+  transform: translateX(100%);
+  padding-left: 0.75em;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  opacity: 0;
+
+  .box.is_active &,
+  .box:hover & {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+.button {
+  font-size: 0.9em;
+  text-decoration: underline;
+  white-space: nowrap;
+
+  &.edit {
+    color: $medium-gray;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  &.save {
+    color: $light-green;
+
+    &:hover {
+      color: $medium-green;
+    }
+  }
+}
+
+.visibility {
+  @include position(absolute, 0 0);
+  pointer-events: none;
+  transition: opacity .15s ease;
+  opacity: 0;
+
+  .box.is_active &,
+  .box:hover & {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+.visibility_button {
+  @include size(18px);
+  @include position(absolute, -8px -8px);
+  background: $text-color;
+  box-shadow: 0 0 2px rgba(black, 0.2);
+  transition: background .15s ease;
+  border-radius: 50%;
+
+  &:hover {
+    background: $body-bg;
+
+    .hide {
+      path { 
+        stroke: $text-color;
+      }
+    }
+
+    .restore {
+      path {
+        fill: $text-color;
+      }
+    }
+  }
+
+  > svg {
+    @include position(absolute, 50% 50%);
+    transform: translate(50%, -50%);
+  }
+
+  .restore {
+    right: 55%;
+  }
+}
+
+.visibility_hint {
+  @include position(absolute, 14px null null 20px);
+  display: none;
+  background: $body-bg;
+  font-size: 0.9em;
+  padding: 0.35em 0.5em;
+  box-shadow: 0 0 4px rgba(black, 0.3);
+  white-space: nowrap;
+  border-radius: 3px;
+  z-index: 50;
+
+  .visibility_button:hover & {
+    display: block;
+  }
+}
+
+.legend_cell {
+  border-width: 1px;
+}

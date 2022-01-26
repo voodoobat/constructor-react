@@ -1,0 +1,20 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$panel-size: 2.8rem;
+
+._ {
+  position: relative;
+  height: 62rem;
+  border: 1px solid lighten($dark-gray, 20%); 
+  border-radius: $radius;
+  overflow: hidden;
+}
+
+.bottom {
+  @include size(100% $panel-size);
+  @include position(absolute, null 0 0);
+  padding: .3em;
+  background: $snow-gray;
+  z-index: 20;
+}

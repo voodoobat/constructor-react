@@ -1,0 +1,107 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$icon-width: 5.2rem;
+
+._ {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 3em 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info_box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.column {
+  max-width: 450px;
+  min-width: 450px;
+  height: 255px;
+}
+
+.features_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  // background: $light-gray;
+}
+
+.feature {
+  display: flex;
+  padding: 0 2rem 0;
+  margin-left: 0;
+  align-items: center;
+}
+
+.feature_icon {
+  @include size(5rem 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  path {
+    fill: $dark-gray;
+  }
+}
+
+.feature_text {
+  font-size: 1.2em;
+  margin-left: 2rem;
+}
+
+.youtube {
+  position: relative;
+  text-align: right;
+  margin-bottom: 2em;
+
+
+  &_preview {
+    @include size(100%);
+    @include position(absolute, 0 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+
+    svg {
+      fill: #c83f51;
+      width: 30%;
+      height: 30%;
+    }
+  }
+}
+
+.youtube_title {
+  text-align: center;
+  margin: 2em 0 1em 0;
+  font-size: 1.6em;
+}
+
+.button {
+  margin: 0.5em auto 0;
+  display: flex;
+  justify-content: center;
+
+  &.has_saved {
+    flex-direction: column;
+  }
+}
+
+.welcome_button {
+  font-size: 1.4em;
+
+  + .welcome_button {
+    margin-left: 1em;
+  }
+}

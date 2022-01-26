@@ -1,0 +1,55 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: inline-block;
+}
+
+.name {
+  position: relative;
+  min-height: 2.7rem;
+  min-width: 1rem;
+}
+
+.input, .hidden {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.input {
+  @include size(100%);
+  @include position(absolute, 0 0 0 0);
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.edit_text {
+  @include position(absolute, .6rem null null 100%);
+  font-size: $text-xs;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  z-index: 20;
+
+  > span {
+    display: inline-block;
+    text-decoration: underline;
+  }
+}
+
+.save_button {
+  color: $medium-green;
+}
+
+.cansel_button {
+  color: $medium-red;
+  margin-left: 1em;
+}

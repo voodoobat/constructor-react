@@ -1,0 +1,52 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 1em 0;
+  border-bottom: 1px solid $light-gray;
+}
+
+.large {
+  padding: 1.2em 0;
+
+  .box {
+    justify-content: center;
+  }
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo,
+.nav {
+  min-width: 25%;
+}
+
+.name {
+  flex-grow: 10;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    margin-left: 1em;
+    font-size: 0.9em;
+    color: $text-color;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color .15s ease;
+
+    &:hover {
+      color: $medium-blue;
+    }
+  }
+}
+
+.save {
+  margin-left: 1em;
+}

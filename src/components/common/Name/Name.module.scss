@@ -1,0 +1,52 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.type {
+  color: $medium-gray;
+  user-select: none;
+
+  &::after {
+    content: '/';
+    display: inline-block;
+    margin: 0 0.2em;
+  }
+}
+
+.name {
+  position: relative;
+  font-size: 1.05em;
+  cursor: pointer;
+
+  &:hover,
+  &.is_open {
+    .chevron {
+      top: 0.25em;
+    }
+  }
+}
+
+.chevron {
+  @include position(relative, 0.05em);
+  transition: top .15s ease;
+  margin-left: 0.2em;
+}
+
+.to_constructor {
+  display: flex;
+  align-items: center;
+}
+
+.download {
+  margin-left: 1em;
+}
+
+.arrow {
+  margin-right: 1em;
+}

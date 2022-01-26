@@ -1,0 +1,71 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$input-height: 25px;
+
+.input {
+  display: block;
+
+  > input {
+    width: 100%;
+    padding: 0 $input-padding-x;
+    height: $input-height;
+    line-height: $input-height;
+    color: $dark-gray;
+    border: 1px solid $medium-gray;
+    border-radius: $radius;
+    line-height: 1;
+
+    &:focus {
+      border-color: $medium-blue;
+    }
+  }
+}
+
+.text {
+  border-radius: $radius;
+}
+
+.number {
+  position: relative;
+
+  > input {
+    border-radius: 10em;
+    text-align: center;
+  }
+}
+
+.number_dec,
+.number_inc {
+  @include size($input-height);
+  @include position(absolute, 0);
+  display: inline-block;
+  padding: $input-padding-y;
+  box-sizing: content-box;
+  border-radius: 50%;
+  cursor: pointer;
+
+  > svg {
+    @include size(26px);
+    @include position(absolute, -1px 0);
+  }
+
+  path, circle {
+    stroke: lighten($medium-gray, 10%);
+    transition: stroke .2s ease;
+  }
+
+  &:hover {
+    path, circle {
+      stroke: $medium-blue;
+    }
+  }
+}
+
+.number_dec {
+  left: -5px;
+}
+
+.number_inc {
+  right: -1px;
+}

@@ -1,0 +1,33 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.separator,
+.button {
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+.separator {
+  @include size(3.1rem 2.3rem);
+  position: relative;
+
+  &::before,
+  &::after {
+    @include size(1px 100%);
+    content: '';
+    background: $light-gray;
+  }
+
+  &::before {
+    @include position(absolute, 0 55%);
+  }
+
+  &::after {
+    @include position(absolute, 0 45%);
+  }
+}

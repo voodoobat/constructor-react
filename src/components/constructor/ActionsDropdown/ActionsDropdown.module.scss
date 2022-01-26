@@ -1,0 +1,55 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  @include position(absolute, 2em 0);
+  width: 19rem;
+  background: $body-bg;
+  border-radius: $radius;
+  box-shadow: 0 0 3px rgba(black, 0.25);
+  font-size: 0.9em;
+  transform: translateX(75%);
+  z-index: 30;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 0.25em 0.5em;
+  text-align: left;
+  color: $text-color;
+  transition: all .15s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: $light-gray;
+  }
+}
+
+// .button_create {
+//   &:hover {
+//     background: $medium-blue;
+//     color: $body-bg;
+//   }
+// }
+
+.button_delete {
+  &:hover {
+    background: $medium-red;
+    color: $body-bg;
+  }
+}
+
+.head, .foot {
+  padding: 0.5em 0;
+}
+
+.head {
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 0.5em;
+}
+
+.foot {
+  border-top: 1px solid $light-gray;
+  margin-top: 0.5em;
+}

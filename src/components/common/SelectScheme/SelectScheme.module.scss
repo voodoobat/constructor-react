@@ -1,0 +1,58 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$space-x: 2em;
+
+._ {
+  border-radius: $radius * 2;
+  overflow: hidden;
+}
+
+.caption {
+  padding: 0.75em $space-x;
+}
+
+.scheme {
+  display: block;
+  padding: 0.5em $space-x;
+  color: $text-color;
+  text-decoration: none;
+  user-select: none;
+  font-size: 0.9em;
+
+  &.is_create {
+    color: $medium-gray;
+  }
+
+  &:hover {
+    background: $light-gray;
+  }
+
+
+  &.is_active {
+    pointer-events: none;
+    cursor: default;
+
+    .scheme_name::before {
+      background: $medium-blue;
+    }
+  }
+}
+
+.scheme_name {
+  $point-size: 8px;
+
+  position: relative;
+  display: block;
+  padding-left: 1.5em;
+  line-height: 1.1;
+
+  &::before {
+    @include size($point-size);
+    @include position(absolute, 50% null null 0);
+    content: '';
+    display: inline-block;
+    margin-top: - $point-size / 2;
+    border-radius: 50%;
+  }
+}

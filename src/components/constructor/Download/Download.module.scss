@@ -1,0 +1,93 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+}
+
+.button {
+  position: relative;
+  padding-right: 2.5em;
+  margin-left: 0.5em;
+}
+
+.button_icon {
+  @include size(0.85em);
+  @include position(absolute, 50% 1em);
+  transform: translateY(-50%);
+  margin-left: 1em;
+
+  path,
+  polygon {
+    fill: $body-bg;
+  }
+}
+
+.check {
+  font-size: 0.8em;
+  line-height: 1.1;
+
+  + .check {
+    margin-top: 0.5em;
+  }
+}
+
+.options {
+  position: relative;
+}
+
+.options_dropdown {
+  @include position(absolute, 0.6rem 3.5rem);
+  padding: 0.5em;
+  border-radius: $radius;
+  text-align: left;
+  background: $body-bg;
+  box-shadow: 1px 1px 5px rgba(black, 0.25);
+  z-index: 15;
+
+  &::before {
+    @include size(0.8rem);
+    @include position(absolute, 1.2rem -0.5rem);
+    content: '';
+    transform: rotate(45deg);
+    background: $body-bg;
+    border: solid rgba(black, 0.15);
+    border-width: 1px 1px 0 0;
+  }
+}
+
+$options-icon-translate: translate(50%, -50%);
+
+.options_button {
+
+  @include size(2.5rem 100%);
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover,
+  &.is_active {
+    .options_icon {
+      path {
+        fill: $medium-blue;
+      }
+    }
+  }
+
+  &.is_active {
+    .options_icon {
+      transform: $options-icon-translate rotate(180deg);
+    }
+  }
+}
+
+.options_icon {
+  @include size(1.6em);
+  @include position(absolute, 50% 50%);
+  transform: $options-icon-translate;
+  transition: all .25s ease;
+
+  path {
+    fill: $dark-gray;
+  }
+}

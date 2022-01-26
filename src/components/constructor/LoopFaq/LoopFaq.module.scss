@@ -1,0 +1,36 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  // ...
+}
+
+.element {
+  display: flex;
+  align-items: top;
+  padding: .25em 0;
+}
+
+.icon {
+  margin-right: 0.5em;
+}
+
+.cell {
+  widht: $canvas-cell-width;
+  height: $canvas-cell-height;
+  border: 1px solid $light-gray;
+}
+
+.hint {
+  position: relative;
+  padding: 0.25em 0 0 1em;
+  font-size: $text-sm;
+
+  br {
+    display: none;
+  }
+}
+
+.equal {
+  @include position(absolute, 0.25em null null 0);
+}

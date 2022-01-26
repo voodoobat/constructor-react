@@ -1,0 +1,104 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+
+  &:hover {
+    .dropdown {
+      display: block;
+    }
+  }
+}
+
+.button {
+  @include size(3.1rem 2.3rem);
+  position: relative;
+  display: flex;
+  min-width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $light-gray;
+  transition: border-color .15s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $medium-blue;
+
+    > .hint {
+      display: block;
+    }
+
+    > .options_icon > path {
+      fill: $medium-blue;
+    }
+  }
+
+  img {
+    @include position(absolute, 50% 50%);
+    transform: translate(50%, -50%);
+  }
+
+  .is_selected & {
+    border-color: $medium-red;
+  }
+}
+
+.button_main {
+}
+
+.options_icon {
+  @include position(absolute, null -1px -1px);
+
+  > path {
+    transition: fill .15s ease-in;
+  }
+}
+
+$dropdown-space: 2px;
+$dropdown-shadow: 0 0 4px rgba(black, 0.3);
+
+.dropdown {
+  @include position(absolute, 100% 50%);
+  display: none;
+  transform: translateX(50%);
+  padding-top: $dropdown-space;
+  z-index: 15;
+
+  .button {
+    margin: $dropdown-space;
+  }
+}
+
+.dropdown_data {
+  padding: $dropdown-space;
+  background: $body-bg;
+  border-radius: $radius / 2;
+  box-shadow: $dropdown-shadow;
+}
+
+.hint {
+  display: none;
+  padding: .25em .5em;
+  background: $body-bg;
+  white-space: nowrap;
+  box-shadow: $dropdown-shadow;
+  font-size: $text-sm;
+  border-radius: $radius / 2;
+  z-index: 10;
+}
+
+.hint_down {
+  @include position(absolute, 100% null null -1px);
+  margin-top: .5em;
+}
+
+.hint_right {
+  @include position(absolute, 0 null null 100%);
+  margin-left: .75em;
+}
+
+.hint_up {
+  @include position(absolute, null 0 100%);
+  margin-bottom: .5em;
+}

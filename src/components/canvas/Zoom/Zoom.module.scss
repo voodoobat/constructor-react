@@ -1,0 +1,38 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$icon-size: 1.8rem;
+
+._ {
+  display: flex;
+  align-items: center;
+}
+
+.value {
+  min-width: 4.5rem;
+  text-align: center;
+  font-size: $text-sm;
+  line-height: $icon-size;
+}
+
+.button {
+  @include size($icon-size);
+  transition: opacity .25s ease;
+
+  > svg > path {
+    transition: fill .15s ease-in;
+  }
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.25;
+  }
+
+  &:not(.disabled) {
+    &:hover {
+      > svg > path {
+        fill: $medium-blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: absolute;
+  align-items: center;
+  border-top: 1px solid $text-color;
+  font-size: $text-xs;
+  line-height: 1.7;
+}
+
+.icon {
+  $width: get-persent-of-size($canvas-cell-width, 80);
+  $height: get-persent-of-size($canvas-cell-height, 80);
+
+  @include size($width $height);
+  min-width: $width;
+  position: relative;
+  margin-left: 0.5em;
+  border: 1px solid $text-color;
+  overflow: hidden;
+
+  &::before {
+    @include size(150% 1px);
+    @include position(absolute, 0 0);
+    content: '';
+    background: $text-color;
+    transform-origin: 100% 100%;
+    transform: rotate(-38deg);
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.xline {
+  @include position(absolute, -1em);
+  @include size(1px 1em);
+  background: $text-color;
+
+  &.is_left {
+    left: 0;
+  }
+
+  &.is_right {
+    right: -1px;
+  }
+}
+
+.label {
+  @include position(absolute, 0.5em 50%);
+  display: inline-flex;
+  justify-content: center;
+  transform: translateX(50%);
+  white-space: nowrap;
+  background: $body-bg;
+  z-index: 10;
+}
+
+.remove {
+  @include position(relative, 2px);
+  margin-left: 0.5em;
+
+  &:hover {
+    .remove_text {
+      display: block;
+    }
+  }
+}
+
+.remove_text {
+  @include position(absolute, 0 -5rem);
+  display: none;
+  color: $medium-gray;
+}

@@ -1,0 +1,20 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$dialog-size: 70rem;
+
+._ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  min-width: 3.5rem;
+}
+
+.active {
+  @include position(relative, 5px);
+}
+
+.inactive {
+  // ...
+}

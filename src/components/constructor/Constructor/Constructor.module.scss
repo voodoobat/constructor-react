@@ -1,0 +1,57 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex; 
+  padding-top: 1em;
+  flex-direction: column;
+  min-height: 100%;
+  flex-grow: 10;
+}
+
+.no_auth {
+  padding: 0 0 0.5em;
+  text-align: center;
+  font-size: $text-xs;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1em;
+  padding-left: 6.4rem;
+}
+
+.note {
+  font-size: $text-sm;
+  text-decoration: underline;
+  color: $dark-gray;
+}
+
+.main {
+  display: flex;
+  flex-grow: 10;
+}
+
+.tools {
+  margin-right: $toolbar-offset;
+}
+
+.loops {
+  margin-bottom: $toolbar-offset;
+}
+
+.content {
+  flex-grow: 10;
+  max-width: calc(100% - 70px);
+}
+
+.legends {
+  padding-top: 1.5em;
+}
+
+.download {
+  display: flex;
+}

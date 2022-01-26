@@ -1,0 +1,16 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+}
+
+.text {
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.input {
+  @include size(100%);
+  @include position(absolute, 0 0 0 0);
+}

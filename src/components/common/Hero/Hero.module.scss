@@ -1,0 +1,12 @@
+@import '@scss/config';
+
+.hero {
+  background: $snow-gray;
+}
+
+.caption {
+  font-size: 2em;
+  padding: 0.9em 0 1.1em;
+  text-align: center;
+  line-height: 1;
+}

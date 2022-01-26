@@ -1,0 +1,17 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 2.5rem 3rem;
+}
+
+.scale_box {
+  display: inline-block;
+  transform-origin: 0 0;
+  transition: transform .05s ease-in;
+}
+
+.report {
+  padding-top: 1em;
+  max-width: 70vw;
+}

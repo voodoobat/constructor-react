@@ -1,0 +1,64 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  text-align: center;
+  flex-grow: 10;
+}
+
+.canvas {
+  position: relative;
+  display: inline-block;
+  border: solid $light-gray;
+  border-width: 0 0 1px 1px;
+}
+
+.canvas_box {
+  margin: 2em 4em;
+  display: inline-block;
+  text-align: center;
+
+  * {
+    user-select: none;
+  }
+}
+
+.nums_wrap {
+  display: inline-block;
+}
+
+
+.main {
+  display: inline-block;
+}
+
+.legends {
+  margin-top: 1em;
+  text-align: left;
+}
+
+.name_box {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: $dark-gray;
+}
+
+.to_image {
+  margin: auto;
+  display: inline-block;
+  background: $body-bg;
+  padding-bottom: 1em;
+  max-width: 90vw;
+}
+
+.watermark {
+  @include position(absolute, null 0 -2.8em null);
+  width: 5em; 
+  opacity: 0.45;
+
+  path {
+    // fill: $medium-red;
+  }
+}

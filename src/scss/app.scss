@@ -1,0 +1,52 @@
+@import 'libs';
+
+@import 'config';
+@import 'mixins';
+
+@import 'reboot';
+@import 'type';
+
+#root {
+  height: 100%;
+}
+
+// bootstrap overrides
+
+.modal-content {
+  top: 5em;
+  padding: 1em;
+  border: none;
+  background: $snow-gray;
+  border-radius: $radius * 2;
+}
+
+// modal width
+
+#schemes-list-modal {
+  max-width: 32.2rem;
+
+  .modal-content {
+    padding: 0;
+  }
+}
+
+#faq-modal {
+  max-width: 75rem;
+
+  .modal-content {
+    margin-top: -3em;
+  }
+}
+
+#delete-modal {
+  max-width: 28rem;
+}
+
+#download-modal {
+  max-width: 47rem;
+
+  .modal-content {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+  }
+}

@@ -1,0 +1,11 @@
+@import '@scss/mixins';
+
+._ {
+  display: inline-block;
+}
+
+.svg_box {
+  > div {
+    display: flex;
+  }
+}

@@ -1,0 +1,35 @@
+
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  position: relative;
+
+  &::before, &::after {
+    display: block;
+    padding: 0 0.35em;
+    width: $canvas-cell-width;
+    font-size: $text-xs;
+    z-index: 10;
+  }
+
+  &.even::before {
+    content: attr(data-number);
+  }
+
+  &.odd::after {
+    content: attr(data-number);
+  }
+
+  &::before {
+    @include position(absolute, 0.2rem null null 0);
+    transform: translateX(-100%);
+    text-align: right;
+  }
+
+  &::after {
+    @include position(absolute, 0.2rem 0);
+    transform: translateX(100%);
+  }
+}

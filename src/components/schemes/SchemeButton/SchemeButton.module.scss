@@ -1,0 +1,74 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$transition: .15s ease-in;
+
+._ {
+  @include size(18.5rem 23.6rem);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  color: $text-color;
+  text-decoration: none;
+}
+
+.button_show {
+  justify-content: space-between;
+  border: 1px solid $light-gray;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: $medium-blue;
+
+    .name {
+      text-decoration: underline;
+    }
+  }
+}
+
+.button_create {
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed darken($light-gray, 25%);
+  transition: all $transition;
+
+  path {
+    transition: stroke $transition;
+  }
+
+  &:hover {
+    background: rgba($medium-blue, 0.1);
+
+    path {
+      stroke: $medium-blue;
+    }
+  }
+}
+
+.image {
+  min-height: 16.5rem;
+  border-bottom: 1px solid $light-gray;
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.text {
+  display: flex;
+  flex-grow: 10;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.name {
+  font-size: $text-sm;
+  height: 3em;
+}
+
+.date {
+  font-size: $text-xs;
+  color: lighten($text-color, 25%);
+}

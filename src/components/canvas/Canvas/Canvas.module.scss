@@ -1,0 +1,13 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: inline-block;
+  border: solid $light-gray;
+  border-width: 0 0 1px 1px;
+  transform-origin: 0 0;
+
+  &.no_cursor {
+    cursor: none;
+  }
+}

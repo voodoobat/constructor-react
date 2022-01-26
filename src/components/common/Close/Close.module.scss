@@ -1,0 +1,24 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  @include size(3rem);  
+  @include position(absolute, -1.5rem -1.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid $light-gray;
+  box-shadow: 0 0 10px rgba(black, 0.15);
+  background: white;
+
+  path {
+    transition: stroke .25s ease;
+  }
+
+  &:hover {
+    path {
+      stroke: $medium-red;
+    }
+  }
+}

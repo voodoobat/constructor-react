@@ -1,0 +1,9 @@
+@import '@scss/config';
+
+.container {
+  margin: auto;
+  padding: 0 2em;
+  min-width: $viewport;
+  width: 80%;
+  max-width: 100%;
+}

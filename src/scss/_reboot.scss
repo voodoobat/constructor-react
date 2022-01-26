@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-smoothing: subpixel-antialiased;
+  text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+a {
+  background: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+button {
+  line-height: 1;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  appearance: none;
+  background: transparent;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  appearance: button;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"] {
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}

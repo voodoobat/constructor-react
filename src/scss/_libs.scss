@@ -1,0 +1,18 @@
+// bootstrap
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+@import 'bootstrap/scss/modal';
+
+// noty
+@import 'noty/src/noty';
+@import 'noty/src/themes/mint';
+
+#noty_layout__custom {
+  @extend .noty_layout_mixin;
+  top: 70px;
+  right: 0;
+  width: 260px;
+}

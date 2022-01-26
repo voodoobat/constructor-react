@@ -1,0 +1,20 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  // ...
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  padding: 1em 1.5em;
+  border-radius: $radius;
+  background: $medium-yellow;
+  box-shadown: 1px 1px 5px rgba(black, 0.25);
+}
+
+.icon {
+  @include size(4.2em);
+  margin-right: 1em;
+}

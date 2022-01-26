@@ -1,0 +1,27 @@
+@mixin size($size) {
+  @if type-of($size)==number {
+    width: $size;
+    height: $size;
+  }
+
+  @if type-of($size)==list {
+    width: nth($size, 1);
+    height: nth($size, 2);
+  }
+}
+
+@mixin position($position, $values: null) {
+  $sides: top, right, bottom, left;
+
+  @if $position {
+    position: $position;
+  }
+
+  @for $j from 1 through length($values) {
+    #{nth($sides, $j)}: nth($values, $j);
+  }
+}
+
+@function get-persent-of-size($sz, $persent: 100) {
+  @return ($sz / 100 * $persent);
+}

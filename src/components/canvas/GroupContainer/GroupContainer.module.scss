@@ -1,0 +1,52 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+  padding-left: 6.4rem;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.plait {
+  margin-right: 0.5em;
+}
+
+.no_group {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+.no_group_text {
+  margin-right: 0.25em;
+  font-size: 1.15em;
+  opacity: 0.5;
+}
+
+.question {
+  @include position(relative, 0.45rem);
+
+  &:hover {
+    .question_hint {
+      display: block;
+    }
+  }
+}
+
+.question_hint {
+  width: 24rem;
+  display: none;
+}
+
+.question_hint_text {
+  display: flex;
+}
+
+.question_hint_icon {
+  min-width: 3rem;
+}

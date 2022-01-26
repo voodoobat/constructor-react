@@ -1,0 +1,42 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 1em 0;
+}
+
+.size_sm {
+  padding: 0.5em 0;
+
+  .caption {
+    font-size: 1.15em;
+  }
+}
+
+.caption {
+  font-size: 1.7em;
+}
+
+.caption_text {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.content {
+  display: none;
+}
+
+.chevron {
+  transform: none;
+  transition: transform .15s ease-in;
+}
+
+.is_active {
+  .content {
+    display: flex;
+  }
+
+  .chevron {
+    transform: rotate(-180deg);
+  }
+}

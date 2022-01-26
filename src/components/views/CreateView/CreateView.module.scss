@@ -1,0 +1,16 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_wrap {
+  display: flex;
+}
+
+.danger_message {
+  margin-left: 1em;
+}

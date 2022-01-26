@@ -1,0 +1,44 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+.checkbox {
+  display: flex;
+  user-select: none;
+
+  input:focus {
+    ~ .icon {
+      border-color: $medium-blue;
+    }
+  }
+}
+
+.icon {
+  @include size(1.35em);
+  min-width: 1.35em;
+  position: relative;
+  border: 1px solid darken($light-gray, 10%);
+  margin-right: $input-padding-x;
+  border-radius: 3px;
+  box-shadow:
+    inset 2px 2px 2px rgba(black, 0.1),
+    inset -2px -2px 2px rgba(black, 0.1);
+  
+  > svg {
+    @include position(absolute, 50% 50%);
+    transform: translate(50%, -50%);
+  }
+}
+
+.is_reverse {
+  flex-direction: row-reverse;
+
+  .icon {
+    margin-right: 0;
+    margin-left: $input-padding-x;
+  }
+}
+
+.is_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

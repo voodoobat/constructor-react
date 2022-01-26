@@ -1,0 +1,137 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 0.2rem;
+}
+
+.plus_box {
+  position: relative;
+  padding: 1.6em;
+}
+
+.minus_box {
+  @include size(8.2rem);
+  position: relative;
+  background: $light-gray;
+  border-radius: $radius;
+}
+
+.center_x {
+  text-align: center;
+}
+
+.button {
+  $sz: 18px;
+
+  @include size($sz);
+  position: absolute;
+  border: 1px solid $medium-gray;
+  border-radius: 50%;
+  transition: opacity .15s ease;
+  z-index: 10;
+
+  &:hover {
+    border-color: $medium-blue;
+
+    path {
+      stroke: $medium-blue;
+    }
+  }
+
+  &.is_disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &.is_top,
+  &.is_bottom {
+    left: 50%;
+    margin-left: -#{$sz / 2};
+  }
+
+  &.is_right,
+  &.is_left {
+    top: 50%;
+    margin-top: -#{$sz / 2};
+  }
+
+  &.is_top { top: 3px; }
+  &.is_bottom { bottom: 3px; }
+
+  &.is_left { left: 3px; }
+  &.is_right { right: 3px; }
+}
+
+.button_options {
+  @include size(4rem);
+  @include position(absolute, 50% 50%);
+  transform: translate(50%, -50%);
+  z-index: 20;
+
+  > svg {
+    @include size(50%);
+
+    path {
+      fill: $medium-gray;
+      translate: fill .25s ease-in;
+    }
+  }
+
+  &:hover {
+    > svg path {
+      fill: $medium-blue;
+    }
+
+    .options_tooltip {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+  }
+}
+
+.icon {
+  @include position(absolute, 50% 50%);
+  transform: translate(50%, -50%);
+}
+
+.options_tooltip {
+  @include position(absolute, 0 0);
+  width: 350%;
+  padding: 0.5em;
+  text-align: left;
+  background: $body-bg;
+  box-shadow: 1px 1px 2px rgba(black, 0.25);
+  border-radius: $radius;
+  transform: translateX(105%);
+  pointer-events: none;
+  transition: all .25s ease;
+  opacity: 0;
+
+  &::before {
+    @include size(6px);
+    @include position(absolute, 1.15em null null -3px);
+    content: '';
+    transform: rotate(45deg);
+    background: white;
+  }
+
+  > b {
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: $text-sm;
+  }
+
+  > p {
+    font-size: $text-xs;
+  }
+}
+
+.options_title {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.options_checkbox {
+  font-size: 0.9em;
+}

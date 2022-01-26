@@ -1,0 +1,26 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 0.5em;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  width: 3rem * 2 * 3;
+}
+
+.sample {
+  @include size(3rem);
+  border: 2px solid transparent;
+  transition: border-color .15s ease;
+
+  &.is_active {
+    border-color: $medium-red;
+  }
+
+  &:not(.is_active):hover {
+    border-color: $medium-blue;
+  }
+}

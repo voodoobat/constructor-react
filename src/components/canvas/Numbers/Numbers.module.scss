@@ -1,0 +1,12 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  font-size: $text-xs;
+}
+
+.num {
+  min-width: $canvas-cell-width;
+  text-align: center;
+}

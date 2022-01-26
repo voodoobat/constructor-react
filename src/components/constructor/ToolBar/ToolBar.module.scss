@@ -1,0 +1,44 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.history {
+  margin-bottom: 1em;
+}
+
+.bar {
+  background: $light-gray;
+  border-radius: $radius;
+}
+
+.tool {
+  margin: 0.2rem;
+
+  &:hover {
+    z-index: 60;
+  }
+}
+
+.hint_trigger {
+  @include position(absolute, 0 0 0 0);
+
+  &:hover {
+    + .hint {
+      opacity: 1;
+    }
+  }
+}
+
+.hint {
+  @include position(null, 0 null null 100%); 
+  min-width: 18.5rem;
+  margin-left: 0.2rem;
+  pointer-events: none;
+  transition: opacity .15s ease-in;
+  opacity: 0;
+}

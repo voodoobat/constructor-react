@@ -1,0 +1,26 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  border-collapse: collapse;
+  border: 1px solid $light-gray;
+  transition: border-color .15s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $medium-blue;
+  }
+}
+
+.cell {
+  border: 0;
+
+  + .cell {
+    border-left: 1px solid $light-gray;
+  }
+}
+
+.is_active {
+  border-color: $medium-red !important;
+  cursor: default;
+}

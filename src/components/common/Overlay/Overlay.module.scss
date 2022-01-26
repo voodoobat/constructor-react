@@ -1,0 +1,16 @@
+@import '@scss/mixins';
+
+._ {
+  @include position(absolute, 0 0 0 0);
+  background: rgba(white, 0.5);
+  z-index: 100;
+
+  &.is_dark {
+    background: rgba(black, 0.35);
+  }
+
+  &.is_transparent {
+    background: transparent;
+  }
+}
+

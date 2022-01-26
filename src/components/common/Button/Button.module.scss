@@ -1,0 +1,85 @@
+@import '@scss/config';
+
+._ {
+  display: inline-block;
+  text-decoration: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+  border-style: solid;
+  transition: all .15s ease-in;
+  cursor: pointer;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px $light-gray;
+  }
+}
+
+.color {
+  &_default {
+    color: $text-color;
+    border-color: $text-color;
+
+    &:hover {
+      color: $body-bg;
+      background: $medium-blue;
+      border-color: $medium-blue;
+    }
+  }
+
+  &_black {
+    color: $body-bg;
+    background: $text-color;
+    border-color: $text-color;
+
+    &:hover {
+      color: $text-color;
+      background: $body-bg;
+    }
+  }
+
+  &_red {
+    color: $body-bg;
+    background: $medium-red;
+  }
+
+  &_blue {
+    color: $body-bg;
+    background: $medium-blue;
+  }
+}
+
+.size {
+  &_default {
+    padding: 0.35em 1em;
+    border-radius: 10px;
+    font-size: 0.9em;
+    border-width: 1px;
+  }
+
+  &_medium {
+    padding: 0.45em 1em;
+    border-radius: 10px;
+    font-size: 1.1em;
+  }
+
+  &_large {
+    padding: 0.55em 1em 0.7em;
+    font-size: 1.85rem;
+    border-width: 1px;
+    border-radius: $radius * 2;
+  }
+
+  &_extra {
+    padding: 0.5em 1em 0.6em;
+    border: 2px solid $text-color;
+    border-radius: $radius * 2;
+    font-size: 2em;
+  }
+}

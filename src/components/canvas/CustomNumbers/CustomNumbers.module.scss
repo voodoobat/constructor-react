@@ -1,0 +1,15 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  max-width: 100%;
+}
+
+.number {
+  margin: 0.1rem;
+  max-width: $canvas-cell-width - 0.2rem;
+  line-height: $canvas-cell-height - 0.4rem;
+  border: 1px solid $light-gray;
+  border-radius: $radius;
+  text-align: center;
+}

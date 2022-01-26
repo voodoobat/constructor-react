@@ -1,0 +1,66 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+  min-width: $canvas-cell-width;
+  min-height: $canvas-cell-height;
+  height: $canvas-cell-height;
+  border: solid $light-gray;
+  border-width: 1px 1px 0 0;
+  text-align: center;
+  user-select: none;
+  user-drag: none;
+
+  &:not(.no_highlight)::after {
+    @include position(absolute, 0 0 0 0);
+    content: '';
+    display: flex;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all 0.35s ease;
+    z-index: 10;
+  }
+
+  &::before {
+    @include position(absolute, 0 0 0 0);
+    content: '';
+    display: flex;
+    border: 1px solid transparent;
+    background: transparent;
+    z-index: 10;
+  }
+
+  &.is_hover::after,
+  &:hover::after {
+    background: rgba($medium-blue, .15);
+    border-color: $medium-blue;
+  }
+}
+
+.loop {
+  @include position(absolute, 50% 50%);
+  @include size($canvas-cell-width $canvas-cell-height);
+  transform: translate(50%, -50%);
+}
+
+.is_selected {
+  &::before {
+    border-color: $medium-gray;
+    background: rgba(white, .5);
+  }
+}
+
+.is_dark_bg {
+  svg * {
+    fill: white;
+  }
+}
+
+.stretch {}
+
+.report_icon {
+  @include size(80%);
+  @include position(absolute, 50% 50%);
+  transform: translate(50%, -50%);
+}

@@ -1,0 +1,50 @@
+// color
+
+$snow-gray: #F4F4F4;
+$light-gray: #E0E0E0;
+$medium-gray: #828282;
+$dark-gray: #4F4F4F;
+
+$medium-red: #C83F51;
+$medium-yellow: #FFEEBA;
+$medium-blue: #006DF1;
+
+$light-green: #219653;
+$medium-green: #107B3E;
+
+$text-color: black;
+$link-color: $medium-red;
+$body-bg: white; 
+
+
+// layout
+
+$viewport: 1240px;
+$content-width: 1525px;
+
+
+// type
+
+$text-sm: 0.85em;
+$text-xs: 0.75em;
+
+$radius: 5px;
+
+
+// forms
+
+$input-padding-y: 0.15em;
+$input-padding-x: 0.5em;
+
+
+// canvas
+
+$canvas-cell-width: 2.8rem;
+$canvas-cell-height: 2.2rem;
+
+
+// toolbar
+
+$tool-button-size: 4rem;
+$tool-button-offset: 0.2rem;
+$toolbar-offset: 2rem;
