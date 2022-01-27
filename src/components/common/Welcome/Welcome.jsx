@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import YoutTube from 'react-youtube'
+import YouTube from 'react-youtube'
 
 import Container from '@components/common/Container/Container'
 import Button from '@components/common/Button/Button'
@@ -54,7 +54,7 @@ function Welcome ({ isAuth }) {
           <div className={scss.youtube_title}>Как работать с конструктором ?</div>
           <div className={scss.info_box}>
             <div className={classNames(scss.youtube, scss.column)}>
-              <YoutTube
+              <YouTube
                 videoId="ZWA25e9suac"
                 opts={{
                   width: 450,
