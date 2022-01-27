@@ -37,6 +37,8 @@ function Cursor ({
   activeReportType
 }) {
 
+  console.log(activeLoopIcon)
+
   const { x, y } = useMousePosition()
   const [ToolIcon, setToolIcon] = useState()
 

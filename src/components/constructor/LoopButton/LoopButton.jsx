@@ -51,13 +51,13 @@ export const StretchLoop = connect(state => ({ ...state }))(({
 }) => {
 
   const isActive = activeLoop == 'stretch'
-  const onClick = () => dispatch(store.setActiveLoop('stretch', asset('s.svg')))
+  const onClick = () => dispatch(store.setActiveLoop('stretch', 'svg/loop/s.svg'))
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
          onClick={onClick}>
       <div className={classNames(scss.button, scss.button_main)}>
-        <Loop icon={'svg/loop/s.svg'} />
+        <Loop icon="svg/loop/s.svg" />
         <Hint
           className={classNames(scss.hint_down)}
           title="вытянутая петля" />

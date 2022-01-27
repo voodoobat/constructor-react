@@ -5,7 +5,6 @@ import classNames from 'classnames'
 
 import Tool from '@components/constructor/Tool/Tool'
 import Hint from '@components/common/Hint/Hint'
-import UndoRedo from '@components/constructor/UndoRedo/UndoRedo'
 import Swatches from '@components/constructor/Swatches/Swatches'
 import ReportType from '@components/constructor/ReportType/ReportType'
 import Resize from '@components/constructor/Resize/Resize'
@@ -25,7 +24,7 @@ function ToolBar ({ className, activeTool, inactive }) {
           {!IS_TOUCH &&
             <Hint className={scss.hint}
                   caption="Рука">
-              Позволяет передвигать рабочее поле схемы 
+              Позволяет передвигать рабочее поле схемы
             </Hint>
           }
         </Tool>
