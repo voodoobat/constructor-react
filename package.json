@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "export PORT=4223 && react-app-rewired start",
+    "dev": "export PORT=4223 BROWSER=none && react-app-rewired start",
     "build": "react-app-rewired build",
     "serve": "react-app-rewired build && serve -s build"
   },
