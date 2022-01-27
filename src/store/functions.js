@@ -17,12 +17,12 @@ import {
 
 export function setStaticData (onComplete = () => {}) {
   return async dispatch => {
-    const config = await get(process.env.REACT_APP_API_CONFIG_URL)
-    const loops = await get(process.env.REACT_APP_API_ELEMENTS_URL)
+    const config = await get(import.meta.env.VITE_API_CONFIG_URL)
+    const loops = await get(import.meta.env.VITE_API_ELEMENTS_URL)
 
     if (config.status == 200 &&
         loops.status == 200) {
-      
+
       dispatch(act.setConfig(config.data))
       dispatch(act.setLoops(loops.data))
 
@@ -232,7 +232,7 @@ export function commitCanvas (canvas, save = true) {
 
       if (index > -1) {
         temp.length = index + 1
-      } 
+      }
 
       dispatch(act.setSchemeHistory([...temp, { uid: stepUid, canvas }]))
       dispatch(act.setSchemeHistorytStep(stepUid))
@@ -283,7 +283,7 @@ export function setActiveGroup (group) {
 
     const setActive = array => array.map(g => {
       return g.uid == group.uid
-        ? { ...g, active: true } 
+        ? { ...g, active: true }
         : { ...g, active: false }
     })
 

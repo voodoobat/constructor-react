@@ -7,8 +7,6 @@ import Container from '@components/common/Container/Container'
 
 import { ReactComponent as Logo } from './svg/logo.svg'
 
-import { asset } from '@src/util'
-
 function Footer ({ config }) {
   const { resources, socials } = config
 

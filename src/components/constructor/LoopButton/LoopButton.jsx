@@ -6,9 +6,7 @@ import classNames from 'classnames'
 import Loop from '@components/constructor/Loop/Loop'
 
 import * as store from '@store/functions'
-import { asset, breakStr } from '@src/util'
-
-import { ReactComponent as OptionsIcon } from './svg/options_icon.svg'
+import { breakStr } from '@src/util'
 
 const Hint = ({ className, title }) => (
   <div

@@ -1,7 +1,5 @@
 import { uid } from 'uid'
-import Noty from 'noty'
-
-export const asset = path => `${process.env.REACT_APP_PUBLIC_URL}${path}`
+// import Noty from 'noty'
 
 export const stripHtml = s => s.replace(/(<([^>]+)>)/gi, "")
 export const spacesToNbsp = s => s.replace(/ /g, '\u00a0')
@@ -185,7 +183,7 @@ export const getSchemeData = state => {
 
 export const convertSchemeEntries = obj  => {
   const scheme = {}
-  
+
   for (const [key, value] of Object.entries(obj)) {
     const v = value === null ? [] : value
     scheme['scheme' + toUpperCamelCase(key)] = v
@@ -294,7 +292,7 @@ const createPlaitElement = (src, size, idx, target) => {
         id, icon
       }))
     }
-  } 
+  }
 
   target.push(createCell(0, 0, {
     id, icon
@@ -309,14 +307,14 @@ export const generatePlaitElements = loops =>  {
 
   loops.forEach(complex => {
     sizes.forEach(size => {
-      const canvas = [] 
+      const canvas = []
 
       str.forEach(idx => createPlaitElement(complex, size, idx, canvas))
       elements.push([canvas])
     })
 
     sizes.forEach(size => {
-      const canvas = [] 
+      const canvas = []
 
       rev.forEach(idx => createPlaitElement(complex, size, idx, canvas))
       elements.push([canvas])

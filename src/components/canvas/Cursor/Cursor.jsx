@@ -5,11 +5,7 @@ import { useState, useEffect } from 'react'
 
 import classNames from 'classnames'
 
-import { ReactSVG } from 'react-svg'
-
 import { useMousePosition } from '@src/hooks'
-
-import { asset } from '@src/util'
 
 import { ReactComponent as Move } from './svg/move.svg'
 import { ReactComponent as Eraze } from './svg/eraze.svg'

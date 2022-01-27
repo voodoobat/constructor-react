@@ -12,7 +12,7 @@ import Row from '@components/canvas/Row/Row'
 
 import { is, or } from '@src/util'
 import * as store from '@store/functions'
-import { cleanCell, asset } from '@src/util'
+import { cleanCell } from '@src/util'
 import * as fn from './Canvas.fn'
 
 import {

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "export PORT=4223 BROWSER=none && react-app-rewired start",
-    "build": "react-app-rewired build",
-    "serve": "react-app-rewired build && serve -s build"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "config-overrides-path": "react.config.js",
   "browserslist": {
@@ -42,12 +42,12 @@
     "uid": "^2.0.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0",
-    "node-sass": "^5.0.0",
+    "@vitejs/plugin-react": "^1.1.4",
     "react-app-rewired": "^2.1.11",
     "react-scripts": "^4.0.3",
     "redux-devtools-extension": "^2.13.9",
-    "sass-loader": "^10.1.1",
-    "serve": "^13.0.2"
+    "sass": "^1.49.0",
+    "vite": "^2.7.13",
+    "vite-plugin-svgr": "^1.0.1"
   }
 }
