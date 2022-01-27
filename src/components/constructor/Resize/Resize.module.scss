@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '@scss/config';
 @import '@scss/mixins';
 
@@ -47,13 +49,13 @@
   &.is_top,
   &.is_bottom {
     left: 50%;
-    margin-left: -#{$sz / 2};
+    margin-left: -#{math.div($sz, 2)};
   }
 
   &.is_right,
   &.is_left {
     top: 50%;
-    margin-top: -#{$sz / 2};
+    margin-top: -#{math.div($sz, 2)};
   }
 
   &.is_top { top: 3px; }
@@ -74,7 +76,7 @@
 
     path {
       fill: $medium-gray;
-      translate: fill .25s ease-in;
+      transition: fill .25s ease-in;
     }
   }
 

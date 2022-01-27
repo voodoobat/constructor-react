@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '@scss/config';
 @import '@scss/mixins';
 
@@ -73,7 +75,7 @@ $dropdown-shadow: 0 0 4px rgba(black, 0.3);
 .dropdown_data {
   padding: $dropdown-space;
   background: $body-bg;
-  border-radius: $radius / 2;
+  border-radius: math.div($radius, 2);
   box-shadow: $dropdown-shadow;
 }
 
@@ -84,7 +86,7 @@ $dropdown-shadow: 0 0 4px rgba(black, 0.3);
   white-space: nowrap;
   box-shadow: $dropdown-shadow;
   font-size: $text-sm;
-  border-radius: $radius / 2;
+  border-radius: math.div($radius, 2);
   z-index: 10;
 }
 
