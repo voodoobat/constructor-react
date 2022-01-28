@@ -37,29 +37,25 @@ function Cursor ({
   activeReportType
 }) {
 
-  console.log(activeLoopIcon)
-
   const { x, y } = useMousePosition()
   const [ToolIcon, setToolIcon] = useState()
 
   useEffect(() => {
     if (activeTool && activeTool != 'Size') {
       if (activeTool == 'Report') {
-        if (activeReportType == 'both') return setToolIcon(icon.Report)
-        if (activeReportType == 'x') return setToolIcon(icon.ReportRow)
-        if (activeReportType == 'y') return setToolIcon(icon.ReportLoop)
+        if (activeReportType == 'both') return setToolIcon(() => icon.Report)
+        if (activeReportType == 'x') return setToolIcon(() => icon.ReportRow)
+        if (activeReportType == 'y') return setToolIcon(() => icon.ReportLoop)
       }
 
-      setToolIcon(icon[activeTool])
+      setToolIcon(() => icon[activeTool])
     }
 
   }, [activeTool, activeReportType])
 
   return <>
     {!IS_TOUCH &&
-     (ToolIcon || activeLoopIcon) &&
-     Boolean(x && y) &&
-
+     (ToolIcon || activeLoopIcon) && Boolean(x && y) &&
       <div className={classNames(className, scss._)}
            style={{
             position: 'fixed',
