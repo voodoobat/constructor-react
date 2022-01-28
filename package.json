@@ -7,7 +7,6 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "config-overrides-path": "react.config.js",
   "browserslist": {
     "production": [
       ">0.2%",
