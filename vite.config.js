@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 
 import { defineConfig } from 'vite'
@@ -13,6 +14,11 @@ export default defineConfig({
       '@store': path.resolve(__dirname, 'src/store/'),
       '@src': path.resolve(__dirname, 'src/')
     }
+  },
+  server: {
+    https: true,
+    key: fs.readFileSync('./certs/key'),
+    cert: fs.readFileSync('./certs/crt')
   },
   build: {
     outDir: 'build'
