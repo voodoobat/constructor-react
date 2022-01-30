@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import Overlay from '@components/common/Overlay/Overlay'
+import Overlay from '@components/layout/Overlay/Overlay'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import ContextMenu from '@components/canvas/ContextMenu/ContextMenu'
 import EditCanvas from '@components/canvas/EditCanvas/EditCanvas'

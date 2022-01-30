@@ -6,7 +6,7 @@ import classNames from 'classnames'
 
 import YouTube from 'react-youtube'
 
-import Container from '@components/common/Container/Container'
+import Container from '@components/layout/Container/Container'
 import Button from '@components/common/Button/Button'
 
 import * as local from '@store/localstorage'

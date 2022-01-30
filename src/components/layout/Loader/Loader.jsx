@@ -3,7 +3,7 @@ import scss from './Loader.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import Overlay from '@components/common/Overlay/Overlay'
+import Overlay from '@components/layout/Overlay/Overlay'
 
 import { ReactComponent as Woow } from './svg/woow.svg'
 

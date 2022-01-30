@@ -8,7 +8,7 @@ import Hint from '@components/common/Hint/Hint'
 import Swatches from '@components/constructor/Swatches/Swatches'
 import ReportType from '@components/constructor/ReportType/ReportType'
 import Resize from '@components/constructor/Resize/Resize'
-import Overlay from '@components/common/Overlay/Overlay'
+import Overlay from '@components/layout/Overlay/Overlay'
 
 import { IS_TOUCH } from '@src/config'
 

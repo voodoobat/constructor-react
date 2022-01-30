@@ -1,6 +1,6 @@
 import scss from './Schemes.module.scss'
 
-import Container from '@components/common/Container/Container'
+import Container from '@components/layout/Container/Container'
 import Dropdown from '@components/common/Dropdown/Dropdown'
 import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/SchemeButton/SchemeButton'
 
@@ -12,7 +12,7 @@ export default function Schemes ({ schemes }) {
         <Dropdown caption="Схемы для вязания спицами">
           <div className={scss.container}>
             <SchemeButtonCreate href="/constructor/create"
-                                className={scss.scheme} /> 
+                                className={scss.scheme} />
             {schemes.map(scheme => (
               <SchemeButton className={scss.scheme}
                             scheme={scheme}

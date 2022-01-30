@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link, useRouteMatch } from 'react-router-dom'
 
 import Name from '@components/common/Name/Name'
-import Container from '@components/common/Container/Container'
+import Container from '@components/layout/Container/Container'
 import Save from '@components/common/Save/Save'
 
 import Download from '@components/constructor/Download/Download'
@@ -58,7 +58,7 @@ function Header ({
             </nav> */}
           </Container>
         </header>
-    } 
+    }
   </>
 }
 

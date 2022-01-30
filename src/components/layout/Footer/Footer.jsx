@@ -3,7 +3,7 @@ import scss from './Footer.module.scss'
 import { ReactSVG } from 'react-svg'
 
 import { connect } from 'react-redux'
-import Container from '@components/common/Container/Container'
+import Container from '@components/layout/Container/Container'
 
 import { ReactComponent as Logo } from './svg/logo.svg'
 

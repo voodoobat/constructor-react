@@ -7,8 +7,7 @@ import {
   Route
 } from 'react-router-dom'
 
-import Layout from '@components/common/Layout/Layout'
-
+import Layout from '@components/layout/Layout/Layout'
 import ListView from '@components/views/ListView/ListView'
 import ConstructorView from '@components/views/ConstructorView/ConstructorView'
 import CreateView from '@components/views/CreateView/CreateView'

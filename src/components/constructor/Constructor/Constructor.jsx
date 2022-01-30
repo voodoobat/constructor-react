@@ -2,7 +2,7 @@ import scss from './Constructor.module.scss'
 
 import classNames from 'classnames'
 
-import Container from '@components/common/Container/Container'
+import Container from '@components/layout/Container/Container'
 import TopPanel from '@components/constructor/TopPanel/TopPanel'
 import ToolBar from '@components/constructor/ToolBar/ToolBar'
 import GroupContainer from '@components/canvas/GroupContainer/GroupContainer'

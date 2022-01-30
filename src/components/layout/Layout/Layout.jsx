@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react'
 
 import { Redirect } from 'react-router-dom'
 
-import Header from '@components/common/Header/Header'
-import Footer from '@components/common/Footer/Footer'
-import Loader from '@components/common/Loader/Loader'
+import Header from '@components/layout/Header/Header'
+import Footer from '@components/layout/Footer/Footer'
+import Loader from '@components/layout/Loader/Loader'
 
 import * as store from '@store/functions'
 import { DEFAULT_TITLE } from '@src/config'
@@ -22,7 +22,7 @@ function Layout ({
   const [isReady, setReady] = useState(!!config)
 
   useEffect(() => {
-    document.title = DEFAULT_TITLE 
+    document.title = DEFAULT_TITLE
     dispatch(store.setStaticData(() => {
       setReady(true)
     }))

@@ -6,7 +6,7 @@ import LoopPanel from '@components/constructor/LoopPanel/LoopPanel'
 import UndoRedo from '@components/constructor/UndoRedo/UndoRedo'
 import Eye from '@components/constructor/Eye/Eye'
 import Offer from '@components/constructor/Offer/Offer'
-import Overlay from '@components/common/Overlay/Overlay'
+import Overlay from '@components/layout/Overlay/Overlay'
 
 export default function TopPanel ({
   className,

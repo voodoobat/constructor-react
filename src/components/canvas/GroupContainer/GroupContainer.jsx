@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Dropdown from '@components/common/Dropdown/Dropdown'
 import Group from '@components/canvas/Group/Group'
-import Overlay from '@components/common/Overlay/Overlay'
+import Overlay from '@components/layout/Overlay/Overlay'
 import Hint from '@components/common/Hint/Hint'
 
 import { ReactComponent as QuestionIcon } from './svg/question.svg'

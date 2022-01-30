@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 
-import Welcome from '@components/common/Welcome/Welcome'
-import Hero from '@components/common/Hero/Hero'
+import Welcome from '@components/layout/Welcome/Welcome'
+import Hero from '@components/layout/Hero/Hero'
 
 import * as store from '@store/functions'
 
