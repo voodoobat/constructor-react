@@ -8,7 +8,7 @@ import Name from '@components/common/Name/Name'
 import Container from '@components/layout/Container/Container'
 import Save from '@components/common/Save/Save'
 import Download from '@components/constructor/Download/Download'
-import User from '@components/common/User/User'
+// import User from '@components/common/User/User'
 
 import { ReactComponent as LogoSM } from './svg/logo-sm.svg'
 import { ReactComponent as LogoXS } from './svg/logo-xs.svg'
@@ -45,12 +45,12 @@ function Header ({
         </header>
       : <header className={scss.large}>
           <Container className={scss.box}>
-            <a className={scss.logo_svg_box} href={config.resources.catalog}>
+            <span className={scss.logo_svg_box}>
               <LogoSM />
-            </a>
-            <nav className={scss.nav}>
-              <User />
-            </nav>
+            </span>
+            {/*<nav className={scss.nav}>*/}
+            {/*  <User />*/}
+            {/*</nav>*/}
           </Container>
         </header>
     }
