@@ -9,7 +9,7 @@
 /build
 
 # ssl
-certs
+.ssl
 
 # misc
 .DS_Store
