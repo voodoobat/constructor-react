@@ -22,24 +22,13 @@ export default function App () {
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route path="/scheme/:uid/download">
-              <ConstructorView />
-            </Route>
-            <Route path="/scheme/:uid">
-              <ConstructorView />
-            </Route>
-            <Route path="/schemes">
-              <ListView />
-            </Route>
-            <Route path="/create">
-              <CreateView />
-            </Route>
-            <Route path="/404">
-              <Error404View />
-            </Route>
-            <Route path="/">
-              <WelcomeView />
-            </Route>
+            <Route exact path="/scheme/:uid/download" component={ConstructorView} />
+            <Route exact path="/scheme/:uid" component={ConstructorView} />
+            <Route exact path="/schemes" component={ListView} />
+            <Route exact path="/create" component={CreateView} />
+            <Route exact path="/404" component={Error404View} />
+            <Route exact path="/" component={WelcomeView} />
+            <Route component={Error404View} />
           </Switch>
         </Layout>
       </BrowserRouter>
