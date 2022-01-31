@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { get } from 'axios'
 import { uid } from 'uid'
 
