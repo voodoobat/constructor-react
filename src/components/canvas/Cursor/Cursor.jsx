@@ -68,7 +68,7 @@ function Cursor ({
         {ToolIcon && <ToolIcon />}
         {activeLoopIcon && (
           activeLoop == 'stretch'
-            ? <img src={'svg/loop/s.svg'} />
+            ? <img src={'/svg/loop/s.svg'} />
             : <img src={activeLoopIcon} />
         )}
       </div>
