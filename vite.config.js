@@ -15,6 +15,9 @@ export default defineConfig({
       '@src': path.resolve(__dirname, 'src/')
     }
   },
+  preview: {
+    port: 3000
+  },
   server: {
     https: true,
     key: fs.readFileSync('./.ssl/key'),
