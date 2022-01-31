@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 import { ReactComponent as Icon } from './svg/user.svg'
 
 export default function User ({ className, isCustomer }) {
-  const { VITE_AUTH_URL } = import.meta.env
-  console.log(VITE_AUTH_URL)
+  const { VITE_APP_URL, VITE_AUTH_URL } = import.meta.env
 
   return isCustomer ? (
       <Link to="/schemes"
@@ -16,7 +15,7 @@ export default function User ({ className, isCustomer }) {
         <span>Мои схемы</span>
       </Link>
     ) : (
-      <a href={VITE_AUTH_URL}
+      <a href={`${VITE_AUTH_URL}?ref=${VITE_APP_URL}`}
          className={classNames(className, scss._)}>
         <Icon />
         <span>Войти</span>
