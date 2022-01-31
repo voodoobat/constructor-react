@@ -17,8 +17,8 @@ export default defineConfig({
   },
   server: {
     https: true,
-    key: fs.readFileSync('./certs/key'),
-    cert: fs.readFileSync('./certs/crt')
+    key: fs.readFileSync('./.ssl/key'),
+    cert: fs.readFileSync('./.ssl/crt')
   },
   css: {
     modules: {

@@ -5,11 +5,11 @@
 В проекте **shop** копируем сертификаты из гостевой системы в папку с проектом:
 ```shell
 vagrant ssh
-sudo cp -r /etc/ssl/shop.test /app/certs
+sudo cp -r /etc/ssl/shop.test /app/.ssl
 ```
 Переносим директорию `certs` из shop в корневую директорию конструктора, например:
 ```shell
-mv ~/Projects/shop/certs ~/Projects/constructor
+mv ~/Projects/shop/.ssl ~/Projects/constructor
 ```
 
 ## Сборка
