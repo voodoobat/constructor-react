@@ -7,16 +7,15 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import Name from '@components/common/Name/Name'
 import Container from '@components/layout/Container/Container'
 import Save from '@components/common/Save/Save'
-
 import Download from '@components/constructor/Download/Download'
+import User from '@components/common/User/User'
 
 import { ReactComponent as LogoSM } from './svg/logo-sm.svg'
 import { ReactComponent as LogoXS } from './svg/logo-xs.svg'
 
 function Header ({
   config,
-  activeDownload,
-  isAuth
+  activeDownload
 }) {
 
   const isConstPage = useRouteMatch('/scheme/:uid')
@@ -49,13 +48,9 @@ function Header ({
             <a className={scss.logo_svg_box} href={config.resources.catalog}>
               <LogoSM />
             </a>
-            {/* <nav className={scss.nav}>
-              {isAuth &&
-                <Link to="/schemes">
-                  Мои схемы
-                </Link>
-              }
-            </nav> */}
+            <nav className={scss.nav}>
+              <User />
+            </nav>
           </Container>
         </header>
     }

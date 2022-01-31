@@ -1,0 +1,8 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

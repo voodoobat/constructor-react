@@ -20,6 +20,11 @@ export default defineConfig({
     key: fs.readFileSync('./certs/key'),
     cert: fs.readFileSync('./certs/crt')
   },
+  css: {
+    modules: {
+      generateScopedName: '[name]_[local]_[hash:base64:4]'
+    }
+  },
   build: {
     outDir: 'build'
   }
