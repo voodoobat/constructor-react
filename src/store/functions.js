@@ -22,9 +22,7 @@ export function setStaticData (onComplete = () => {}) {
     if (config.status == 200 &&
         loops.status == 200) {
 
-      // TODO: решить на бэке
-      const keys = Object.keys(loops.data).filter(v => !isNaN(Number(v)))
-      const elements = keys.map(v => loops.data[v])
+      const { elements } = loops.data
 
       dispatch(act.setConfig(config.data))
       dispatch(act.setLoops(elements))
