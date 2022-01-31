@@ -2,7 +2,7 @@ import '@scss/app.scss'
 
 import { Provider } from 'react-redux'
 import {
-  HashRouter as Router,
+  BrowserRouter,
   Switch,
   Route
 } from 'react-router-dom'
@@ -19,7 +19,7 @@ import store from '@src/store'
 export default function App () {
   return (
     <Provider store={store}>
-      <Router>
+      <BrowserRouter>
         <Layout>
           <Switch>
             <Route path="/scheme/:uid/download">
@@ -42,7 +42,7 @@ export default function App () {
             </Route>
           </Switch>
         </Layout>
-      </Router>
+      </BrowserRouter>
     </Provider>
   )
 }
