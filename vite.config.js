@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [ react(), svgr() ],
   resolve: {
     alias: {
@@ -25,10 +25,12 @@ export default defineConfig({
   },
   css: {
     modules: {
-      generateScopedName: '[name]_[local]_[hash:base64:4]'
+      generateScopedName: mode == 'production'
+        ? '[hash:base64:5]'
+        : '[name]_[local]_[hash:base64:5]'
     }
   },
   build: {
     outDir: 'build'
   }
-})
+}))
