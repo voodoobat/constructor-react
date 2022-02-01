@@ -1,40 +1,23 @@
-import axios from 'axios'
 import store from '@src/store'
-import Noty from 'noty'
 
+import { XHR_COMMON_DATA } from '@src/config'
 import * as act from '@store/actions'
 
-export const xhr = (
-  method = '',
-  path = '',
-  xhrData = null,
-  query = null
-) => {
+export const xhr = async (path, method) => {
   store.dispatch(act.setActiveLoader(true))
 
   const { config } = store.getState()
-  const url = query ? `${config.resources[path]}?${query[0]}=${query[1]}` : config.resources[path]
-  const headers = {
-    'X-CSRF-TOKEN': config.csrf
+  const url = `${config.resources[path]}?customer_id=${config.customer.id}`
+
+  const request = await fetch(url, {
+    method,
+    ...XHR_COMMON_DATA,
+  })
+
+  if (request.status == 200) {
+    store.dispatch(act.setActiveLoader(false))
+    return await request.json()
   }
-
-  if (!config) {
-    return console.error('CONFIG IS NOT DEFINED')
-  }
-
-  const response = axios[method](url, {
-    _token: config.csrf,
-    ...xhrData
-  }, { headers })
-
-  response
-    .then(() => store.dispatch(act.setActiveLoader(false)))
-    .catch(() => {
-      store.dispatch(act.setRedirect('/404'))
-      store.dispatch(act.setActiveLoader(false))
-    })
-
-  return response
 }
 
 export const xhrGetRes = (response, field = '') => {

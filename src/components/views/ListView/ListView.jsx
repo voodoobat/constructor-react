@@ -8,12 +8,12 @@ import Schemes from '@components/schemes/Schemes/Schemes'
 import * as store from '@store/functions'
 
 function ListView ({
-  isAuth,
+  config,
   schemesList,
   dispatch
 }) {
 
-  if (!isAuth) dispatch(store.setRedirect('/404'))
+  if (!config.customer) dispatch(store.setRedirect('/404'))
 
   useEffect(() => {
     document.title = ' Мои схемы'

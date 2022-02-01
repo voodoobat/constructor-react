@@ -1,4 +1,3 @@
-import { get } from 'axios'
 import { uid } from 'uid'
 
 import * as util from '@src/util'
@@ -7,7 +6,7 @@ import * as act from '@src/store/actions'
 
 import { xhr, xhrGetRes } from '@src/store/xhr'
 
-import { DEFAULT_SCHEME_ID } from '@src/config'
+import { DEFAULT_SCHEME_ID, XHR_COMMON_DATA } from '@src/config'
 import {
   CONFIG_STATE,
   EMPTY_SCHEME,
@@ -16,37 +15,17 @@ import {
 
 export function setStaticData (onComplete = () => {}) {
   return async dispatch => {
-    const config = await fetch(import.meta.env.VITE_API_CONFIG_URL, {
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      },
-      credentials: 'include',
-      mode: 'cors',
-      cache: 'no-cache',
-      redirect: 'error'
-    })
-    const loops = await fetch(import.meta.env.VITE_API_ELEMENTS_URL, {
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      },
-      credentials: 'include',
-      mode: 'cors',
-      cache: 'no-cache',
-      redirect: 'error'
-    })
+    const { VITE_API_CONFIG_URL, VITE_API_ELEMENTS_URL } = import.meta.env
 
-    if (config.status == 200 &&
-        loops.status == 200) {
+    const config = await fetch(VITE_API_CONFIG_URL, XHR_COMMON_DATA)
+    const loops = await fetch(VITE_API_ELEMENTS_URL, XHR_COMMON_DATA)
 
+    if (config.status == 200 && loops.status == 200) {
       const configData = await config.json()
       const { elements } = await loops.json()
 
       dispatch(act.setConfig(configData))
       dispatch(act.setLoops(elements))
-
-      console.log(configData)
 
       const plaitsCnvs = util.generatePlaitElements(
         elements.filter(({ complex }) => complex)
@@ -165,8 +144,8 @@ export function setSchemeByUid (schemeId) {
 
 export function setSchemesList () {
   return async dispatch => {
-    const response = await xhr('get', 'list')
-    const schemes = xhrGetRes(response, 'items').map(util.convertSchemeEntries)
+    const response = await xhr('list', 'GET')
+    const schemes = response.items.map(util.convertSchemeEntries)
 
     dispatch(act.setSchemesList(schemes))
     dispatch(act.setActiveTool({ activeTool: 'Move' }))

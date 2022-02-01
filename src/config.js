@@ -35,3 +35,14 @@ export const SWATCHES = [
   '#9575cd', '#a1887f',
   '#ffb74d', '#f06292'
 ]
+
+export const XHR_COMMON_DATA = {
+  credentials: 'include',
+  mode: 'cors',
+  cache: 'no-cache',
+  redirect: 'error',
+  headers: {
+    'Content-type': 'application/json',
+    'Accept': 'application/json'
+  }
+}
