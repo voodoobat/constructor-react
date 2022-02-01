@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as Icon } from './svg/user.svg'
 
-export default function User ({ className, isCustomer }) {
+export default function User ({ className, customer }) {
   const { VITE_APP_URL, VITE_AUTH_URL } = import.meta.env
 
-  return isCustomer ? (
+  return customer ? (
       <Link to="/schemes"
             className={classNames(className, scss._)}>
         <Icon />

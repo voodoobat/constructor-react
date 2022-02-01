@@ -26,7 +26,7 @@ function Header ({
       ? <header className={scss._}>
           <Container className={scss.box}>
             <div className={scss.logo}>
-              <Link className={scss.logo_svg_box} to="/">
+              <Link to="/" className={scss.logo_svg_box}>
                 <LogoXS />
               </Link>
             </div>
@@ -45,11 +45,11 @@ function Header ({
         </header>
       : <header className={scss.large}>
           <Container className={scss.box}>
-            <span className={scss.logo_svg_box}>
+            <Link to="/" className={scss.logo_svg_box}>
               <LogoSM />
-            </span>
+            </Link>
             <nav className={scss.nav}>
-              <User />
+              <User customer={config.customer} />
             </nav>
           </Container>
         </header>

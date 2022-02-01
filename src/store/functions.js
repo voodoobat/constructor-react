@@ -16,16 +16,37 @@ import {
 
 export function setStaticData (onComplete = () => {}) {
   return async dispatch => {
-    const config = await get(import.meta.env.VITE_API_CONFIG_URL)
-    const loops = await get(import.meta.env.VITE_API_ELEMENTS_URL)
+    const config = await fetch(import.meta.env.VITE_API_CONFIG_URL, {
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      credentials: 'include',
+      mode: 'cors',
+      cache: 'no-cache',
+      redirect: 'error'
+    })
+    const loops = await fetch(import.meta.env.VITE_API_ELEMENTS_URL, {
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      credentials: 'include',
+      mode: 'cors',
+      cache: 'no-cache',
+      redirect: 'error'
+    })
 
     if (config.status == 200 &&
         loops.status == 200) {
 
-      const { elements } = loops.data
+      const configData = await config.json()
+      const { elements } = await loops.json()
 
-      dispatch(act.setConfig(config.data))
+      dispatch(act.setConfig(configData))
       dispatch(act.setLoops(elements))
+
+      console.log(configData)
 
       const plaitsCnvs = util.generatePlaitElements(
         elements.filter(({ complex }) => complex)
