@@ -49,7 +49,7 @@ export const reset = canvas => {
   }))
 
   return cnvs
-} 
+}
 
 export const select = (canvas, cell) => {
   return canvas.map(y => y.map(x => {
@@ -77,7 +77,7 @@ export const square = (canvas, cell, start, type = 'both') => {
       }
     })
 
-    // right bottom 
+    // right bottom
     if (cell.x >= start.x && cell.y >= start.y) cnvs.flat().forEach(c => {
       const { x, y } = c
       c.selected = false
@@ -130,14 +130,14 @@ export const square = (canvas, cell, start, type = 'both') => {
       c.selected = (
         start.x <= x &&
         cell.x >= x
-      ) 
+      )
     }
 
     if (x <= start.x) {
       c.selected = (
         x <= start.x &&
         x >= cell.x
-      ) 
+      )
     }
 
     if (x == start.x) c.selected = true
@@ -150,14 +150,14 @@ export const square = (canvas, cell, start, type = 'both') => {
       c.selected = (
         y >= start.y &&
         y <= cell.y
-      ) 
+      )
     }
 
     if (y <= start.y) {
       c.selected = (
         y <= start.y &&
         y >= cell.y
-      ) 
+      )
     }
 
     if (y == start.y) c.selected = true
@@ -183,11 +183,11 @@ export const placeGroup = (canvas, group, preview = false) => {
             e.preview.background = c?.background
             e.preview.stretch = c?.stretch
           }
-          
+
           else {
             e.loop = c?.loop
-            e.background = c?.background 
-            e.selected = false,
+            e.background = c?.background
+            e.selected = false
             e.stretch = c?.stretch
           }
 
@@ -205,7 +205,7 @@ export const placeGroup = (canvas, group, preview = false) => {
 export const squareGroup = (canvas, cell, group) => {
   const corner = {
     x: cell.x + group.canvas[0].length - 1,
-    y: cell.y + group.canvas.length - 1 
+    y: cell.y + group.canvas.length - 1
   }
 
   let cnvs = [...canvas]
@@ -215,7 +215,7 @@ export const squareGroup = (canvas, cell, group) => {
     cl.preview.loop = null
     cl.preview.background = null
     cl.preview.stretch = null
-  }) 
+  })
 
   temp = placeGroup(cnvs, group, true)
   return temp
@@ -260,7 +260,7 @@ export const createReport = (canvas, reports) => {
     uid: uid(),
     color: sampleColors[colorIndex] || sampleColors[0],
     canvas,
-    elements 
+    elements
   }
 }
 
