@@ -30,7 +30,7 @@ export const generateScheme = ({
     }
   }
 
-  const scheme = {
+  return {
     ...EMPTY_SCHEME,
     schemeTitle: name,
     schemeCanvas: canvas,
@@ -39,6 +39,4 @@ export const generateScheme = ({
     schemeIsRound: isRound,
     schemeCustomCells
   }
-
-  return scheme
 }

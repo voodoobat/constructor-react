@@ -199,7 +199,7 @@ export const convertDataToXHR = obj => {
     scheme[toSnakeCase(key).replace('scheme_', '')] = value
   }
 
-  return scheme
+  return JSON.stringify(scheme)
 }
 
 export const getBase64Size = src => Math.ceil(src?.length * (3/4) / 1024)

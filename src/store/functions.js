@@ -44,14 +44,15 @@ export function setStaticData (onComplete = () => {}) {
 
 export function createScheme (scheme) {
   return async (dispatch, getState) => {
-    const { isAuth } = getState()
+    const { config } = getState()
     let _scheme
 
-    if (isAuth) {
-      const schemeDataWithPreview = util.getSchemeWithPreview(scheme)
-      const response = await xhr('post', 'store', util.convertDataToXHR(schemeDataWithPreview))
 
-      _scheme = xhrGetRes(response, 'model')
+    if (config.customer) {
+      const schemeDataWithPreview = util.getSchemeWithPreview(scheme)
+      const response = await xhr('store', 'POST', util.convertDataToXHR(schemeDataWithPreview))
+
+      _scheme = response.model
     }
 
     else {
