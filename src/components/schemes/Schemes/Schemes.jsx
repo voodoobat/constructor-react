@@ -5,7 +5,6 @@ import Dropdown from '@components/common/Dropdown/Dropdown'
 import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/SchemeButton/SchemeButton'
 
 export default function Schemes ({ schemes }) {
-
   return (
     <div className={scss.schemes}>
       <Container>
@@ -14,9 +13,9 @@ export default function Schemes ({ schemes }) {
             <SchemeButtonCreate href="/constructor/create"
                                 className={scss.scheme} />
             {schemes.map(scheme => (
-              <SchemeButton className={scss.scheme}
-                            scheme={scheme}
-                            key={scheme.schemeId} />
+              <SchemeButton key={scheme.schemeId}
+                            className={scss.scheme}
+                            scheme={scheme} />
             ))}
           </div>
         </Dropdown>

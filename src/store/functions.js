@@ -121,11 +121,11 @@ export function setSchemeByUid (schemeId) {
     if (!schemeId) return
 
     let schemeData
-    const { isAuth } = getState()
+    const { config } = getState()
 
-    if (isAuth) {
-      const response = await xhr('get', 'show', {}, ['scheme_id', schemeId])
-      schemeData = xhrGetRes(response, 'model')
+    if (config.customer) {
+      const response = await xhr('show', 'GET', null, `scheme_id=${schemeId}`)
+      schemeData = response.model
     }
 
     else {
