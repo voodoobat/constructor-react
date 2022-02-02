@@ -41,14 +41,14 @@ function Footer ({ config }) {
             Вязаный в соцсетях
           </div>
           <div className={scss.sm_list}>
-            <a href={socials.instagram} target="_blank">
-              <ReactSVG src={'svg/sm/in.svg'} />
+            <a href={socials.instagram} target="_blank" rel="noreferrer">
+              <ReactSVG src="/svg/sm/in.svg" />
             </a>
-            <a href={socials.vk} target="_blank">
-              <ReactSVG src={'svg/sm/vk.svg'} />
+            <a href={socials.vk} target="_blank" rel="noreferrer">
+              <ReactSVG src="/svg/sm/vk.svg" />
             </a>
-            <a href={socials.youtube} target="_blank">
-              <ReactSVG src={'svg/sm/yt.svg'} />
+            <a href={socials.youtube} target="_blank" rel="noreferrer">
+              <ReactSVG src="/svg/sm/yt.svg" />
             </a>
           </div>
         </nav>
