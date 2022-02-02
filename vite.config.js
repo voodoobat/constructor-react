@@ -1,4 +1,3 @@
-import fs from 'fs'
 import path from 'path'
 
 import { defineConfig } from 'vite'
@@ -19,9 +18,7 @@ export default defineConfig(({ mode }) => ({
     port: 3000
   },
   server: {
-    https: true,
-    key: fs.readFileSync('./.ssl/key'),
-    cert: fs.readFileSync('./.ssl/crt')
+    https: true
   },
   css: {
     modules: {
