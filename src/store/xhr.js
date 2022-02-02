@@ -25,13 +25,3 @@ export const xhr = async (path, method, body, query) => {
     return await request.json()
   }
 }
-
-export const xhrGetRes = (response, field = '') => {
-  const { status, data } = response
-
-  if (status == 200) {
-    return field ? data[field] : data
-  }
-
-  return null
-}

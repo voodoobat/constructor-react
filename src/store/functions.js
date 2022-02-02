@@ -4,7 +4,7 @@ import * as util from '@src/util'
 import * as local from '@store/localstorage'
 import * as act from '@src/store/actions'
 
-import { xhr, xhrGetRes } from '@src/store/xhr'
+import { xhr } from '@src/store/xhr'
 
 import { DEFAULT_SCHEME_ID, XHR_COMMON_DATA } from '@src/config'
 import {
