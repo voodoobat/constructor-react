@@ -70,13 +70,11 @@ export function saveScheme (onSave = () => {}) {
     const state = getState()
     const schemeData = util.getSchemeData(state)
 
-    if (state.isAuth) {
+    if (state.config.customer) {
       const schemeDataWithPreview = util.getSchemeWithPreview(schemeData)
       const scheme = util.convertDataToXHR(schemeDataWithPreview)
 
-      await xhr('post', 'update', scheme, [
-        'scheme_id', state.schemeId
-      ])
+      await xhr('update', 'PUT', scheme, `scheme_id=${state.schemeId}`)
     }
 
     else {
@@ -95,11 +93,11 @@ export function saveScheme (onSave = () => {}) {
 
 export function deleteScheme () {
   return async (dispatch, getState) => {
-    const { isAuth, schemeId, schemeTitle, activeColor } = getState()
+    const { config, schemeId, schemeTitle, activeColor } = getState()
     let redirect
 
-    if (isAuth) {
-      await xhr('post', 'delete', null, ['scheme_id', schemeId])
+    if (config.customer) {
+      await xhr('delete', 'DELETE', null, `scheme_id=${schemeId}`)
       redirect = '/schemes'
     }
 
