@@ -1,8 +1,7 @@
 import { LOCALSTORAGE_KEY } from '@src/config'
 
 export const save = scheme => {
-  const data = JSON.stringify(scheme)
-  localStorage.setItem(LOCALSTORAGE_KEY, data)
+  localStorage.setItem(LOCALSTORAGE_KEY, scheme)
 }
 
 export const fetch = () => {
