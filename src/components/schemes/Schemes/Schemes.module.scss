@@ -1,11 +1,12 @@
-.schemes {
+._ {
+  flex-grow: 10;
   padding: 2em 0;
 }
 
 .container {
   display: flex;
-  margin: 0 -0.5em; 
   flex-wrap: wrap;
+  margin: 0 -0.5em;
 }
 
 .scheme {

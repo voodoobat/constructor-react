@@ -16,7 +16,8 @@ export default function Dropdown ({
   caption,
   size = 'lg',
   active = true,
-  children
+  disabled,
+  children,
 }) {
 
   const Icon = chevron[size]
@@ -26,13 +27,14 @@ export default function Dropdown ({
     className,
     scss._,
     size ? scss[`size_${size}`] : '',
-    isActive ? scss.is_active : ''
+    isActive ? scss.is_active : '',
+    disabled ? scss.is_disabled : ''
   )
 
   return (
     <div className={classes}>
       <button className={scss.caption}
-              onClick={() => setActive(!isActive)}>
+              onClick={() => !disabled && setActive(!isActive)}>
         <span className={scss.caption_text}>
           {caption}
         </span>

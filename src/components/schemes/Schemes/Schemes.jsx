@@ -6,9 +6,9 @@ import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/Scheme
 
 export default function Schemes ({ schemes }) {
   return (
-    <div className={scss.schemes}>
+    <div className={scss._}>
       <Container>
-        <Dropdown caption="Схемы для вязания спицами">
+        <Dropdown caption="Схемы для вязания спицами" disabled={true}>
           <div className={scss.container}>
             <SchemeButtonCreate href="/constructor/create"
                                 className={scss.scheme} />
@@ -19,9 +19,9 @@ export default function Schemes ({ schemes }) {
             ))}
           </div>
         </Dropdown>
-        <Dropdown caption="Схемы для вязания крючком">
-          <SchemeButtonCreate lassName={scss.scheme} />
-        </Dropdown>
+        {/*<Dropdown caption="Схемы для вязания крючком">*/}
+        {/*  <SchemeButtonCreate lassName={scss.scheme} />*/}
+        {/*</Dropdown>*/}
       </Container>
     </div>
   )

@@ -5,16 +5,17 @@
   padding: 1em 0;
 }
 
-.size_sm {
-  padding: 0.5em 0;
+.caption {
+  font-size: 1.7em;
 
-  .caption {
+  .size_sm & {
     font-size: 1.15em;
   }
 }
 
-.caption {
-  font-size: 1.7em;
+
+.size_sm {
+  padding: 0.5em 0;
 }
 
 .caption_text {
@@ -38,5 +39,15 @@
 
   .chevron {
     transform: rotate(-180deg);
+  }
+}
+
+.is_disabled {
+  .caption {
+    cursor: default;
+  }
+
+  .chevron {
+    display: none;
   }
 }
