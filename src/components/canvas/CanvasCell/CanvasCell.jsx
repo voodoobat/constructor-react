@@ -20,7 +20,8 @@ export default function CanvasCell ({
   hideHighlight,
   acceptGroup,
   rejectGroup,
-  isPreview
+  isPreview,
+  isDownload
 }) {
 
   const classList = classNames(
@@ -45,7 +46,7 @@ export default function CanvasCell ({
         </div>
       }
       {cell.preview.loop && <Loop className={scss.loop} icon={`${cell.preview.loop.icon}`} />}
-      {!cell.preview.loop && cell.loop && <Loop className={scss.loop} icon={cell.loop.icon} />}
+      {!cell.preview.loop && cell.loop && <Loop className={scss.loop} icon={cell.loop.icon} svgCode={isDownload} />}
       {cell.preview.stretch && <Loop className={classNames(scss.stretch, scss.loop)} icon={cell.preview.stretch} />}
       {!cell.preview.stretch && cell.stretch && <Loop className={classNames(scss.stretch, scss.loop)} icon={cell.stretch} />}
       {cell.confirm && confirm &&

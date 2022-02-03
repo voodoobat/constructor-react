@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Row from '@components/canvas/Row/Row'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
-import Numbers from '@components/canvas/Numbers/Numbers' 
+import Numbers from '@components/canvas/Numbers/Numbers'
 import ReportContainer from '@components/canvas/ReportContainer/ReportContainer'
 import LegendBox from '@components/constructor/LegendBox/LegendBox'
 
@@ -46,6 +46,7 @@ function DownloadPreview ({
                         cell={cell}
                         hideHighlight={true}
                         isPreview={true}
+                        isDownload={true}
                         key={cell.uid} />
                     ))}
                   </Row>
