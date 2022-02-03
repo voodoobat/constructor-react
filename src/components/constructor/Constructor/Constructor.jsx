@@ -10,19 +10,25 @@ import LegendBox from '@components/constructor/LegendBox/LegendBox'
 
 export default function Constructor ({
   className,
-  // isAuth,
+  customer,
   inactive,
   children
 }) {
 
+  const { VITE_AUTH_URL, VITE_APP_URL } = import.meta.env
+  const authUrl = `${VITE_AUTH_URL}?ref=${VITE_APP_URL}`
+
   return (
     <Container className={classNames(className, scss._)}>
-      {/* {!isAuth && !inactive &&
+      {!customer && !inactive &&
         <div className={scss.no_auth}>
           <p>Все изменения сохранятся только в этом браузере.</p>
-          <p>Чтобы иметь возможность сохранить схему в личном кабинете или создать несколько схем <a href="">войдите</a> или <a href="">зарегистрируйтесь</a></p>
+          <p>
+            Чтобы иметь возможность сохранить схему в личном кабинете или создать несколько схем
+            &nbsp;<a href={authUrl}>войдите</a> в аккаунт на сайте.
+          </p>
         </div>
-      }  */}
+      }
       <TopPanel className={scss.top_panel}
                 inactive={inactive} />
       <GroupContainer inactive={inactive} />

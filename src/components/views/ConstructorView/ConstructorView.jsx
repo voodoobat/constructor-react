@@ -14,7 +14,7 @@ import { DEFAULT_TITLE, ROUTE_SCHEME } from '@src/config'
 
 function ConstructorView ({
   schemeId,
-  isAuth,
+  config,
   schemeTitle,
   activeDownload,
   dispatch
@@ -24,7 +24,7 @@ function ConstructorView ({
   const { uid } = useParams()
 
   useEffect(() => {
-    if (isAuth) dispatch(store.setSchemesList())
+    if (config.customer) dispatch(store.setSchemesList())
     dispatch(store.setSchemeByUid(uid))
   }, [])
 
@@ -44,7 +44,7 @@ function ConstructorView ({
     {activeDownload
       ? <DownloadPreview />
       : <Constructor
-          isAuth={isAuth}
+          customer={config.customer}
           className={scss._}>
           <CanvasContainer
             autoresize={true}

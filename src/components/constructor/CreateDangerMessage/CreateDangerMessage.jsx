@@ -17,7 +17,7 @@ const ROUTE = `${ROUTE_SCHEME}${DEFAULT_SCHEME_ID}`
 
 function CreateDangerMessage ({
   className,
-  isAuth
+  config
 }) {
 
   const [scheme, setScheme] = useState(null)
@@ -30,7 +30,7 @@ function CreateDangerMessage ({
   }, [])
 
   return <>
-    {!isAuth && scheme &&
+    {!config.customer && scheme &&
       <div className={classNames(className, scss._)}>
         <div className={scss.message}>
           <WarnIcon className={scss.icon} />

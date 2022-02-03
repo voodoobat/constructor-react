@@ -16,9 +16,9 @@ import { ReactComponent as CreateIcon } from './svg/create.svg'
 import { ReactComponent as SaveIcon } from './svg/save.svg'
 import { ReactComponent as PencilIcon } from './svg/pencil.svg'
 
-function Welcome ({ isAuth }) {
+function Welcome ({ config }) {
   const [hasSavedScheme] = useState(
-    !isAuth &&
+    !config.customer &&
     local.fetch()?.id == DEFAULT_SCHEME_ID,
   )
 
