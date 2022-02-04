@@ -2,9 +2,7 @@ import scss from './ActionsDropdown.module.scss'
 
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-
 import classNames from 'classnames'
-
 import { Link } from 'react-router-dom'
 
 import Copy from '@components/common/Copy/Copy'
@@ -14,7 +12,7 @@ import * as store from '@store/functions'
 
 function ActionsDropdown ({
   className,
-  isAuth,
+  config,
   setActiveMenu,
   setSchemeListActive,
   setActiveInput,
@@ -55,7 +53,7 @@ function ActionsDropdown ({
   }
 
   return <>
-    <div 
+    <div
       id={ELEMENT_ID}
       className={classNames(className, scss._)}>
       <div className={scss.head}>
@@ -66,8 +64,8 @@ function ActionsDropdown ({
           Сохранить схему
         </button>
       </div>
-      {isAuth && <Copy className={scss.button} />}
-      {!isAuth &&
+      {config.customer && <Copy className={scss.button} />}
+      {!config.customer &&
         <Link
           to="/create"
           onClick={activateInput}
@@ -82,7 +80,7 @@ function ActionsDropdown ({
         Переименовать
       </button>
       <Delete className={classNames(scss.button, scss.button_delete)} />
-      {isAuth &&
+      {config.customer &&
         <div className={scss.foot}>
           <button
             onClick={showSchemes}

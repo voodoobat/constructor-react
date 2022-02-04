@@ -142,12 +142,16 @@ export function setSchemeByUid (schemeId) {
 }
 
 export function setSchemesList () {
-  return async dispatch => {
-    const response = await xhr('list', 'GET')
-    const schemes = response.items.map(util.convertSchemeEntries)
+  return async (dispatch, getState) => {
+    const { config } = getState()
 
-    dispatch(act.setSchemesList(schemes))
-    dispatch(act.setActiveTool({ activeTool: 'Move' }))
+    if (config.customer) {
+      const response = await xhr('list', 'GET')
+      const schemes = response.items.map(util.convertSchemeEntries)
+
+      dispatch(act.setSchemesList(schemes))
+      dispatch(act.setActiveTool({ activeTool: 'Move' }))
+    }
   }
 }
 
