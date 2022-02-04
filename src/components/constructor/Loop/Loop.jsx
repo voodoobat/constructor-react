@@ -8,10 +8,16 @@ export default function Loop ({
   svgCode,
   icon
 }) {
+
+  const patchSrc = src => {
+    const icon = src.substring(src.lastIndexOf('/') + 1)
+    return `/svg/scheme_elements/${icon}`
+  }
+
   return (
     <div className={classNames(className, scss._)}>
       {svgCode
-        ? <ReactSVG src={icon} />
+        ? <ReactSVG src={patchSrc(icon)} />
         : <img src={icon} alt="" />
       }
     </div>
