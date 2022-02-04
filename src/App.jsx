@@ -12,7 +12,7 @@ import ListView from '@components/views/ListView/ListView'
 import ConstructorView from '@components/views/ConstructorView/ConstructorView'
 import CreateView from '@components/views/CreateView/CreateView'
 import WelcomeView from '@components/views/WelcomeView/WelcomeView'
-import Error404View from '@components/views/ErrorView/ErrorView'
+import ErrorView from '@components/views/ErrorView/ErrorView'
 
 import store from '@src/store'
 
@@ -27,7 +27,7 @@ export default function App () {
             <Route exact path="/schemes" component={ListView} />
             <Route exact path="/create" component={CreateView} />
             <Route exact path="/" component={WelcomeView} />
-            <Route component={Error404View} />
+            <Route component={ErrorView} />
           </Switch>
         </Layout>
       </BrowserRouter>
