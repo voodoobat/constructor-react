@@ -47,7 +47,7 @@ function ConstructorView ({
           customer={config.customer}
           className={scss._}>
           <CanvasContainer
-            autoresize={true}
+            autoresize={false}
             withScale={true} />
         </Constructor>
     }
