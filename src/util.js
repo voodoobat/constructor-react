@@ -1,5 +1,5 @@
 import { uid } from 'uid'
-// import Noty from 'noty'
+import Noty from 'noty'
 
 export const stripHtml = s => s.replace(/(<([^>]+)>)/gi, "")
 export const spacesToNbsp = s => s.replace(/ /g, '\u00a0')
@@ -275,13 +275,11 @@ export const breakStr = (str, spaces = 3) => {
   return strArr.join(' ')
 }
 
-// export const notyfy = text => new Noty({
-//   text,
-//   layout: 'custom',
-//   timeout: 1500
-// }).show()
-
-export const notyfy = () => {}
+export const notyfy = text => new Noty({
+  text,
+  layout: 'custom',
+  timeout: 1500
+}).show()
 
 const createPlaitElement = (src, size, idx, target) => {
   const { id, icon } = src.children[idx]
