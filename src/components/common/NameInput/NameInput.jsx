@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { or, spacesToNbsp, isEmptyString } from '@src/util'
+import { spacesToNbsp, isEmptyString } from '@src/util'
 import * as store from '@store/functions'
 
 function NameInput ({

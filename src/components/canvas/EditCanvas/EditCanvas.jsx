@@ -1,7 +1,6 @@
 import scss from './EditCanvas.module.scss'
 
 import { connect } from 'react-redux'
-import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
 import { mapMatrix } from '@components/canvas/Canvas/Canvas.fn'

@@ -97,15 +97,15 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
     case mod10 === 0:
     case mod10 >= 5 && mod10 <= 9:
     case numberAbs >= 11 && numberAbs <= 14:
-      text = text5;
+      text = text5
       break
 
     case mod10 === 1:
-      text = text1;
+      text = text1
       break
 
     case mod10 >= 2 && mod10 <= 4:
-      text = text2;
+      text = text2
       break
   }
 

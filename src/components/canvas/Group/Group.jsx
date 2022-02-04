@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Row from '@components/canvas/Row/Row'
-
+import CanvasCell from '../CanvasCell/CanvasCell'
 import * as store from '@store/functions'
 
 import { ReactComponent as Delete } from './svg/delete.svg'
-import CanvasCell from '../CanvasCell/CanvasCell'
 
 function Group ({
   className,
@@ -34,7 +33,7 @@ function Group ({
            onClick={setActive}>
         {group.canvas.map((element, y) => (
           <Row key={y} className={scss.row}>
-            {element.map((cell, x) => (
+            {element.map(cell => (
               <CanvasCell
                 className={scss.cell}
                 cell={cell}

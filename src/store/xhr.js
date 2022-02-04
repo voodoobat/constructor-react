@@ -5,9 +5,10 @@ import * as act from '@store/actions'
 
 function getCookie(name) {
   let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
+    "(?:^|; )" + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + "=([^;]*)"
+  ))
+
+  return matches ? decodeURIComponent(matches[1]) : ''
 }
 
 export const xhr = async (path, method, body, query) => {
