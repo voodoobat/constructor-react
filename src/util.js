@@ -3,6 +3,11 @@ import Noty from 'noty'
 
 export const stripHtml = s => s.replace(/(<([^>]+)>)/gi, "")
 export const spacesToNbsp = s => s.replace(/ /g, '\u00a0')
+export const patchSrc = src => {
+  const icon = src.substring(src.lastIndexOf('/') + 1)
+  return `/svg/scheme_elements/${icon}`
+}
+
 
 export const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1)
 
