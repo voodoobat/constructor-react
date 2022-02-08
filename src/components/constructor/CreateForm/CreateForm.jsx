@@ -14,19 +14,21 @@ import {
   MIN_CANVAS_SIZE,
   MAX_CANVAS_SIZE,
   MIN_SCHEME_NAME_LEN,
-  MAX_SCHEME_NAME_LEN
+  MAX_SCHEME_NAME_LEN,
+  DEFAULT_CANVAS_SIZE
 } from '@src/config'
 
 import * as fn from './CreateForm.fn'
 import * as store from '@store/functions'
 
 const [min, max] = [MIN_CANVAS_SIZE, MAX_CANVAS_SIZE]
+const [x, y] = DEFAULT_CANVAS_SIZE
 
 function CreateForm ({ dispatch }) {
 
   const [name, setName] = useState('Моя схема')
-  const [rows, setRows] = useState(10)
-  const [cols, setCols] = useState(10)
+  const [cols, setCols] = useState(x)
+  const [rows, setRows] = useState(y)
   const [onlyOdd, setOnlyOdd] = useState(false)
   const [customCells, setCustomCells] = useState(false)
   const [isRound, setRound] = useState(false)
@@ -88,7 +90,7 @@ function CreateForm ({ dispatch }) {
       <Field className={scss.caption}>
         Введите параметры для схемы
       </Field>
-      <Field 
+      <Field
         className={scss.to_check}
         label="Название схемы"
         labelClassName={scss.label}
