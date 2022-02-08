@@ -56,8 +56,8 @@ export function createScheme (scheme) {
     }
 
     else {
-      _scheme = util.convertDataToXHR({ ...scheme, id: DEFAULT_SCHEME_ID })
-      local.save(_scheme)
+      local.save(util.convertDataToXHR({ ...scheme, id: DEFAULT_SCHEME_ID }))
+      _scheme = local.fetch()
     }
 
     dispatch(act.setRedirect(`/scheme/${_scheme.id}`))
