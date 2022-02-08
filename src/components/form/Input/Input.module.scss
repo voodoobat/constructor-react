@@ -1,20 +1,30 @@
+@use 'sass:color';
+
 @import '@scss/config';
 @import '@scss/mixins';
 
 $input-height: 25px;
+
+
+.number_dec {
+  left: -5px;
+}
+
+.number_inc {
+  right: -1px;
+}
 
 .input {
   display: block;
 
   > input {
     width: 100%;
-    padding: 0 $input-padding-x;
     height: $input-height;
-    line-height: $input-height;
-    color: $dark-gray;
+    padding: 0 $input-padding-x;
     border: 1px solid $medium-gray;
     border-radius: $radius;
-    line-height: 1;
+    color: $dark-gray;
+    line-height: $input-height;
 
     &:focus {
       border-color: $medium-blue;
@@ -40,8 +50,8 @@ $input-height: 25px;
   @include size($input-height);
   @include position(absolute, 0);
   display: inline-block;
-  padding: $input-padding-y;
   box-sizing: content-box;
+  padding: $input-padding-y;
   border-radius: 50%;
   cursor: pointer;
 
@@ -51,8 +61,8 @@ $input-height: 25px;
   }
 
   path, circle {
-    stroke: lighten($medium-gray, 10%);
     transition: stroke .2s ease;
+    stroke: lighten($medium-gray, 10%);
   }
 
   &:hover {
@@ -60,12 +70,4 @@ $input-height: 25px;
       stroke: $medium-blue;
     }
   }
-}
-
-.number_dec {
-  left: -5px;
-}
-
-.number_inc {
-  right: -1px;
 }

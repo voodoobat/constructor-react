@@ -2,22 +2,22 @@
 @import '@scss/mixins';
 
 ._ {
-  display: flex; 
-  padding-top: 1em;
+  display: flex;
   flex-direction: column;
-  min-height: 100%;
   flex-grow: 10;
+  min-height: 100%;
+  padding-top: 1em;
 }
 
 .no_auth {
   padding: 0 0 0.5em;
-  text-align: center;
   font-size: $text-xs;
+  text-align: center;
 }
 
 .header {
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1em;
@@ -25,9 +25,9 @@
 }
 
 .note {
+  color: $dark-gray;
   font-size: $text-sm;
   text-decoration: underline;
-  color: $dark-gray;
 }
 
 .main {

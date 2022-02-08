@@ -10,8 +10,8 @@
       @include position(relative, -0.1em -0.1em);
       content: '*';
       display: inline-block;
-      font-size: 0.85em;
       color: $medium-red;
+      font-size: 0.85em;
     }
   }
 }

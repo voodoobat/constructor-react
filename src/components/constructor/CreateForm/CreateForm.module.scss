@@ -2,21 +2,21 @@
 @import '@scss/mixins';
 
 ._ {
-  padding: 1em 2em;
   max-width: 44rem;
+  padding: 1em 2em;
   border: 1px solid $light-gray;
   border-radius: 5px;
 }
 
 .caption {
-  text-align: center;
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .label {
+  min-width: 15rem;
   padding-right: 1em;
   user-select: none;
-  min-width: 15rem;
 }
 
 .number {
@@ -25,9 +25,9 @@
 }
 
 .checkbox {
+  max-width: none;
   color: $medium-gray;
   font-size: 0.9em;
-  max-width: none;
 }
 
 .submit {
@@ -36,22 +36,22 @@
 }
 
 .to_check {
-  position: relative;
   display: inline-flex;
+  position: relative;
 }
 
 .error_msg {
   @include position(absolute, .7em -2.5rem);
   padding: .5em 1em;
+  transform: translateX(100%);
+  transition: all .15s ease;
   border-radius: $radius;
-  font-size: $text-sm;
+  opacity: 0;
   background: $medium-red;
   color: $body-bg;
-  transition: all .15s ease;
-  transform: translateX(100%);
-  pointer-events: none;
+  font-size: $text-sm;
   white-space: nowrap;
-  opacity: 0;
+  pointer-events: none;
 
   &.visible {
     right: -1.5rem;
@@ -62,7 +62,7 @@
     @include size(10px);
     @include position(absolute, 10px null null -5px);
     content: '';
-    background: $medium-red;
     transform: rotate(45deg);
+    background: $medium-red;
   }
 }

@@ -219,7 +219,6 @@ export const convertBoolArrToNumsStr = arr => {
 }
 
 export const createCanvasPreview = (schemeCanvas, sizeY = 10, sizeX = 10) => {
-
   const canvas = JSON.parse(JSON.stringify(schemeCanvas))
   const y = canvas.length < sizeY ? canvas.length : sizeY
   const x = canvas[0].length < sizeX ? canvas[0].length : sizeX

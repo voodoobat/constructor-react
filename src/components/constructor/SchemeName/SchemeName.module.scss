@@ -7,8 +7,8 @@
 
 .name {
   position: relative;
-  min-height: 2.7rem;
   min-width: 1rem;
+  min-height: 2.7rem;
 }
 
 .input, .hidden {
@@ -33,11 +33,11 @@
 
 .edit_text {
   @include position(absolute, .6rem null null 100%);
+  z-index: 20;
   font-size: $text-xs;
   white-space: nowrap;
-  user-select: none;
   cursor: pointer;
-  z-index: 20;
+  user-select: none;
 
   > span {
     display: inline-block;
@@ -50,6 +50,6 @@
 }
 
 .cansel_button {
-  color: $medium-red;
   margin-left: 1em;
+  color: $medium-red;
 }

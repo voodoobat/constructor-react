@@ -1,26 +1,31 @@
 @use 'sass:math';
+@use 'sass:list';
 
 @mixin size($size) {
-  @if type-of($size)==number {
+  @if type-of($size) == number {
     width: $size;
     height: $size;
   }
 
-  @if type-of($size)==list {
-    width: nth($size, 1);
-    height: nth($size, 2);
+  @if type-of($size) == list {
+    width: list.nth($size, 1);
+    height: list.nth($size, 2);
   }
 }
 
-@mixin position($position, $values: null) {
+@mixin position($position, $values: null, $z-index: null) {
   $sides: top, right, bottom, left;
 
   @if $position {
     position: $position;
   }
 
+  @if $z-index {
+    z-index: $z-index;
+  }
+
   @for $j from 1 through length($values) {
-    #{nth($sides, $j)}: nth($values, $j);
+    #{nth($sides, $j)}: list.nth($values, $j);
   }
 }
 
