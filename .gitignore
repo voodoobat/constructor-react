@@ -28,3 +28,6 @@ yarn-error.log*
 
 # editor
 .idea
+
+# SEO
+robots.txt
