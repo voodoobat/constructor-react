@@ -2,7 +2,7 @@ import scss from './ConstructorView.module.scss'
 
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, useRouteMatch } from 'react-router-dom'
 
 import Constructor from '@components/constructor/Constructor/Constructor'
 import CanvasContainer from '@components/canvas/CanvasContainer/CanvasContainer'
@@ -16,12 +16,12 @@ function ConstructorView ({
   schemeId,
   config,
   schemeTitle,
-  activeDownload,
   dispatch
 }) {
 
   const history = useHistory()
   const { uid } = useParams()
+  const isDownload = useRouteMatch('/scheme/:uid/download')
 
   useEffect(() => {
     if (config.customer) dispatch(store.setSchemesList())
@@ -41,7 +41,7 @@ function ConstructorView ({
 
 
   return <>
-    {activeDownload
+    {isDownload
       ? <DownloadPreview />
       : <Constructor
           customer={config.customer}

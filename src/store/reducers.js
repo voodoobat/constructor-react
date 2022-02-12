@@ -30,7 +30,6 @@ export default function reducers (state = INITIAL_STATE, { type, payload }) {
     'SET_SCHEME_CUSTOM_CELLS',
     'SET_SCHEMES_LIST',
     'SET_ACTIVE_LOADER',
-    'SET_ACTIVE_DOWNLOAD',
     'SET_DOWNLOAD_OPTIONS',
     'SET_IS_AUTH'
   ]) ? { ...state, ...payload } : state

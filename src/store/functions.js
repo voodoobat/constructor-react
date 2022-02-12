@@ -375,12 +375,6 @@ export function setActiveReportType (activeReportType) {
   }
 }
 
-export function setActiveDownload (activeDownload) {
-  return dispatch => {
-    dispatch(act.setActiveDownload(activeDownload))
-  }
-}
-
 export function setDownloadOptions (downloadOptions) {
   return dispatch => {
     dispatch(act.setDownloadOptions(downloadOptions))

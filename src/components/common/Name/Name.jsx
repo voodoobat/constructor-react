@@ -3,15 +3,17 @@ import scss from './Name.module.scss'
 import { connect } from 'react-redux'
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 import SelectScheme from '@components/common/SelectScheme/SelectScheme'
 import ActionsDropdown from '@components/constructor/ActionsDropdown/ActionsDropdown'
 import NameInput from '@components/common/NameInput/NameInput'
 
-import { ReactComponent as ChevronIcon } from './svg/chevron.svg' 
-import { ReactComponent as ArrowIcon } from './svg/arrow.svg' 
+import { ReactComponent as ChevronIcon } from './svg/chevron.svg'
+import { ReactComponent as ArrowIcon } from './svg/arrow.svg'
 
 import * as store from '@store/functions'
+import { useRouteMatch } from 'react-router-dom'
 
 function Name ({
   className,
@@ -19,13 +21,14 @@ function Name ({
   schemeId,
   schemesList,
   schemeTitle,
-  activeDownload,
   dispatch
 }) {
 
   const [activeMenu, setActiveMenu] = useState(false)
   const [schemesListActive, setSchemesListActive] = useState(false)
   const [isActiveInput, setActiveInput] = useState(false)
+
+  const isDownload = useRouteMatch('/scheme/:uid/download')
 
   const openMenu = () => {
     setActiveMenu(true)
@@ -36,14 +39,13 @@ function Name ({
   }, [schemesListActive])
 
   return <>
-    {activeDownload
+    {isDownload
       ? <div className={classNames(className, scss._)}>
-          <button
-            className={scss.to_constructor}
-            onClick={() => dispatch(store.setActiveDownload(false))}
-            type="button">
+          <Link
+            to={`/scheme/${schemeId}`}
+            className={scss.to_constructor}>
             <ArrowIcon className={scss.arrow} /> Вернуться к редактированию
-          </button>
+          </Link>
         </div>
       : <div className={classNames(className, scss._)}>
           {!isActiveInput && isAuth &&

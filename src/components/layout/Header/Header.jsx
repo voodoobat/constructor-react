@@ -13,13 +13,11 @@ import User from '@components/common/User/User'
 import { ReactComponent as LogoSM } from './svg/logo-sm.svg'
 import { ReactComponent as LogoXS } from './svg/logo-xs.svg'
 
-function Header ({
-  config,
-  activeDownload
-}) {
+function Header ({ config }) {
 
   const isConstPage = useRouteMatch('/scheme/:uid')
   const isCreatePage = useRouteMatch('/create')
+  const isDownload = useRouteMatch('/scheme/:uid/download')
 
   return <>
     {isConstPage || isCreatePage
@@ -35,7 +33,7 @@ function Header ({
             </div>
             <div className={scss.nav}>
               {isConstPage && <>
-                {activeDownload
+                {isDownload
                   ? <Download />
                   : <Save className={scss.save} />
                 }
@@ -49,7 +47,7 @@ function Header ({
               <LogoSM />
             </Link>
             <nav className={scss.nav}>
-              <User customer={config.customer} />
+              <User className={scss.link} customer={config.customer} />
             </nav>
           </Container>
         </header>
