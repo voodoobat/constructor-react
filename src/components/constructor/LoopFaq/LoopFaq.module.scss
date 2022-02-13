@@ -7,7 +7,7 @@
 
 .element {
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   padding: .25em 0;
 }
 
@@ -16,8 +16,7 @@
 }
 
 .cell {
-  widht: $canvas-cell-width;
-  height: $canvas-cell-height;
+  @include size($canvas-cell-width $canvas-cell-height);
   border: 1px solid $light-gray;
 }
 

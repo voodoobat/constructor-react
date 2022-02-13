@@ -2,11 +2,10 @@
 @import '@scss/mixins';
 
 ._ {
-  position: relative;
   display: flex;
-  margin: 0.5em;
+  position: relative;
   max-height: calc(100% - 1em);
-  min-height: calc(100% - 1em);
+  margin: 0.5em;
   overflow: hidden;
   border: 1px solid $light-gray;
   border-radius: $radius;

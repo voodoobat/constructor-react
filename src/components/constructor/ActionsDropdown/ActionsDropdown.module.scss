@@ -3,22 +3,21 @@
 
 ._ {
   @include position(absolute, 2em 0);
+  z-index: 30;
   width: 19rem;
+  transform: translateX(75%);
   background: $body-bg;
-  border-radius: $radius;
   box-shadow: 0 0 3px rgba(black, 0.25);
   font-size: 0.9em;
-  transform: translateX(75%);
-  z-index: 30;
 }
 
 .button {
   display: block;
   width: 100%;
   padding: 0.25em 0.5em;
-  text-align: left;
-  color: $text-color;
   transition: all .15s ease;
+  color: $text-color;
+  text-align: left;
   text-decoration: none;
 
   &:hover {
@@ -45,11 +44,11 @@
 }
 
 .head {
-  border-bottom: 1px solid $light-gray;
   margin-bottom: 0.5em;
+  border-bottom: 1px solid $light-gray;
 }
 
 .foot {
-  border-top: 1px solid $light-gray;
   margin-top: 0.5em;
+  border-top: 1px solid $light-gray;
 }

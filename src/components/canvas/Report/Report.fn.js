@@ -12,7 +12,7 @@ export const getLastCellUid = canvas => {
 }
 
 export const calcOffset = index => {
-  return CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index;
+  return CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index
 }
 
 export const calcOnlyOddReportSize = (canvas, schemeCanvas) => {

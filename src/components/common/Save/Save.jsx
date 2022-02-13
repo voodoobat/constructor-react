@@ -4,22 +4,23 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Button from '@components/common/Button/Button'
-
 import * as store from '@store/functions'
 
 function Save ({
   className,
+  schemeId,
   dispatch
 }) {
 
-  const save = () => {
+  const onClick = () => {
     dispatch(store.saveScheme())
-    dispatch(store.setActiveDownload(true))
+    dispatch(store.resetTools())
+    dispatch(store.setRedirect(`/scheme/${schemeId}/download`))
   }
 
   return (
     <Button
-      onClick={save}
+      onClick={onClick}
       className={classNames(className, scss._)}
       color="blue"
       size="large">

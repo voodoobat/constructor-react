@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import '@scss/config';
 @import '@scss/mixins';
 
@@ -21,9 +23,9 @@ $color-list: (
 ._ {
   @include size(4rem);
   position: relative;
-  cursor: pointer;
-  border-radius: $radius;
   transition: background .15s ease-in;
+  border-radius: $radius;
+  cursor: pointer;
 
   &:hover {
     background: white;
@@ -49,14 +51,14 @@ $color-list: (
 }
 
 .is_active {
-  background: darken($light-gray, 10%);  
+  background: darken($light-gray, 10%);
   box-shadow: $box-shadow;
 }
 
 .tool {
   @include position(absolute, null null null 4.2rem);
-  background: $body-bg;
-  border-radius: $radius;
-  box-shadow: 1px 1px 4px rgba(black, .5);
   z-index: 55;
+  border-radius: $radius;
+  background: $body-bg;
+  box-shadow: 1px 1px 4px rgba(black, .5);
 }

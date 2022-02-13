@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import '@scss/config';
 @import '@scss/mixins';
 
@@ -30,18 +32,18 @@ $text-color: lighten($text-color, 30%);
 
 .nav {
   display: flex;
-  min-width: 60%;
   flex-wrap: wrap;
+  min-width: 60%;
 }
 
 .nav_item {
   min-width: 50%;
 
   > a {
-    text-decoration: none;
+    transition: color .15s ease-in;
     color: $text-color;
     font-weight: 600;
-    transition: color .15s ease-in;
+    text-decoration: none;
 
     &:hover {
       color: $medium-red;
@@ -54,8 +56,8 @@ $text-color: lighten($text-color, 30%);
 }
 
 .sm_caption {
-  font-weight: 600;
   padding-bottom: 1.2em;
+  font-weight: 600;
 }
 
 .sm_list {

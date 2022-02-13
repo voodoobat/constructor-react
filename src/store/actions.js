@@ -138,11 +138,6 @@ export const setActiveReportType = activeReportType => ({
   payload: { activeReportType }
 })
 
-export const setActiveDownload = activeDownload => ({
-  type: 'SET_ACTIVE_DOWNLOAD',
-  payload: { activeDownload }
-})
-
 export const setIsAuth = isAuth => ({
   type: 'SET_IS_AUTH',
   payload: { isAuth }

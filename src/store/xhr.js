@@ -3,12 +3,13 @@ import store from '@src/store'
 import { XHR_COMMON_DATA } from '@src/config'
 import * as act from '@store/actions'
 
-function getCookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
+// function getCookie(name) {
+//   let matches = document.cookie.match(new RegExp(
+//     "(?:^|; )" + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + "=([^;]*)"
+//   ))
+//
+//   return matches ? decodeURIComponent(matches[1]) : ''
+// }
 
 export const xhr = async (path, method, body, query) => {
   store.dispatch(act.setActiveLoader(true))
@@ -19,7 +20,8 @@ export const xhr = async (path, method, body, query) => {
     ...XHR_COMMON_DATA,
     headers: {
       ...XHR_COMMON_DATA.headers,
-      'X-XSRF-TOKEN': getCookie('XSRF-TOKEN')
+      // 'X-XSRF-TOKEN': getCookie('XSRF-TOKEN')
+      'X-CSRF-TOKEN': config.csrf
     }
   }
 

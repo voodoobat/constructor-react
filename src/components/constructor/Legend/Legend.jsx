@@ -89,6 +89,7 @@ function Legend ({
           className={scss.legend_cell}
           isPreview={true}
           hideHighlight={true}
+          isDownload={true}
           cell={cell} />
         <span className={scss.separator}>=</span>
         <div className={scss.hint}>

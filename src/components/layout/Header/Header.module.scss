@@ -33,7 +33,7 @@
   display: flex;
   justify-content: flex-end;
 
-  a {
+  .link {
     margin-left: 1em;
     transition: color .15s ease;
     color: $text-color;

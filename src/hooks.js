@@ -14,19 +14,3 @@ export const useMousePosition = () => {
 
   return mousePosition
 }
-
-export const useResetToolByClick = elementId => {
-  useEffect(() => {
-    let init = true
-    setTimeout(() => init = false)
-
-    const reset = ({ target }) => {
-      if (!init && !target.closest(`#${resizeID}`)) {
-        dispatch(store.setActiveTool('Move'))
-      }
-    }
-
-    document.addEventListener('click', reset) 
-    return () => document.removeEventListener('click', reset)
-  }, [])
-}

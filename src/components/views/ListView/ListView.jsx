@@ -8,7 +8,6 @@ import Schemes from '@components/schemes/Schemes/Schemes'
 import * as store from '@store/functions'
 
 function ListView ({
-  config,
   schemesList,
   dispatch
 }) {

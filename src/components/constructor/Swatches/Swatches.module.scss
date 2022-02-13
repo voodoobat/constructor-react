@@ -13,8 +13,8 @@
 
 .sample {
   @include size(3rem);
-  border: 2px solid transparent;
   transition: border-color .15s ease;
+  border: 2px solid transparent;
 
   &.is_active {
     border-color: $medium-red;

@@ -34,13 +34,15 @@
 
 .chevron {
   @include position(relative, 0.05em);
-  transition: top .15s ease;
   margin-left: 0.2em;
+  transition: top .15s ease;
 }
 
 .to_constructor {
   display: flex;
   align-items: center;
+  color: $text-color;
+  text-decoration: none;
 }
 
 .download {

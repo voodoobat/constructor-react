@@ -15,6 +15,7 @@ export const DEFAULT_SCHEME_ID = 'MYSCHEME'
 
 export const MIN_CANVAS_SIZE = 2
 export const MAX_CANVAS_SIZE = 75
+export const DEFAULT_CANVAS_SIZE = [25, 20]
 
 export const MAX_STRETCH_LEN = 7
 

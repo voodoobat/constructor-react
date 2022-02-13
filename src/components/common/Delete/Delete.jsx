@@ -1,7 +1,7 @@
 import scss from './Delete.module.scss'
 
 import { connect } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import classNames from 'classnames'
 
 import { Modal } from 'react-bootstrap'

@@ -11,8 +11,6 @@
 }
 
 html {
-  font-smoothing: subpixel-antialiased;
-  text-size-adjust: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -64,8 +62,8 @@ ol {
 
 table {
   width: 100%;
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
 label {
@@ -77,20 +75,6 @@ button {
   line-height: 1;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
-  appearance: none;
-  background: transparent;
-  border-radius: 0;
-
-  &:focus {
-    outline: none;
-  }
-}
-
 textarea {
   resize: none;
 }
@@ -99,9 +83,23 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  appearance: button;
+  appearance: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 input::-webkit-outer-spin-button,
@@ -115,7 +113,6 @@ input[type=number] {
 }
 
 input[type="search"] {
-
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,
   &::-webkit-search-results-button,

@@ -25,12 +25,12 @@ function UndoRedo ({
   const hasNext = size && schemeHistory[size - 1].uid != schemeHistoryStep
   const hasPrev = size && schemeHistory[0].uid != schemeHistoryStep
 
-  const jump = (location, history = schemeHistory, historyStep = schemeHistoryStep) => {
+  const jump = location => {
     const step = fn.getStep(schemeHistory, schemeHistoryStep)[location]
 
     if (step) {
       const { canvas, uid } = step
-      const cnvs = mapMatrix(canvas, cleanCell) 
+      const cnvs = mapMatrix(canvas, cleanCell)
 
       dispatch(store.commitCanvas(cnvs, false))
       dispatch(store.setSchemeHistorytStep(uid))

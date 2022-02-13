@@ -19,7 +19,7 @@ import { ReactComponent as PencilIcon } from './svg/pencil.svg'
 function Welcome ({ config }) {
   const [hasSavedScheme] = useState(
     !config.customer &&
-    local.fetch()?.id == DEFAULT_SCHEME_ID,
+    local.fetch()?.id == DEFAULT_SCHEME_ID
   )
 
   return (
@@ -37,7 +37,7 @@ function Welcome ({ config }) {
               <Button
                 size="large"
                 className={classNames(scss.welcome_button)}
-                href="/scheme/SCHEME">
+                href={`/scheme/${DEFAULT_SCHEME_ID}`}>
                 Редактировать
               </Button>
             </div>
@@ -66,22 +66,22 @@ function Welcome ({ config }) {
               <div className={scss.feature}>
                 <CreateIcon className={scss.feature_icon}/>
                 <span className={scss.feature_text}>
-                    Создавайте <br/> собственные схемы
-                  </span>
+                  Создавайте <br/> собственные схемы
+                </span>
               </div>
               <div className={scss.feature}>
                 <PencilIcon className={scss.feature_icon}/>
                 <span className={scss.feature_text}>
-                    Редактируйте <br/>
-                    и дорабатывайте схемы
-                  </span>
+                  Редактируйте <br/>
+                  и дорабатывайте схемы
+                </span>
               </div>
               <div className={scss.feature}>
                 <SaveIcon className={scss.feature_icon}/>
                 <span className={scss.feature_text}>
-                    Сохраняйте или скачивайте <br/>
-                    Ваши схемы
-                  </span>
+                  Сохраняйте или скачивайте <br/>
+                  Ваши схемы
+                </span>
               </div>
             </div>
           </div>

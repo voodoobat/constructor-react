@@ -3,6 +3,11 @@ import Noty from 'noty'
 
 export const stripHtml = s => s.replace(/(<([^>]+)>)/gi, "")
 export const spacesToNbsp = s => s.replace(/ /g, '\u00a0')
+export const patchSrc = src => {
+  const icon = src.substring(src.lastIndexOf('/') + 1)
+  return `/svg/scheme_elements/${icon}`
+}
+
 
 export const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1)
 
@@ -97,15 +102,15 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
     case mod10 === 0:
     case mod10 >= 5 && mod10 <= 9:
     case numberAbs >= 11 && numberAbs <= 14:
-      text = text5;
+      text = text5
       break
 
     case mod10 === 1:
-      text = text1;
+      text = text1
       break
 
     case mod10 >= 2 && mod10 <= 4:
-      text = text2;
+      text = text2
       break
   }
 
@@ -214,7 +219,6 @@ export const convertBoolArrToNumsStr = arr => {
 }
 
 export const createCanvasPreview = (schemeCanvas, sizeY = 10, sizeX = 10) => {
-
   const canvas = JSON.parse(JSON.stringify(schemeCanvas))
   const y = canvas.length < sizeY ? canvas.length : sizeY
   const x = canvas[0].length < sizeX ? canvas[0].length : sizeX
