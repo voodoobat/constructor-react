@@ -1,11 +1,7 @@
 import '@scss/app.scss'
 
 import { Provider } from 'react-redux'
-import {
-  BrowserRouter,
-  Switch,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Layout from '@components/layout/Layout/Layout'
 import ListView from '@components/views/ListView/ListView'
@@ -16,13 +12,17 @@ import ErrorView from '@components/views/ErrorView/ErrorView'
 
 import store from '@src/store'
 
-export default function App () {
+export default function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route exact path="/scheme/:uid/download" component={ConstructorView} />
+            <Route
+              exact
+              path="/scheme/:uid/download"
+              component={ConstructorView}
+            />
             <Route exact path="/scheme/:uid" component={ConstructorView} />
             <Route exact path="/schemes" component={ListView} />
             <Route exact path="/create" component={CreateView} />

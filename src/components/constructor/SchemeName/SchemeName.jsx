@@ -8,12 +8,7 @@ import { is, spacesToNbsp } from '@src/util'
 import { MAX_SCHEME_NAME_LEN } from '@src/config'
 import * as store from '@store/functions'
 
-function SchemeName ({
-  className,
-  schemeTitle,
-  dispatch
-}) {
-
+function SchemeName({ className, schemeTitle, dispatch }) {
   const [temp, setTemp] = useState('')
   const [title, setTitle] = useState(schemeTitle)
   const [isActive, setActive] = useState(false)
@@ -26,7 +21,7 @@ function SchemeName ({
     setActive(false)
   }
 
-  const isEmpty = str => is(' ', str.split(''))
+  const isEmpty = (str) => is(' ', str.split(''))
   const setName = () => {
     setTemp(schemeTitle)
     setTitle(schemeTitle)
@@ -37,10 +32,9 @@ function SchemeName ({
   useEffect(() => {
     if (isActive) {
       input.current.focus()
-    }
-
-    else {
-      const error = (!title || isEmpty(title)) || title.length > MAX_SCHEME_NAME_LEN
+    } else {
+      const error =
+        !title || isEmpty(title) || title.length > MAX_SCHEME_NAME_LEN
 
       if (error) return setTitle(temp)
       if (temp != title) {
@@ -59,7 +53,6 @@ function SchemeName ({
 
     document.addEventListener('keydown', handler)
     return () => document.removeEventListener('keydown', handler)
-
   }, [isActive])
 
   return (
@@ -71,36 +64,38 @@ function SchemeName ({
           className={scss.input}
           onChange={onChange}
           value={title != null ? title : schemeTitle}
-          type="text" />
+          type="text"
+        />
         <span className={scss.hidden}>
           {spacesToNbsp(title != null ? title : schemeTitle)}
         </span>
-        {false && // может пригодиться
+        {false && ( // может пригодиться
           <span className={scss.edit_text}>
-            {isActive
-              ? <>
-                  <span
-                    className={scss.save_button}
-                    onClick={() => setActive(false)}>
-                    Сохранить
-                  </span>
-                  <span
-                    className={scss.cansel_button}
-                    onClick={cansel}>
-                    Отменить
-                  </span>
-                </>
-              : <span
-                  className={scss.edit_button}
-                  onClick={() => setActive(true)}>
-                  Изменить название
+            {isActive ? (
+              <>
+                <span
+                  className={scss.save_button}
+                  onClick={() => setActive(false)}
+                >
+                  Сохранить
                 </span>
-            }
+                <span className={scss.cansel_button} onClick={cansel}>
+                  Отменить
+                </span>
+              </>
+            ) : (
+              <span
+                className={scss.edit_button}
+                onClick={() => setActive(true)}
+              >
+                Изменить название
+              </span>
+            )}
           </span>
-        }
+        )}
       </div>
     </div>
   )
 }
 
-export default connect((state => ({ ...state })))(SchemeName)
+export default connect((state) => ({ ...state }))(SchemeName)

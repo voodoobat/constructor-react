@@ -6,12 +6,7 @@ import classNames from 'classnames'
 import Button from '@components/common/Button/Button'
 import * as store from '@store/functions'
 
-function Save ({
-  className,
-  schemeId,
-  dispatch
-}) {
-
+function Save({ className, schemeId, dispatch }) {
   const onClick = () => {
     dispatch(store.saveScheme())
     dispatch(store.resetTools())
@@ -23,10 +18,11 @@ function Save ({
       onClick={onClick}
       className={classNames(className, scss._)}
       color="blue"
-      size="large">
+      size="large"
+    >
       Перейти к скачиванию
     </Button>
   )
 }
 
-export default connect(state => ({ ...state }))(Save)
+export default connect((state) => ({ ...state }))(Save)

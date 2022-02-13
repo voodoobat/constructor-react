@@ -17,16 +17,15 @@ import { getSchemeLegends } from '@components/constructor/LegendBox/LegendBox.fn
 import { CANVAS_ELEMENT_ID } from '@src/config'
 import * as store from '@store/functions'
 
-function Download ({
+function Download({
   className,
   schemeTitle,
   schemeCanvas,
   schemeReports,
   schemeLegends,
   downloadOptions,
-  dispatch
+  dispatch,
 }) {
-
   const optionsID = 'options-dropdown'
 
   const [activeOpts, setActiveOpts] = useState(false)
@@ -43,7 +42,7 @@ function Download ({
     dispatch(store.setSetActiveLoader(true))
 
     setTimeout(() => {
-      toPng(canvas).then(image => {
+      toPng(canvas).then((image) => {
         dispatch(store.setSetActiveLoader(false))
         downloadUrl(schemeTitle, image)
       })
@@ -52,7 +51,7 @@ function Download ({
 
   useEffect(() => {
     let init = true
-    setTimeout(() => init = false)
+    setTimeout(() => (init = false))
 
     const deactivate = ({ target }) => {
       const isDropdown = target.closest(`#${optionsID}`)
@@ -72,39 +71,59 @@ function Download ({
         <button
           title="Настройки"
           onClick={() => setActiveOpts(true)}
-          className={classNames(scss.options_button, activeOpts ? scss.is_active : '')}
-          type="button">
+          className={classNames(
+            scss.options_button,
+            activeOpts ? scss.is_active : ''
+          )}
+          type="button"
+        >
           <OptionsIcon className={scss.options_icon} />
         </button>
-        {activeOpts &&
+        {activeOpts && (
           <div id={optionsID} className={scss.options_dropdown}>
             <Checkbox
               checked={options.schemeTitle}
               className={scss.check}
-              setter={() => setOptions({ ...options, schemeTitle: !options.schemeTitle })}
-              label="Название" /> 
-            {!!schemeReports.length &&
+              setter={() =>
+                setOptions({ ...options, schemeTitle: !options.schemeTitle })
+              }
+              label="Название"
+            />
+            {!!schemeReports.length && (
               <Checkbox
                 checked={options.schemeReports}
                 className={scss.check}
-                setter={() => setOptions({ ...options, schemeReports: !options.schemeReports })}
-                label="Раппорты" />
-            }
-            {hasLegends &&
+                setter={() =>
+                  setOptions({
+                    ...options,
+                    schemeReports: !options.schemeReports,
+                  })
+                }
+                label="Раппорты"
+              />
+            )}
+            {hasLegends && (
               <Checkbox
                 checked={options.schemeLegends}
                 className={scss.check}
-                setter={() => setOptions({ ...options, schemeLegends: !options.schemeLegends })}
-                label="Условные обозначения" />
-            }
+                setter={() =>
+                  setOptions({
+                    ...options,
+                    schemeLegends: !options.schemeLegends,
+                  })
+                }
+                label="Условные обозначения"
+              />
+            )}
           </div>
-        }
+        )}
       </div>
       <Button
         onClick={convert}
         className={scss.button}
         size="large"
-        color="blue">
+        color="blue"
+      >
         Скачать cхему
         <DownloadIcon className={scss.button_icon} />
       </Button>
@@ -112,4 +131,4 @@ function Download ({
   )
 }
 
-export default connect(state => ({ ...state }))(Download)
+export default connect((state) => ({ ...state }))(Download)

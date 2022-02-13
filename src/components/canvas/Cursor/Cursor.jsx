@@ -18,7 +18,7 @@ import { ReactComponent as Size } from './svg/size.svg'
 
 import { IS_TOUCH } from '@src/config'
 
-const icon  = {
+const icon = {
   Move,
   Eraze,
   Report,
@@ -26,17 +26,16 @@ const icon  = {
   ReportLoop,
   Color,
   Group,
-  Size
+  Size,
 }
 
-function Cursor ({
+function Cursor({
   className,
   activeLoop,
   activeLoopIcon,
   activeTool,
-  activeReportType
+  activeReportType,
 }) {
-
   const { x, y } = useMousePosition()
   const [ToolIcon, setToolIcon] = useState()
 
@@ -50,30 +49,33 @@ function Cursor ({
 
       setToolIcon(() => icon[activeTool])
     }
-
   }, [activeTool, activeReportType])
 
-  return <>
-    {!IS_TOUCH &&
-     (ToolIcon || activeLoopIcon) && Boolean(x && y) &&
-      <div className={classNames(className, scss._)}
-           style={{
+  return (
+    <>
+      {!IS_TOUCH && (ToolIcon || activeLoopIcon) && Boolean(x && y) && (
+        <div
+          className={classNames(className, scss._)}
+          style={{
             position: 'fixed',
             top: y,
             left: x,
             pointerEvents: 'none',
             transform: 'translate(-50%, -50%)',
-            zIndex: 10
-          }}>
-        {ToolIcon && <ToolIcon />}
-        {activeLoopIcon && (
-          activeLoop == 'stretch'
-            ? <img src={'/svg/loop/s.svg'} />
-            : <img src={activeLoopIcon} />
-        )}
-      </div>
-    }
-  </>
+            zIndex: 10,
+          }}
+        >
+          {ToolIcon && <ToolIcon />}
+          {activeLoopIcon &&
+            (activeLoop == 'stretch' ? (
+              <img src={'/svg/loop/s.svg'} alt="" />
+            ) : (
+              <img src={activeLoopIcon} alt="" />
+            ))}
+        </div>
+      )}
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(Cursor)
+export default connect((state) => ({ ...state }))(Cursor)

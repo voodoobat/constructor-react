@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Button from '@components/common/Button/Button'
 
-export default function GroupCommit ({ className, save, cansel }) {
+export default function GroupCommit({ className, save, cansel }) {
   const [position, setPosition] = useState({ top: 0, left: 0 })
 
   useEffect(() => {
@@ -15,21 +15,18 @@ export default function GroupCommit ({ className, save, cansel }) {
 
     setPosition({
       top: offsetTop,
-      left: offsetLeft
+      left: offsetLeft,
     })
   })
 
   return (
-    <div className={classNames(className, scss._)}
-         style={{...position }}>
+    <div className={classNames(className, scss._)} style={{ ...position }}>
       <div className={scss.buttons}>
-        <Button color="red"
-                onClick={cansel}>
-          Отмена 
+        <Button color="red" onClick={cansel}>
+          Отмена
         </Button>
-        <Button color="blue"
-                onClick={save}>
-          Добавить 
+        <Button color="blue" onClick={save}>
+          Добавить
         </Button>
       </div>
     </div>

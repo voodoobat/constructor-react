@@ -12,13 +12,7 @@ import * as store from '@store/functions'
 
 import { DEFAULT_TITLE, ROUTE_SCHEME } from '@src/config'
 
-function ConstructorView ({
-  schemeId,
-  config,
-  schemeTitle,
-  dispatch
-}) {
-
+function ConstructorView({ schemeId, config, schemeTitle, dispatch }) {
   const history = useHistory()
   const { uid } = useParams()
   const isDownload = useRouteMatch('/scheme/:uid/download')
@@ -29,7 +23,10 @@ function ConstructorView ({
   }, [])
 
   useEffect(() => dispatch(store.resetTools()), [schemeId])
-  useEffect(() => document.title = schemeTitle || DEFAULT_TITLE, [schemeTitle])
+  useEffect(
+    () => (document.title = schemeTitle || DEFAULT_TITLE),
+    [schemeTitle]
+  )
   useEffect(() => {
     history.listen(({ pathname }) => {
       if (pathname.includes(ROUTE_SCHEME)) {
@@ -39,19 +36,17 @@ function ConstructorView ({
     })
   }, [history])
 
-
-  return <>
-    {isDownload
-      ? <DownloadPreview />
-      : <Constructor
-          customer={config.customer}
-          className={scss._}>
-          <CanvasContainer
-            autoresize={false}
-            withScale={true} />
+  return (
+    <>
+      {isDownload ? (
+        <DownloadPreview />
+      ) : (
+        <Constructor customer={config.customer} className={scss._}>
+          <CanvasContainer autoresize={false} withScale={true} />
         </Constructor>
-    }
-  </>
+      )}
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(ConstructorView)
+export default connect((state) => ({ ...state }))(ConstructorView)

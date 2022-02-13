@@ -1,7 +1,7 @@
 import { or } from '@src/util'
 import { INITIAL_STATE } from '@store/state'
 
-export default function reducers (state = INITIAL_STATE, { type, payload }) {
+export default function reducers(state = INITIAL_STATE, { type, payload }) {
   return or(type, [
     'SET_CONFIG',
     'SET_LOOPS',
@@ -31,6 +31,8 @@ export default function reducers (state = INITIAL_STATE, { type, payload }) {
     'SET_SCHEMES_LIST',
     'SET_ACTIVE_LOADER',
     'SET_DOWNLOAD_OPTIONS',
-    'SET_IS_AUTH'
-  ]) ? { ...state, ...payload } : state
+    'SET_IS_AUTH',
+  ])
+    ? { ...state, ...payload }
+    : state
 }

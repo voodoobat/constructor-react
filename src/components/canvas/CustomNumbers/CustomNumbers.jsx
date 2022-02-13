@@ -6,13 +6,12 @@ import classNames from 'classnames'
 
 import * as store from '@store/functions'
 
-function CustomNumbers ({
+function CustomNumbers({
   className,
   schemeCanvas,
   schemeCustomCells,
-  dispatch
+  dispatch,
 }) {
-
   const [numbers, setNumbers] = useState(schemeCustomCells)
 
   useEffect(() => {
@@ -35,12 +34,13 @@ function CustomNumbers ({
         <input
           className={scss.number}
           type="number"
-          onChange={ev => onChange(ev, key)}
+          onChange={(ev) => onChange(ev, key)}
           value={!isNaN(value) ? value : ''}
-          key={key} />
+          key={key}
+        />
       ))}
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(CustomNumbers)
+export default connect((state) => ({ ...state }))(CustomNumbers)

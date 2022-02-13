@@ -3,6 +3,6 @@ export const getStep = (history, stepUid) => {
 
   return {
     prev: history[index - 1],
-    next: history[index + 1]
+    next: history[index + 1],
   }
 }

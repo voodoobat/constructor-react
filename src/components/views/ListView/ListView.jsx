@@ -7,11 +7,7 @@ import Schemes from '@components/schemes/Schemes/Schemes'
 
 import * as store from '@store/functions'
 
-function ListView ({
-  schemesList,
-  dispatch
-}) {
-
+function ListView({ schemesList, dispatch }) {
   useEffect(() => {
     document.title = ' Мои схемы'
 
@@ -19,8 +15,7 @@ function ListView ({
     dispatch(store.setSchemesList())
   }, [])
 
-  return <Schemes className={scss._}
-                  schemes={schemesList} />
+  return <Schemes className={scss._} schemes={schemesList} />
 }
 
-export default connect(state => ({ ...state }))(ListView)
+export default connect((state) => ({ ...state }))(ListView)

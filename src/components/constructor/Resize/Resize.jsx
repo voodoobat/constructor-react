@@ -20,14 +20,13 @@ import { ReactComponent as PlusIcon } from './svg/plus.svg'
 import { ReactComponent as MinusIcon } from './svg/minus.svg'
 import { ReactComponent as OptionsIcon } from './svg/options.svg'
 
-function Resize ({
+function Resize({
   className,
   schemeCanvas,
   schemeOnlyOddCells,
   schemeIsRound,
-  dispatch
+  dispatch,
 }) {
-
   const resizeID = 'resize-popup'
 
   const [isMinX, setMinX] = useState(false)
@@ -41,7 +40,7 @@ function Resize ({
 
   const [isChanged, setChanged] = useState(true)
 
-  const checkDisabled = cond => cond ? scss.is_disabled : ''
+  const checkDisabled = (cond) => (cond ? scss.is_disabled : '')
 
   useEffect(() => {
     const canvasX = schemeCanvas[0].length
@@ -55,7 +54,7 @@ function Resize ({
 
   useEffect(() => {
     let init = true
-    setTimeout(() => init = false)
+    setTimeout(() => (init = false))
 
     const reset = ({ target }) => {
       if (!init && !target.closest(`#${resizeID}`)) {
@@ -64,13 +63,13 @@ function Resize ({
     }
 
     if (!isOpenOptions) {
-      document.addEventListener('click', reset) 
+      document.addEventListener('click', reset)
       return () => document.removeEventListener('click', reset)
     }
   }, [isOpenOptions])
 
-  const commit = canvas => dispatch(store.commitCanvas(canvas))
-  const setOptions = ev => {
+  const commit = (canvas) => dispatch(store.commitCanvas(canvas))
+  const setOptions = (ev) => {
     ev.preventDefault()
 
     if (onlyOdd != schemeOnlyOddCells) {
@@ -86,112 +85,149 @@ function Resize ({
   }, [isOpenOptions])
 
   useEffect(() => {
-    setChanged(
-      isRound != schemeIsRound ||
-      onlyOdd != schemeOnlyOddCells
-    )
-  }, [
-    onlyOdd,
-    isRound,
-    schemeOnlyOddCells,
-    schemeIsRound
-  ])
+    setChanged(isRound != schemeIsRound || onlyOdd != schemeOnlyOddCells)
+  }, [onlyOdd, isRound, schemeOnlyOddCells, schemeIsRound])
 
-  return <>
-    <div id={resizeID} className={classNames(className, scss._)}>
-      <div className={scss.plus_box}>
-        <button
-          className={classNames(scss.button, scss.is_top, checkDisabled(isMaxY))}
-          onClick={() => !isMaxY && commit(fn.addTopRow(schemeCanvas))}>
-          <PlusIcon className={scss.icon} />
-        </button>
-        <button
-          className={classNames(scss.button, scss.is_left, checkDisabled(isMaxX))}
-          onClick={() => !isMaxX && commit(fn.addCellLeft(schemeCanvas))}>
-          <PlusIcon className={scss.icon} />
-        </button>
-        <button
-          className={classNames(scss.button, scss.is_right, checkDisabled(isMaxX))}
-          onClick={() => !isMaxX && commit(fn.addCellRight(schemeCanvas))}>
-          <PlusIcon className={scss.icon} />
-        </button>
-        <button
-          className={classNames(scss.button, scss.is_bottom, checkDisabled(isMaxY))}
-          onClick={() => !isMaxY && commit(fn.addRowBottom(schemeCanvas))}>
-          <PlusIcon className={scss.icon} />
-        </button>
+  return (
+    <>
+      <div id={resizeID} className={classNames(className, scss._)}>
+        <div className={scss.plus_box}>
+          <button
+            className={classNames(
+              scss.button,
+              scss.is_top,
+              checkDisabled(isMaxY)
+            )}
+            onClick={() => !isMaxY && commit(fn.addTopRow(schemeCanvas))}
+          >
+            <PlusIcon className={scss.icon} />
+          </button>
+          <button
+            className={classNames(
+              scss.button,
+              scss.is_left,
+              checkDisabled(isMaxX)
+            )}
+            onClick={() => !isMaxX && commit(fn.addCellLeft(schemeCanvas))}
+          >
+            <PlusIcon className={scss.icon} />
+          </button>
+          <button
+            className={classNames(
+              scss.button,
+              scss.is_right,
+              checkDisabled(isMaxX)
+            )}
+            onClick={() => !isMaxX && commit(fn.addCellRight(schemeCanvas))}
+          >
+            <PlusIcon className={scss.icon} />
+          </button>
+          <button
+            className={classNames(
+              scss.button,
+              scss.is_bottom,
+              checkDisabled(isMaxY)
+            )}
+            onClick={() => !isMaxY && commit(fn.addRowBottom(schemeCanvas))}
+          >
+            <PlusIcon className={scss.icon} />
+          </button>
 
-        <div className={scss.minus_box}>
-          <button className={classNames(scss.button, scss.is_top, checkDisabled(isMinY))}
-            onClick={() => !isMinY && commit(fn.removeTopRow(schemeCanvas))}>
-            <MinusIcon className={scss.icon} />
-          </button>
-          <button
-            className={classNames(scss.button, scss.is_left, checkDisabled(isMinX))}
-            onClick={() => !isMinX && commit(fn.removeCellLeft(schemeCanvas))}>
-            <MinusIcon className={scss.icon} />
-          </button>
-          <button
-            onClick={() => setOpenOptions(true)}
-            className={scss.button_options}>
-            <OptionsIcon className={scss.icon} />
-            <div className={scss.options_tooltip}>
-              <b>Настройки схемы</b>
-              <p>Позволяет изменить нумерацию рядов</p>
-            </div>
-          </button>
-          <button
-            className={classNames(scss.button, scss.is_right, checkDisabled(isMinX))}
-            onClick={() => !isMinX && commit(fn.removeCellRight(schemeCanvas))}>
-            <MinusIcon className={scss.icon} />
-          </button>
-          <button
-            className={classNames(scss.button, scss.is_bottom, checkDisabled(isMinY))}
-            onClick={() => !isMinY && commit(fn.removeRowBottom(schemeCanvas))}>
-            <MinusIcon className={scss.icon} />
-          </button>
+          <div className={scss.minus_box}>
+            <button
+              className={classNames(
+                scss.button,
+                scss.is_top,
+                checkDisabled(isMinY)
+              )}
+              onClick={() => !isMinY && commit(fn.removeTopRow(schemeCanvas))}
+            >
+              <MinusIcon className={scss.icon} />
+            </button>
+            <button
+              className={classNames(
+                scss.button,
+                scss.is_left,
+                checkDisabled(isMinX)
+              )}
+              onClick={() => !isMinX && commit(fn.removeCellLeft(schemeCanvas))}
+            >
+              <MinusIcon className={scss.icon} />
+            </button>
+            <button
+              onClick={() => setOpenOptions(true)}
+              className={scss.button_options}
+            >
+              <OptionsIcon className={scss.icon} />
+              <div className={scss.options_tooltip}>
+                <b>Настройки схемы</b>
+                <p>Позволяет изменить нумерацию рядов</p>
+              </div>
+            </button>
+            <button
+              className={classNames(
+                scss.button,
+                scss.is_right,
+                checkDisabled(isMinX)
+              )}
+              onClick={() =>
+                !isMinX && commit(fn.removeCellRight(schemeCanvas))
+              }
+            >
+              <MinusIcon className={scss.icon} />
+            </button>
+            <button
+              className={classNames(
+                scss.button,
+                scss.is_bottom,
+                checkDisabled(isMinY)
+              )}
+              onClick={() =>
+                !isMinY && commit(fn.removeRowBottom(schemeCanvas))
+              }
+            >
+              <MinusIcon className={scss.icon} />
+            </button>
+          </div>
         </div>
-      </div> 
-    </div>
+      </div>
 
-    <Modal
-      show={isOpenOptions}
-      onHide={() => setOpenOptions(false)}>
-      <Close onClick={() => setOpenOptions(false)} />
-      <form
-        className={scss.options_controls}
-        onSubmit={setOptions}>
-        <Field className={scss.options_title}>
-          Настройки схемы
-        </Field>
-        <Field>
-          <Checkbox
-            disabled={isRound}
-            className={scss.options_checkbox}
-            checked={onlyOdd}
-            setter={setOnlyOdd}
-            label="Схема узора только для лицевых рядов" />
-        </Field>
-        <Field>
-          <Checkbox
-            disabled={onlyOdd}
-            className={scss.options_checkbox}
-            checked={isRound}
-            setter={setRound}
-            label="Схема для вязания по кругу" />
-        </Field>
-        <Field className={scss.options_submit}>
-          <Button
-            size="medium"
-            type="submit"
-            disabled={!isChanged}
-            color="blue">
-            Применить
-          </Button>
-        </Field>
-      </form>
-    </Modal>
-  </>
+      <Modal show={isOpenOptions} onHide={() => setOpenOptions(false)}>
+        <Close onClick={() => setOpenOptions(false)} />
+        <form className={scss.options_controls} onSubmit={setOptions}>
+          <Field className={scss.options_title}>Настройки схемы</Field>
+          <Field>
+            <Checkbox
+              disabled={isRound}
+              className={scss.options_checkbox}
+              checked={onlyOdd}
+              setter={setOnlyOdd}
+              label="Схема узора только для лицевых рядов"
+            />
+          </Field>
+          <Field>
+            <Checkbox
+              disabled={onlyOdd}
+              className={scss.options_checkbox}
+              checked={isRound}
+              setter={setRound}
+              label="Схема для вязания по кругу"
+            />
+          </Field>
+          <Field className={scss.options_submit}>
+            <Button
+              size="medium"
+              type="submit"
+              disabled={!isChanged}
+              color="blue"
+            >
+              Применить
+            </Button>
+          </Field>
+        </form>
+      </Modal>
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(Resize)
+export default connect((state) => ({ ...state }))(Resize)

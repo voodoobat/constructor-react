@@ -5,9 +5,7 @@ export const getCellNums = (size, onlyOdd = false) => {
     for (let j = 1; j < size * 2; j++) {
       if (j % 2 != 0) nums.push(j)
     }
-  }
-
-  else {
+  } else {
     for (let j = 1; j <= size; j++) {
       nums.push(j)
     }

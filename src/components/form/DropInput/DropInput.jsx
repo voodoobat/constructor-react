@@ -4,18 +4,17 @@ import { useState } from 'react'
 import Dropzone from 'react-dropzone'
 import classNames from 'classnames'
 
-
-export default function DropInput ({ className }) {
+export default function DropInput({ className }) {
   const [image, setImage] = useState(null)
   const [src, setSrc] = useState(null)
 
-  const toBase64 = source => {
+  const toBase64 = (source) => {
     const reader = new FileReader()
     reader.readAsDataURL(source)
-    reader.onload = ev => setSrc(ev.target.result)
+    reader.onload = (ev) => setSrc(ev.target.result)
   }
 
-  const onDrop = img => {
+  const onDrop = (img) => {
     setImage(img)
     toBase64(img[0])
   }
@@ -23,7 +22,7 @@ export default function DropInput ({ className }) {
   return (
     <div className={classNames(className, scss._)}>
       <Dropzone onDrop={onDrop}>
-        {({ getRootProps, getInputProps }) => ( 
+        {({ getRootProps, getInputProps }) => (
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {image ? (
@@ -33,7 +32,7 @@ export default function DropInput ({ className }) {
                 Кликните для загрузки <br /> или перетащите файл
               </p>
             )}
-          </div> 
+          </div>
         )}
       </Dropzone>
     </div>

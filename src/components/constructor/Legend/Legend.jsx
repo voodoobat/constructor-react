@@ -13,14 +13,7 @@ import * as store from '@store/functions'
 import * as util from '@src/util'
 import * as fn from './Legend.fn'
 
-function Legend ({
-  className,
-  schemeLegends,
-  isPreview,
-  legend,
-  dispatch
-}) {
-
+function Legend({ className, schemeLegends, isPreview, legend, dispatch }) {
   const cell = util.createCell(0, 0, legend)
 
   const [hint, setHint] = useState(legend.hint || '')
@@ -34,7 +27,7 @@ function Legend ({
     scss.box,
     isPreview ? scss.is_preview : '',
     isHidden ? scss.is_hidden : '',
-    isActive ? scss.is_active : '',
+    isActive ? scss.is_active : ''
   )
 
   const edit = () => {
@@ -83,65 +76,83 @@ function Legend ({
   }, [schemeLegends])
 
   return (
-    <div className={classNames(className, scss._, isPreview ? scss.is_preview : '')}>
+    <div
+      className={classNames(
+        className,
+        scss._,
+        isPreview ? scss.is_preview : ''
+      )}
+    >
       <div className={classList}>
         <CanvasCell
           className={scss.legend_cell}
           isPreview={true}
           hideHighlight={true}
           isDownload={true}
-          cell={cell} />
+          cell={cell}
+        />
         <span className={scss.separator}>=</span>
         <div className={scss.hint}>
-          <span className={scss.name}>
-            { util.spacesToNbsp(hint) }
-          </span>
-          {!isPreview &&
+          <span className={scss.name}>{util.spacesToNbsp(hint)}</span>
+          {!isPreview && (
             <input
               ref={input}
               className={scss.input}
               disabled={!isActive}
               value={hint}
-              onInput={({ target }) => setHint(target.value)} />
-          }
+              onInput={({ target }) => setHint(target.value)}
+            />
+          )}
         </div>
-        {!isPreview && <>
-          <div className={scss.visibility}>
-            {isHidden
-              ? <button className={scss.visibility_button} onClick={show} type="button">
+        {!isPreview && (
+          <>
+            <div className={scss.visibility}>
+              {isHidden ? (
+                <button
+                  className={scss.visibility_button}
+                  onClick={show}
+                  type="button"
+                >
                   <RestoreIcon className={scss.restore} />
                   <span className={scss.visibility_hint}>
                     Восстановить элемент
                   </span>
                 </button>
-              : <button className={scss.visibility_button} onClick={hide} type="button">
+              ) : (
+                <button
+                  className={scss.visibility_button}
+                  onClick={hide}
+                  type="button"
+                >
                   <HideIcon className={scss.hide} />
-                  <span className={scss.visibility_hint}>
-                    Удалить элемент
-                  </span>
+                  <span className={scss.visibility_hint}>Удалить элемент</span>
                 </button>
-            }
-          </div>
-          <div className={scss.controls}>
-            {isActive
-              ? <button
+              )}
+            </div>
+            <div className={scss.controls}>
+              {isActive ? (
+                <button
                   className={classNames(scss.button, scss.save)}
                   onClick={() => save({ hint })}
-                  type="button">
+                  type="button"
+                >
                   Сохранить
                 </button>
-              : <button
+              ) : (
+                <button
                   className={classNames(scss.button, scss.edit)}
                   onClick={edit}
-                  type="button">
+                  type="button"
+                >
                   Редактировать описание
                 </button>
-            }
-          </div>
-        </>}
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(Legend)
+export default connect((state) => ({ ...state }))(Legend)

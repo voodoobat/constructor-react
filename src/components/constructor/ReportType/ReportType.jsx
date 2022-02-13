@@ -10,19 +10,14 @@ import { ReactComponent as ReportLoop } from '@components/constructor/Tool/svg/r
 
 import * as store from '@store/functions'
 
-function ReportType ({
-  className,
-  activeReportType,
-  dispatch
-}) {
-
+function ReportType({ className, activeReportType, dispatch }) {
   const elementID = 'report-popup'
   const [isActive, setActive] = useState(true)
 
   useEffect(() => setActive(!activeReportType), [activeReportType])
   useEffect(() => {
     let init = true
-    setTimeout(() => init = false)
+    setTimeout(() => (init = false))
 
     const reset = ({ target }) => {
       if (isActive && !init && !target.closest(`#${elementID}`)) {
@@ -30,31 +25,47 @@ function ReportType ({
       }
     }
 
-    document.addEventListener('click', reset) 
+    document.addEventListener('click', reset)
     return () => document.removeEventListener('click', reset)
   }, [isActive])
 
-  return <>
-    {isActive &&
-      <div id={elementID} className={classNames(className, scss._)}>
-        <button
-          onClick={() => dispatch(store.setActiveReportType('both'))}
-          className={classNames(scss.button, activeReportType == 'both' ? scss.is_active : '')}>
-          <Report /> <span className={scss.button_text}>Свободный</span>
-        </button>
-        <button
-          onClick={() => dispatch(store.setActiveReportType(('x')))}
-          className={classNames(scss.button, activeReportType == 'x' ? scss.is_active : '')}>
-          <ReportRow /> <span className={scss.button_text}>Горизонтальный</span>
-        </button>
-        <button
-          onClick={() => dispatch(store.setActiveReportType(('y')))}
-          className={classNames(scss.button, activeReportType == 'y' ? scss.is_active : '')}>
-          <ReportLoop /> <span className={scss.button_text}>Вертикальный</span>
-        </button>
-      </div>
-    }
-  </>
+  return (
+    <>
+      {isActive && (
+        <div id={elementID} className={classNames(className, scss._)}>
+          <button
+            onClick={() => dispatch(store.setActiveReportType('both'))}
+            className={classNames(
+              scss.button,
+              activeReportType == 'both' ? scss.is_active : ''
+            )}
+          >
+            <Report /> <span className={scss.button_text}>Свободный</span>
+          </button>
+          <button
+            onClick={() => dispatch(store.setActiveReportType('x'))}
+            className={classNames(
+              scss.button,
+              activeReportType == 'x' ? scss.is_active : ''
+            )}
+          >
+            <ReportRow />{' '}
+            <span className={scss.button_text}>Горизонтальный</span>
+          </button>
+          <button
+            onClick={() => dispatch(store.setActiveReportType('y'))}
+            className={classNames(
+              scss.button,
+              activeReportType == 'y' ? scss.is_active : ''
+            )}
+          >
+            <ReportLoop />{' '}
+            <span className={scss.button_text}>Вертикальный</span>
+          </button>
+        </div>
+      )}
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(ReportType)
+export default connect((state) => ({ ...state }))(ReportType)

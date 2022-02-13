@@ -9,36 +9,33 @@ import * as store from '@store/functions'
 
 import { ReactComponent as Delete } from './svg/delete.svg'
 
-function Group ({
-  className,
-  group,
-  controls = true,
-  dispatch
-}) {
-
+function Group({ className, group, controls = true, dispatch }) {
   const setActive = () => dispatch(store.setActiveGroup(group))
   const remove = () => dispatch(store.removeGroup(group))
 
   return (
-    <div className={classNames(className, scss._, group.active ? scss.is_active : '')}>
-      {controls &&
-        <button
-          className={scss.delete}
-          onClick={remove}
-          type="button">
+    <div
+      className={classNames(
+        className,
+        scss._,
+        group.active ? scss.is_active : ''
+      )}
+    >
+      {controls && (
+        <button className={scss.delete} onClick={remove} type="button">
           <Delete />
         </button>
-      }
-      <div className={scss.canvas}
-           onClick={setActive}>
+      )}
+      <div className={scss.canvas} onClick={setActive}>
         {group.canvas.map((element, y) => (
           <Row key={y} className={scss.row}>
-            {element.map(cell => (
+            {element.map((cell) => (
               <CanvasCell
                 className={scss.cell}
                 cell={cell}
                 isPreview={true}
-                key={cell.uid} />
+                key={cell.uid}
+              />
             ))}
           </Row>
         ))}
@@ -47,4 +44,4 @@ function Group ({
   )
 }
 
-export default connect(store => ({ ...store }))(Group)
+export default connect((store) => ({ ...store }))(Group)

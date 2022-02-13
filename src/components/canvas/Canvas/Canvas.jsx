@@ -18,10 +18,10 @@ import * as fn from './Canvas.fn'
 import {
   CANVAS_CELL_HEIGHT,
   CANVAS_CELL_WIDTH,
-  MAX_STRETCH_LEN
+  MAX_STRETCH_LEN,
 } from '@src/config'
 
-function Canvas ({
+function Canvas({
   className,
   setCursor,
   customCursor,
@@ -36,9 +36,8 @@ function Canvas ({
   schemeReports,
   schemeOnlyOddCells,
   schemeIsRound,
-  dispatch
+  dispatch,
 }) {
-
   const [canvas, setCanvas] = useState(schemeCanvas)
   const [confirm, setConfirm] = useState(false)
   const [group, setGroup] = useState(null)
@@ -51,7 +50,7 @@ function Canvas ({
   const nums = fn.getRowNums(canvas.length, schemeOnlyOddCells)
 
   const commitWithNewProps = (prop, compare, props, save = true) => {
-    const temp = fn.mapMatrix(canvas, cell => {
+    const temp = fn.mapMatrix(canvas, (cell) => {
       const preview = { background: null, loop: null }
 
       return cell[prop] == compare
@@ -71,7 +70,7 @@ function Canvas ({
     dispatch(store.setConfirm(false))
   }
 
-  const onMouseDown = cell => {
+  const onMouseDown = (cell) => {
     if (!activeGroup) setActive(cell)
 
     if (activeTool == 'Move') {
@@ -84,11 +83,10 @@ function Canvas ({
     }
   }
 
-  const onMouseEnter = cell => {
+  const onMouseEnter = (cell) => {
     setLastCell(cell)
 
     if (active && !activeGroup) {
-
       if (is(activeTool, 'Report')) {
         setCanvas(fn.square(canvas, cell, active, activeReportType))
       } else {
@@ -101,31 +99,34 @@ function Canvas ({
     }
 
     if (activeLoop == 'stretch' && active) {
-      const selected = canvas.flat().filter(cell => cell.selected)
+      const selected = canvas.flat().filter((cell) => cell.selected)
       const last = selected[selected.length - 1]
 
       const start = active.y
       const stop = start < last.y ? last.y : selected[0].y
-      const size = start < stop ? (stop - start) + 1 : (start - stop) + 1
+      const size = start < stop ? stop - start + 1 : start - stop + 1
 
       const map = []
 
-      if (start < stop) for (let j = start; j <= stop; j++) {
-        map.push(j)
-      }
+      if (start < stop)
+        for (let j = start; j <= stop; j++) {
+          map.push(j)
+        }
 
-      if (start > stop) for (let j = stop; j <= start; j++) {
-        map.push(j)
-      }
+      if (start > stop)
+        for (let j = stop; j <= start; j++) {
+          map.push(j)
+        }
 
-      canvas.flat().forEach(cell => cell.preview.stretch = null)
-      if (size > 1 && size < MAX_STRETCH_LEN) map.forEach((y, index) => {
-        canvas[y].forEach(cell => {
-          cell.preview.stretch = cell.selected
-            ? `/svg/loop/s/${size}/${index}.svg`
-            : null
+      canvas.flat().forEach((cell) => (cell.preview.stretch = null))
+      if (size > 1 && size < MAX_STRETCH_LEN)
+        map.forEach((y, index) => {
+          canvas[y].forEach((cell) => {
+            cell.preview.stretch = cell.selected
+              ? `/svg/loop/s/${size}/${index}.svg`
+              : null
+          })
         })
-      })
     }
   }
 
@@ -140,19 +141,23 @@ function Canvas ({
       const props = { loop: activeLoop }
 
       if (activeLoop == 'stretch') {
-        return dispatch(store.commitCanvas(fn.mapMatrix(canvas, cell => {
-          return cell.selected
-            ? {
-              ...cell,
-              stretch: cell.preview.stretch,
-              selected: false,
-              preview: {
-                loop: null,
-                background: null
-              }
-            }
-            : cell
-        })))
+        return dispatch(
+          store.commitCanvas(
+            fn.mapMatrix(canvas, (cell) => {
+              return cell.selected
+                ? {
+                    ...cell,
+                    stretch: cell.preview.stretch,
+                    selected: false,
+                    preview: {
+                      loop: null,
+                      background: null,
+                    },
+                  }
+                : cell
+            })
+          )
+        )
       }
 
       return isSingle
@@ -164,7 +169,7 @@ function Canvas ({
       const props = {
         loop: null,
         background: '#ffffff',
-        stretch: null
+        stretch: null,
       }
 
       return isSingle
@@ -185,12 +190,13 @@ function Canvas ({
       const { oneRow, oneCol } = fn.isOneRowOrCol(temp)
 
       if (oneRow && oneCol) {
-        setCanvas(fn.mapMatrix(schemeCanvas, cell => ({
-          ...cell, selected: false
-        })))
-      }
-
-      else if (temp.length) {
+        setCanvas(
+          fn.mapMatrix(schemeCanvas, (cell) => ({
+            ...cell,
+            selected: false,
+          }))
+        )
+      } else if (temp.length) {
         const withConfirm = fn.lastCellWithProp(canvas, temp, 'confirm', true)
         setCanvas(withConfirm)
 
@@ -204,12 +210,13 @@ function Canvas ({
       const { oneRow, oneCol } = fn.isOneRowOrCol(temp)
 
       if (oneRow || oneCol) {
-        setCanvas(fn.mapMatrix(schemeCanvas, cell => ({
-          ...cell, selected: false
-        })))
-      }
-
-      else if (temp.length) {
+        setCanvas(
+          fn.mapMatrix(schemeCanvas, (cell) => ({
+            ...cell,
+            selected: false,
+          }))
+        )
+      } else if (temp.length) {
         const withConfirm = fn.lastCellWithProp(canvas, temp, 'confirm', true)
         setCanvas(withConfirm)
 
@@ -223,21 +230,25 @@ function Canvas ({
   const rejectSelection = () => {
     commitWithNewProps('selected', true, {
       selected: false,
-      confirm: false
+      confirm: false,
     })
 
     cleanExtra()
   }
 
   const acceptSelection = () => {
-
     if (is(activeTool, 'Group')) {
       dispatch(store.commitNewGroup(group.canvas))
 
-      commitWithNewProps('selected', true, {
-        selected: false,
-        confirm: false
-      }, false)
+      commitWithNewProps(
+        'selected',
+        true,
+        {
+          selected: false,
+          confirm: false,
+        },
+        false
+      )
 
       cleanExtra()
     }
@@ -245,14 +256,14 @@ function Canvas ({
     if (is(activeTool, 'Report')) {
       const commonProps = {
         selected: false,
-        confirm: false
+        confirm: false,
       }
 
-      const withReport = fn.mapMatrix(canvas, (cell => {
+      const withReport = fn.mapMatrix(canvas, (cell) => {
         const { uid, color } = report
 
         if (cell.selected) {
-          return { ...cell, ...commonProps, report: { uid, color }}
+          return { ...cell, ...commonProps, report: { uid, color } }
         }
 
         if (cell.report && or(cell.report.uid, crossingReports)) {
@@ -260,9 +271,9 @@ function Canvas ({
         }
 
         return { ...cell, ...commonProps }
-      }))
+      })
 
-      crossingReports.forEach(uid => dispatch(store.removeReport({ uid })))
+      crossingReports.forEach((uid) => dispatch(store.removeReport({ uid })))
       setCrossingReports([])
 
       setCanvas(withReport)
@@ -280,58 +291,74 @@ function Canvas ({
     setCursor(false)
     setActive(null)
 
-    if (!confirm && !contextPosition) setCanvas(fn.mapMatrix(canvas, cell => ({
-      ...cell,
-      selected: false,
-      preview: {
-        loop: null
-      },
-    })))
+    if (!confirm && !contextPosition)
+      setCanvas(
+        fn.mapMatrix(canvas, (cell) => ({
+          ...cell,
+          selected: false,
+          preview: {
+            loop: null,
+          },
+        }))
+      )
   }
 
   const showCustomMenu = (ev) => {
     ev.preventDefault()
 
-    const element = canvas.flat().find(cell => cell.uid == ev.target.dataset.uid)
+    const element = canvas
+      .flat()
+      .find((cell) => cell.uid == ev.target.dataset.uid)
     if (!element) return
 
     const { x, y } = element
 
-    canvas.flat().forEach(cell => cell.selected = cell.x == x || cell.y == y)
+    canvas
+      .flat()
+      .forEach((cell) => (cell.selected = cell.x == x || cell.y == y))
 
     setContextPosition([
       x * CANVAS_CELL_WIDTH + 10,
-      y * CANVAS_CELL_HEIGHT + 10
+      y * CANVAS_CELL_HEIGHT + 10,
     ])
   }
 
   useEffect(() => setCanvas(schemeCanvas), [schemeCanvas])
-  useEffect(() => setCursorDisabled(confirm || Boolean(contextPosition)), [confirm, contextPosition])
+  useEffect(
+    () => setCursorDisabled(confirm || Boolean(contextPosition)),
+    [confirm, contextPosition]
+  )
   useEffect(() => {
     if (!confirm) return
 
     setConfirm(false)
-    setCanvas(fn.mapMatrix(canvas, cell => ({
-      ...cell,
-      selected: false,
-      confirm: false,
-      preview: {
-        loop: null
-      },
-    })))
+    setCanvas(
+      fn.mapMatrix(canvas, (cell) => ({
+        ...cell,
+        selected: false,
+        confirm: false,
+        preview: {
+          loop: null,
+        },
+      }))
+    )
   }, [activeTool, activeLoop, activeGroup])
 
   return (
-    <div className={classNames(className, scss._, (customCursor && !cursorDisabled) ? scss.no_cursor : '')}
-         onContextMenu={showCustomMenu}
-         onMouseMove={canvasMouseMove}
-         onMouseEnter={canvasMouseEnter}
-         onMouseLeave={canvasMouseLeave}>
+    <div
+      className={classNames(
+        className,
+        scss._,
+        customCursor && !cursorDisabled ? scss.no_cursor : ''
+      )}
+      onContextMenu={showCustomMenu}
+      onMouseMove={canvasMouseMove}
+      onMouseEnter={canvasMouseEnter}
+      onMouseLeave={canvasMouseLeave}
+    >
       {canvas.map((row, index) => (
-        <Row number={nums[index]}
-             isRound={schemeIsRound}
-             key={index}>
-          {row.map(cell => (
+        <Row number={nums[index]} isRound={schemeIsRound} key={index}>
+          {row.map((cell) => (
             <CanvasCell
               cell={cell}
               confirm={confirm}
@@ -340,26 +367,26 @@ function Canvas ({
               className={scss.cell}
               onMouseEnter={() => onMouseEnter(cell)}
               onMouseDown={() => onMouseDown(cell)}
-              onMouseUp={ev => active && onMouseUp(cell, ev)}
+              onMouseUp={(ev) => active && onMouseUp(cell, ev)}
               acceptGroup={acceptSelection}
               rejectGroup={rejectSelection}
-              key={cell.uid} />
+              key={cell.uid}
+            />
           ))}
         </Row>
       ))}
-      {contextPosition &&
+      {contextPosition && (
         <ContextMenu
           onClose={() => setCanvas(fn.reselect(canvas))}
           setContextPosition={setContextPosition}
-          position={contextPosition}>
-          <EditCanvas
-            setCanvas={setCanvas}
-            canvas={canvas} />
+          position={contextPosition}
+        >
+          <EditCanvas setCanvas={setCanvas} canvas={canvas} />
         </ContextMenu>
-      }
+      )}
       {confirm && <Overlay />}
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(Canvas)
+export default connect((state) => ({ ...state }))(Canvas)

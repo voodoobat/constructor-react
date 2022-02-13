@@ -11,13 +11,7 @@ import Hint from '@components/common/Hint/Hint'
 import { ReactComponent as QuestionIcon } from './svg/question.svg'
 import { ReactComponent as GroupIcon } from './svg/group.svg'
 
-function GroupContainer ({
-  className,
-  schemeGroups,
-  plaits,
-  inactive
-}) {
-
+function GroupContainer({ className, schemeGroups, plaits, inactive }) {
   const compare = (x, z) => {
     if (x.canvas.length > z.canvas.length) {
       return -1
@@ -32,46 +26,45 @@ function GroupContainer ({
 
   return (
     <div className={classNames(className, scss._)}>
-      <Dropdown caption="Элементы для кос"
-                active={false}
-                size="sm">
+      <Dropdown caption="Элементы для кос" active={false} size="sm">
         <div className={classNames(scss.content)}>
-          {!inactive && plaits.map((group, key) =>
-            <Group
-              className={scss.group}
-              controls={false}
-              group={group}
-              key={key} />
-          )}
+          {!inactive &&
+            plaits.map((group, key) => (
+              <Group
+                className={scss.group}
+                controls={false}
+                group={group}
+                key={key}
+              />
+            ))}
         </div>
       </Dropdown>
       {schemeGroups.length ? (
-        <Dropdown caption="Мои группы элементов"
-                  size="sm">
+        <Dropdown caption="Мои группы элементов" size="sm">
           <div className={scss.content}>
-            {!inactive && schemeGroups.sort(compare).map((group, key) =>
-              <Group
-                className={scss.group}
-                group={group}
-                key={key} />
-            )}
+            {!inactive &&
+              schemeGroups
+                .sort(compare)
+                .map((group, key) => (
+                  <Group className={scss.group} group={group} key={key} />
+                ))}
           </div>
         </Dropdown>
       ) : (
         <div className={scss.no_group}>
-          <span className={scss.no_group_text}>
-            Мои группы элементов
-          </span>
+          <span className={scss.no_group_text}>Мои группы элементов</span>
           <div className={scss.question}>
             <QuestionIcon />
-            <Hint className={scss.question_hint}
-                  caption="Вы не создали ни одной группы">
+            <Hint
+              className={scss.question_hint}
+              caption="Вы не создали ни одной группы"
+            >
               <div className={scss.question_hint_text}>
                 <div className={scss.question_hint_icon}>
                   <GroupIcon />
                 </div>
                 <p>
-                  Создать группу можно с помощью инструмента <br/>
+                  Создать группу можно с помощью инструмента <br />
                   <b>«Группировка»</b> на панели слева от схемы
                 </p>
               </div>
@@ -85,4 +78,4 @@ function GroupContainer ({
   )
 }
 
-export default connect((state => ({ ...state })))(GroupContainer)
+export default connect((state) => ({ ...state }))(GroupContainer)

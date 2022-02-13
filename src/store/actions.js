@@ -1,150 +1,149 @@
-export const setConfig = config => ({
+export const setConfig = (config) => ({
   type: 'SET_CONFIG',
-  payload: { config }
+  payload: { config },
 })
 
-export const setLoops = loops => ({
+export const setLoops = (loops) => ({
   type: 'SET_LOOPS',
-  payload: { loops }
+  payload: { loops },
 })
 
-export const setScheme = scheme => ({
+export const setScheme = (scheme) => ({
   type: 'SET_SCHEME',
-  payload: { ...scheme }
+  payload: { ...scheme },
 })
 
-export const setRedirect = redirect => ({
+export const setRedirect = (redirect) => ({
   type: 'SET_REDIRECT',
-  payload: { redirect }
+  payload: { redirect },
 })
 
-export const setTool = toolState => ({
+export const setTool = (toolState) => ({
   type: 'SET_TOOLS',
-  payload: { ...toolState }
+  payload: { ...toolState },
 })
 
-export const setActiveLoop = activeLoop => ({
+export const setActiveLoop = (activeLoop) => ({
   type: 'SET_ACTIVE_LOOP',
-  payload: { activeLoop }
+  payload: { activeLoop },
 })
 
-export const setActiveLoopIcon = activeLoopIcon => ({
+export const setActiveLoopIcon = (activeLoopIcon) => ({
   type: 'SET_ACTIVE_LOOP',
-  payload: { activeLoopIcon }
+  payload: { activeLoopIcon },
 })
 
-export const setActiveTool = activeTool => ({
+export const setActiveTool = (activeTool) => ({
   type: 'SET_ACTIVE_TOOL',
-  payload: { activeTool }
+  payload: { activeTool },
 })
 
-export const setPlaits = plaits => ({
+export const setPlaits = (plaits) => ({
   type: 'SET_PLAITS',
-  payload: { plaits }
+  payload: { plaits },
 })
 
-export const setActiveGroup = activeGroup => ({
+export const setActiveGroup = (activeGroup) => ({
   type: 'SET_ACTIVE_GROUP',
-  payload: { activeGroup }
+  payload: { activeGroup },
 })
 
-export const setActiveColor = activeColor => ({
+export const setActiveColor = (activeColor) => ({
   type: 'SET_ACTIVE_COLOR',
-  payload: { activeColor }
+  payload: { activeColor },
 })
 
-export const setSwatches = swatches => ({
+export const setSwatches = (swatches) => ({
   type: 'SET_SWATCHES',
-  payload: { swatches }
+  payload: { swatches },
 })
 
-export const setCustomCursor = customCursor => ({
+export const setCustomCursor = (customCursor) => ({
   type: 'SET_CUSTOM_CURSOR',
-  payload: { customCursor }
+  payload: { customCursor },
 })
 
-export const setConfirm = isConfirm => ({
+export const setConfirm = (isConfirm) => ({
   type: 'SET_REPORT',
-  payload: { isConfirm }
+  payload: { isConfirm },
 })
 
-export const setSchemeId = schemeId => ({
+export const setSchemeId = (schemeId) => ({
   type: 'SET_SCHEME_UID',
-  payload: { schemeId }
+  payload: { schemeId },
 })
 
-export const setSchemeTitle = schemeTitle => ({
+export const setSchemeTitle = (schemeTitle) => ({
   type: 'SET_SCHEME_NAME',
-  payload: { schemeTitle }
+  payload: { schemeTitle },
 })
 
-export const setSchemeCanvas = schemeCanvas => ({
+export const setSchemeCanvas = (schemeCanvas) => ({
   type: 'SET_CANVAS',
-  payload: { schemeCanvas }
+  payload: { schemeCanvas },
 })
 
-export const setSchemeGroups = schemeGroups => ({
+export const setSchemeGroups = (schemeGroups) => ({
   type: 'SET_GROUPS',
-  payload: { schemeGroups }
+  payload: { schemeGroups },
 })
 
-export const setCanvasLegend = schemeLegends => ({
+export const setCanvasLegend = (schemeLegends) => ({
   type: 'SET_CANVAS_LEGENDS',
-  payload: { schemeLegends }
+  payload: { schemeLegends },
 })
 
-export const setSchemeReports = schemeReports => ({
+export const setSchemeReports = (schemeReports) => ({
   type: 'SET_REPORT',
-  payload: { schemeReports }
+  payload: { schemeReports },
 })
 
-export const setSchemeHistory = schemeHistory => ({
+export const setSchemeHistory = (schemeHistory) => ({
   type: 'SET_HISTORY',
-  payload: { schemeHistory }
+  payload: { schemeHistory },
 })
 
-export const setSchemeHistorytStep = schemeHistoryStep => ({
+export const setSchemeHistorytStep = (schemeHistoryStep) => ({
   type: 'SET_CURRENT_STEP',
-  payload: { schemeHistoryStep }
+  payload: { schemeHistoryStep },
 })
 
-export const setSchemeOnlyOddCells = schemeOnlyOddCells => ({
+export const setSchemeOnlyOddCells = (schemeOnlyOddCells) => ({
   type: 'SET_SCHEME_ONLY_ODD_ROWS',
-  payload: { schemeOnlyOddCells }
+  payload: { schemeOnlyOddCells },
 })
 
-export const setSchemeIsRound = schemeIsRound => ({
+export const setSchemeIsRound = (schemeIsRound) => ({
   type: 'SET_SCHEME_ONLY_ODD_ROWS',
-  payload: { schemeIsRound }
+  payload: { schemeIsRound },
 })
 
-export const setSchemeCustomCells = schemeCustomCells => ({
+export const setSchemeCustomCells = (schemeCustomCells) => ({
   type: 'SET_SCHEME_CUSTOM_CELLS',
-  payload: { schemeCustomCells }
+  payload: { schemeCustomCells },
 })
 
-export const setActiveLoader = activeLoader => ({
+export const setActiveLoader = (activeLoader) => ({
   type: 'SET_ACTIVE_LOADER',
-  payload: { activeLoader }
+  payload: { activeLoader },
 })
 
-export const setSchemesList = schemesList => ({
+export const setSchemesList = (schemesList) => ({
   type: 'SET_SCHEMES_LIST',
-  payload: { schemesList }
+  payload: { schemesList },
 })
 
-export const setActiveReportType = activeReportType => ({
+export const setActiveReportType = (activeReportType) => ({
   type: 'SET_ACTIVE_REPORT_TYPE',
-  payload: { activeReportType }
+  payload: { activeReportType },
 })
 
-export const setIsAuth = isAuth => ({
+export const setIsAuth = (isAuth) => ({
   type: 'SET_IS_AUTH',
-  payload: { isAuth }
+  payload: { isAuth },
 })
 
-export const setDownloadOptions = downloadOptions => ({
+export const setDownloadOptions = (downloadOptions) => ({
   type: 'SET_IS_AUTH',
-  payload: { downloadOptions }
+  payload: { downloadOptions },
 })
-

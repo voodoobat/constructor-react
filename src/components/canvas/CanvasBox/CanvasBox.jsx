@@ -9,24 +9,17 @@ import ReportContainer from '@components/canvas/ReportContainer/ReportContainer'
 
 import { CANVAS_ELEMENT_ID } from '@src/config'
 
-function CanvasBox ({
-  className,
-  activeTool,
-  scale,
-  children
-}) {
-
+function CanvasBox({ className, activeTool, scale, children }) {
   const disabled = activeTool != 'Move'
   const style = {
-    transform: `scale(${scale / 100})`
+    transform: `scale(${scale / 100})`,
   }
 
   return (
     <Draggable disabled={disabled}>
       <div id={CANVAS_ELEMENT_ID}>
         <div className={classNames(className, scss._)}>
-          <div className={scss.scale_box}
-              style={style}>
+          <div className={scss.scale_box} style={style}>
             {children}
             <Numbers />
             <ReportContainer type="cell" />
@@ -37,4 +30,4 @@ function CanvasBox ({
   )
 }
 
-export default connect(state => ({ ...state }))(CanvasBox)
+export default connect((state) => ({ ...state }))(CanvasBox)

@@ -7,7 +7,7 @@ import Container from '@components/layout/Container/Container'
 
 import { ReactComponent as Logo } from './svg/logo.svg'
 
-function Footer ({ config }) {
+function Footer({ config }) {
   const { resources, socials } = config
 
   return (
@@ -37,9 +37,7 @@ function Footer ({ config }) {
           </span>
         </nav>
         <nav className={scss.sm}>
-          <div className={scss.sm_caption}>
-            Вязаный в соцсетях
-          </div>
+          <div className={scss.sm_caption}>Вязаный в соцсетях</div>
           <div className={scss.sm_list}>
             <a href={socials.instagram} target="_blank" rel="noreferrer">
               <ReactSVG src="/svg/sm/in.svg" />
@@ -57,4 +55,4 @@ function Footer ({ config }) {
   )
 }
 
-export default connect((state => ({ ...state })))(Footer)
+export default connect((state) => ({ ...state }))(Footer)

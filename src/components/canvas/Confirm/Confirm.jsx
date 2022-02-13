@@ -5,8 +5,7 @@ import { useEffect } from 'react'
 import Button from '@components/common/Button/Button'
 import classNames from 'classnames'
 
-export default function Confirm ({ className, cell, confirm, dissmiss }) {
-
+export default function Confirm({ className, cell, confirm, dissmiss }) {
   useEffect(() => {
     const handler = ({ keyCode }) => {
       if (keyCode == 13) confirm()

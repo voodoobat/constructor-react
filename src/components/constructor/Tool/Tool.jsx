@@ -28,10 +28,10 @@ const icon = {
   ReportLoop,
   Color,
   Group,
-  Size
+  Size,
 }
 
-function tool ({
+function tool({
   className,
   type,
   dispatch,
@@ -39,14 +39,15 @@ function tool ({
   activeTool,
   activeReportType,
   activeColor,
-  children
+  children,
 }) {
-
   const [Icon, setIcon] = useState(() => icon[type])
   const isActive = activeTool == type
 
   const withOption = or(type, ['Report', 'Color', 'Size'])
-  const colorClassName = activeColor ? `color${activeColor.replace('#', '')}` : ''
+  const colorClassName = activeColor
+    ? `color${activeColor.replace('#', '')}`
+    : ''
 
   useEffect(() => {
     if (activeTool == 'Report' && type == 'Report') {
@@ -75,24 +76,27 @@ function tool ({
   }
 
   return (
-    <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
-         onClick={activate}>
-      <Icon className={classNames(scss.icon, type == 'Color' ? scss[colorClassName] : '')} />
+    <div
+      className={classNames(className, scss._, isActive ? scss.is_active : '')}
+      onClick={activate}
+    >
+      <Icon
+        className={classNames(
+          scss.icon,
+          type == 'Color' ? scss[colorClassName] : ''
+        )}
+      />
       <div className={scss.popup}>
-        {isActive && tool &&
-          <div className={scss.tool}>
-            {tool}
-          </div>
-        }
-        <div className={scss.hint}>
-          {children}
-        </div>
+        {isActive && tool && <div className={scss.tool}>{tool}</div>}
+        <div className={scss.hint}>{children}</div>
       </div>
-      {withOption && <>
-        <OptionIcon className={scss.option_icon} />
-      </>}
+      {withOption && (
+        <>
+          <OptionIcon className={scss.option_icon} />
+        </>
+      )}
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(tool)
+export default connect((state) => ({ ...state }))(tool)

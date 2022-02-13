@@ -7,19 +7,12 @@ import { mapMatrix } from '@components/canvas/Canvas/Canvas.fn'
 import * as store from '@store/functions'
 import * as fn from './EditCanvas.fn'
 
-function EditCanvas ({
-  className,
-  canvas,
-  setCanvas,
-  dispatch
-}) {
-
-  const remapCells = cnvs => {
+function EditCanvas({ className, canvas, setCanvas, dispatch }) {
+  const remapCells = (cnvs) => {
     cnvs.forEach((row, rowIndex) => {
       row.forEach((cell, cellIndex) => {
         cell.selected = false
-        cell.x = cellIndex,
-        cell.y = rowIndex
+        ;(cell.x = cellIndex), (cell.y = rowIndex)
       })
     })
   }
@@ -27,29 +20,34 @@ function EditCanvas ({
   const hoverX = () => {
     const x = fn.getX(canvas)
 
-    setCanvas(mapMatrix(canvas, cell => ({
-      ...cell,
-      hover: cell.x == x,
-    })))
+    setCanvas(
+      mapMatrix(canvas, (cell) => ({
+        ...cell,
+        hover: cell.x == x,
+      }))
+    )
   }
 
   const hoverY = () => {
     const y = fn.getY(canvas)
 
-    setCanvas(mapMatrix(canvas, cell => ({
-      ...cell,
-      hover: cell.y == y,
-    })))
+    setCanvas(
+      mapMatrix(canvas, (cell) => ({
+        ...cell,
+        hover: cell.y == y,
+      }))
+    )
   }
 
-  const reset = () => setCanvas(mapMatrix(canvas, cell => ({ ...cell, hover: false })))
+  const reset = () =>
+    setCanvas(mapMatrix(canvas, (cell) => ({ ...cell, hover: false })))
 
   const removeColumn = () => {
     const x = fn.getX(canvas)
 
     if (x == null) return
 
-    const cnvs = canvas.map(row => {
+    const cnvs = canvas.map((row) => {
       row.splice(x, 1)
       return row
     })
@@ -75,18 +73,20 @@ function EditCanvas ({
         onClick={removeColumn}
         onMouseEnter={hoverX}
         onMouseLeave={reset}
-        className={scss.button}>
+        className={scss.button}
+      >
         Удалить столбик
       </button>
       <button
         onClick={removeRow}
         onMouseEnter={hoverY}
         onMouseLeave={reset}
-        className={scss.button}>
+        className={scss.button}
+      >
         Удалить ряд
       </button>
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(EditCanvas)
+export default connect((state) => ({ ...state }))(EditCanvas)

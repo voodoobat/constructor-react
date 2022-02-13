@@ -9,7 +9,7 @@ import { ReactComponent as ReportIcon } from './svg/stripe.svg'
 
 import { getBackgroundStyle } from './CanvasCell.fn'
 
-export default function CanvasCell ({
+export default function CanvasCell({
   className,
   cell,
   onClick,
@@ -21,9 +21,8 @@ export default function CanvasCell ({
   acceptGroup,
   rejectGroup,
   isPreview,
-  isDownload
+  isDownload,
 }) {
-
   const classList = classNames(
     className,
     scss._,
@@ -33,28 +32,45 @@ export default function CanvasCell ({
   )
 
   return (
-    <div className={classList}
-         onClick={onClick}
-         onMouseDown={onMouseDown}
-         onMouseUp={onMouseUp}
-         onMouseEnter={onMouseEnter}
-         data-uid={cell.uid}
-         style={getBackgroundStyle(cell)}>
-      {cell.report &&
+    <div
+      className={classList}
+      onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseEnter={onMouseEnter}
+      data-uid={cell.uid}
+      style={getBackgroundStyle(cell)}
+    >
+      {cell.report && (
         <div className={scss.report}>
           <ReportIcon className={scss.report_icon} />
         </div>
-      }
-      {cell.preview.loop && <Loop className={scss.loop} icon={`${cell.preview.loop.icon}`} />}
-      {!cell.preview.loop && cell.loop && <Loop className={scss.loop} icon={cell.loop.icon} svgCode={isDownload} />}
-      {cell.preview.stretch && <Loop className={classNames(scss.stretch, scss.loop)} icon={cell.preview.stretch} />}
-      {!cell.preview.stretch && cell.stretch && <Loop className={classNames(scss.stretch, scss.loop)} icon={cell.stretch} />}
-      {cell.confirm && confirm &&
-        <Confirm
-          cell={cell}
-          confirm={acceptGroup}
-          dissmiss={rejectGroup} />
-      }
+      )}
+      {cell.preview.loop && (
+        <Loop className={scss.loop} icon={`${cell.preview.loop.icon}`} />
+      )}
+      {!cell.preview.loop && cell.loop && (
+        <Loop
+          className={scss.loop}
+          icon={cell.loop.icon}
+          svgCode={isDownload}
+        />
+      )}
+      {cell.preview.stretch && (
+        <Loop
+          className={classNames(scss.stretch, scss.loop)}
+          icon={cell.preview.stretch}
+        />
+      )}
+      {!cell.preview.stretch && cell.stretch && (
+        <Loop
+          className={classNames(scss.stretch, scss.loop)}
+          icon={cell.stretch}
+        />
+      )}
+      {cell.confirm && confirm && (
+        <Confirm cell={cell} confirm={acceptGroup} dissmiss={rejectGroup} />
+      )}
     </div>
   )
 }

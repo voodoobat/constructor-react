@@ -7,14 +7,13 @@ import classNames from 'classnames'
 import { spacesToNbsp, isEmptyString } from '@src/util'
 import * as store from '@store/functions'
 
-function NameInput ({
+function NameInput({
   className,
   isAuth,
   schemeTitle,
   setActiveInput,
-  dispatch
+  dispatch,
 }) {
-
   const input = useRef(null)
   const [value, setValue] = useState(schemeTitle)
 
@@ -46,16 +45,15 @@ function NameInput ({
 
   return (
     <div className={classNames(className, scss._)}>
-      <span className={scss.text}>
-        {spacesToNbsp(value)}
-      </span>
+      <span className={scss.text}>{spacesToNbsp(value)}</span>
       <input
         ref={input}
         className={scss.input}
         onChange={onChange}
         onBlur={save}
         value={value}
-        type="text" />
+        type="text"
+      />
     </div>
   )
 }

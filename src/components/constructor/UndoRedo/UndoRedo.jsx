@@ -13,19 +13,13 @@ import * as store from '@store/functions'
 import { cleanCell } from '@src/util'
 import { useEffect } from 'react'
 
-function UndoRedo ({
-  className,
-  dispatch,
-  schemeHistory,
-  schemeHistoryStep
-}) {
-
+function UndoRedo({ className, dispatch, schemeHistory, schemeHistoryStep }) {
   const size = schemeHistory?.length
 
   const hasNext = size && schemeHistory[size - 1].uid != schemeHistoryStep
   const hasPrev = size && schemeHistory[0].uid != schemeHistoryStep
 
-  const jump = location => {
+  const jump = (location) => {
     const step = fn.getStep(schemeHistory, schemeHistoryStep)[location]
 
     if (step) {
@@ -51,23 +45,26 @@ function UndoRedo ({
     return () => document.removeEventListener('keypress', handler)
   }, [schemeHistory, schemeHistoryStep])
 
-
   return (
     <div className={classNames(className, scss._)}>
-      <button className={classNames(scss.button, hasPrev ? scss.is_active : '')}
-              onClick={() => jump('prev')}
-              title="Ctrl + z"
-              type="button">
+      <button
+        className={classNames(scss.button, hasPrev ? scss.is_active : '')}
+        onClick={() => jump('prev')}
+        title="Ctrl + z"
+        type="button"
+      >
         <Undo />
       </button>
-      <button className={classNames(scss.button, hasNext ? scss.is_active : '')}
-              onClick={() => jump('next')}
-              title="Ctrl + Shift + Z"
-              type="button">
+      <button
+        className={classNames(scss.button, hasNext ? scss.is_active : '')}
+        onClick={() => jump('next')}
+        title="Ctrl + Shift + Z"
+        type="button"
+      >
         <Redo />
       </button>
     </div>
   )
 }
 
-export default connect(state => ({ ...state }))(UndoRedo)
+export default connect((state) => ({ ...state }))(UndoRedo)

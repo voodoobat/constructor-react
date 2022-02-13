@@ -12,14 +12,9 @@ import { fetch } from '@store/localstorage'
 import { convertSchemeEntries } from '@src/util'
 import { ROUTE_SCHEME, DEFAULT_SCHEME_ID } from '@src/config'
 
-
 const ROUTE = `${ROUTE_SCHEME}${DEFAULT_SCHEME_ID}`
 
-function CreateDangerMessage ({
-  className,
-  config
-}) {
-
+function CreateDangerMessage({ className, config }) {
   const [scheme, setScheme] = useState(null)
 
   useEffect(() => {
@@ -29,20 +24,23 @@ function CreateDangerMessage ({
     setScheme(schemeEntries)
   }, [])
 
-  return <>
-    {!config.customer && scheme &&
-      <div className={classNames(className, scss._)}>
-        <div className={scss.message}>
-          <WarnIcon className={scss.icon} />
-          <div className={scss.text}>
-            При созднании новой схемы, <br />
-            созданая Вами ранее «<Link to={ROUTE}>{scheme.schemeTitle}</Link>», <br />
-            будет безвозвратно потеряна
+  return (
+    <>
+      {!config.customer && scheme && (
+        <div className={classNames(className, scss._)}>
+          <div className={scss.message}>
+            <WarnIcon className={scss.icon} />
+            <div className={scss.text}>
+              При созднании новой схемы, <br />
+              созданая Вами ранее «<Link to={ROUTE}>{scheme.schemeTitle}</Link>
+              », <br />
+              будет безвозвратно потеряна
+            </div>
           </div>
         </div>
-      </div>
-    }
-  </>
+      )}
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(CreateDangerMessage)
+export default connect((state) => ({ ...state }))(CreateDangerMessage)

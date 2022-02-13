@@ -9,18 +9,20 @@ export const generateScheme = ({
   cols,
   onlyOdd,
   customCells,
-  isRound
+  isRound,
 }) => {
-
   const { loops } = store.getState()
   const canvas = createEmptyCanvas(cols, onlyOdd ? rows / 2 : rows)
   const schemeCustomCells = []
 
-  const processLegends = loops => {
+  const processLegends = (loops) => {
     const withHint = getAllLoops(loops).base.filter(({ hint }) => !!hint)
 
     return withHint.map(({ id, hint, icon }) => ({
-      id, hint, icon, isHidden: false
+      id,
+      hint,
+      icon,
+      isHidden: false,
     }))
   }
 
@@ -37,6 +39,6 @@ export const generateScheme = ({
     schemeOnlyOddCells: onlyOdd,
     schemeLegends: processLegends(loops),
     schemeIsRound: isRound,
-    schemeCustomCells
+    schemeCustomCells,
   }
 }

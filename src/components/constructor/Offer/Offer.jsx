@@ -9,13 +9,12 @@ import ElementForm from '@components/form/ElementForm/ElementForm'
 import CloseButton from '@components/common/Close/Close'
 import Button from '@components/common/Button/Button'
 
-export default function Offer ({ className }) {
+export default function Offer({ className }) {
   const [isOpen, setOpen] = useState(false)
 
   return (
     <div className={classNames(className, scss._)}>
-      <Button color="black"
-              onClick={() => setOpen(true)}>
+      <Button color="black" onClick={() => setOpen(true)}>
         Предложить свой элемент
       </Button>
       <Modal show={isOpen} onHide={() => setOpen(false)}>

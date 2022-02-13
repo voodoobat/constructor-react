@@ -7,15 +7,11 @@ import { uid } from 'uid'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import { getAllLoops, createCell } from '@src/util'
 
-function LoopFaq ({
-  className,
-  loops
-}) {
-
+function LoopFaq({ className, loops }) {
   const withHint = getAllLoops(loops).base.filter(({ hint }) => !!hint)
-  const elements = withHint.map(loop => ({
+  const elements = withHint.map((loop) => ({
     hint: loop.hint,
-    cell: createCell(NaN, NaN, loop)
+    cell: createCell(NaN, NaN, loop),
   }))
 
   return (
@@ -27,10 +23,12 @@ function LoopFaq ({
               className={scss.cell}
               isPreview={true}
               hideHighlight={true}
-              cell={cell} />
+              cell={cell}
+            />
           </div>
           <div className={scss.hint}>
-            <span className={scss.equal}>=</span> <span dangerouslySetInnerHTML={{ __html: hint }} />
+            <span className={scss.equal}>=</span>{' '}
+            <span dangerouslySetInnerHTML={{ __html: hint }} />
           </div>
         </div>
       ))}
@@ -38,4 +36,4 @@ function LoopFaq ({
   )
 }
 
-export default connect(state => ({ ...state }))(LoopFaq)
+export default connect((state) => ({ ...state }))(LoopFaq)

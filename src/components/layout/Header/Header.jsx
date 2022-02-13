@@ -13,35 +13,33 @@ import User from '@components/common/User/User'
 import { ReactComponent as LogoSM } from './svg/logo-sm.svg'
 import { ReactComponent as LogoXS } from './svg/logo-xs.svg'
 
-function Header ({ config }) {
-
+function Header({ config }) {
   const isConstPage = useRouteMatch('/scheme/:uid')
   const isCreatePage = useRouteMatch('/create')
   const isDownload = useRouteMatch('/scheme/:uid/download')
 
-  return <>
-    {isConstPage || isCreatePage
-      ? <header className={scss._}>
+  return (
+    <>
+      {isConstPage || isCreatePage ? (
+        <header className={scss._}>
           <Container className={scss.box}>
             <div className={scss.logo}>
               <Link to="/" className={scss.logo_svg_box}>
                 <LogoXS />
               </Link>
             </div>
-            <div className={scss.name}>
-              {isConstPage && <Name />}
-            </div>
+            <div className={scss.name}>{isConstPage && <Name />}</div>
             <div className={scss.nav}>
-              {isConstPage && <>
-                {isDownload
-                  ? <Download />
-                  : <Save className={scss.save} />
-                }
-              </>}
+              {isConstPage && (
+                <>
+                  {isDownload ? <Download /> : <Save className={scss.save} />}
+                </>
+              )}
             </div>
           </Container>
         </header>
-      : <header className={scss.large}>
+      ) : (
+        <header className={scss.large}>
           <Container className={scss.box}>
             <Link to="/" className={scss.logo_svg_box}>
               <LogoSM />
@@ -51,8 +49,9 @@ function Header ({ config }) {
             </nav>
           </Container>
         </header>
-    }
-  </>
+      )}
+    </>
+  )
 }
 
-export default connect(state => ({ ...state }))(Header)
+export default connect((state) => ({ ...state }))(Header)

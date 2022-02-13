@@ -7,14 +7,10 @@ import * as act from '@src/store/actions'
 import { xhr } from '@src/store/xhr'
 
 import { DEFAULT_SCHEME_ID, XHR_COMMON_DATA } from '@src/config'
-import {
-  CONFIG_STATE,
-  EMPTY_SCHEME,
-  DEFAULT_TOOLS_STATE,
-} from '@store/state'
+import { CONFIG_STATE, EMPTY_SCHEME, DEFAULT_TOOLS_STATE } from '@store/state'
 
-export function setStaticData (onComplete = () => {}) {
-  return async dispatch => {
+export function setStaticData(onComplete = () => {}) {
+  return async (dispatch) => {
     const { VITE_API_CONFIG_URL, VITE_API_ELEMENTS_URL } = import.meta.env
 
     const config = await fetch(VITE_API_CONFIG_URL, XHR_COMMON_DATA)
@@ -31,31 +27,36 @@ export function setStaticData (onComplete = () => {}) {
         elements.filter(({ complex }) => complex)
       )
 
-      dispatch(act.setPlaits([ ...plaitsCnvs.map(canvas => ({
-        uid: uid(),
-        active: false,
-        canvas
-      }))]))
+      dispatch(
+        act.setPlaits([
+          ...plaitsCnvs.map((canvas) => ({
+            uid: uid(),
+            active: false,
+            canvas,
+          })),
+        ])
+      )
 
       onComplete()
     }
   }
 }
 
-export function createScheme (scheme) {
+export function createScheme(scheme) {
   return async (dispatch, getState) => {
     const { config } = getState()
     let _scheme
 
-
     if (config.customer) {
       const schemeDataWithPreview = util.getSchemeWithPreview(scheme)
-      const response = await xhr('store', 'POST', util.convertDataToXHR(schemeDataWithPreview))
+      const response = await xhr(
+        'store',
+        'POST',
+        util.convertDataToXHR(schemeDataWithPreview)
+      )
 
       _scheme = response.model
-    }
-
-    else {
+    } else {
       local.save(util.convertDataToXHR({ ...scheme, id: DEFAULT_SCHEME_ID }))
       _scheme = local.fetch()
     }
@@ -65,7 +66,7 @@ export function createScheme (scheme) {
   }
 }
 
-export function saveScheme (onSave = () => {}) {
+export function saveScheme(onSave = () => {}) {
   return async (dispatch, getState) => {
     const state = getState()
     const schemeData = util.getSchemeData(state)
@@ -75,9 +76,7 @@ export function saveScheme (onSave = () => {}) {
       const scheme = util.convertDataToXHR(schemeDataWithPreview)
 
       await xhr('update', 'PUT', scheme, `scheme_id=${state.schemeId}`)
-    }
-
-    else {
+    } else {
       const scheme = util.convertDataToXHR(schemeData)
       local.save(scheme)
     }
@@ -90,8 +89,7 @@ export function saveScheme (onSave = () => {}) {
   }
 }
 
-
-export function deleteScheme () {
+export function deleteScheme() {
   return async (dispatch, getState) => {
     const { config, schemeId, schemeTitle, activeColor } = getState()
     let redirect
@@ -99,9 +97,7 @@ export function deleteScheme () {
     if (config.customer) {
       await xhr('delete', 'DELETE', null, `scheme_id=${schemeId}`)
       redirect = '/schemes'
-    }
-
-    else {
+    } else {
       local.remove()
       redirect = '/'
     }
@@ -114,7 +110,7 @@ export function deleteScheme () {
   }
 }
 
-export function setSchemeByUid (schemeId) {
+export function setSchemeByUid(schemeId) {
   return async (dispatch, getState) => {
     if (!schemeId) return
 
@@ -124,24 +120,24 @@ export function setSchemeByUid (schemeId) {
     if (config.customer) {
       const response = await xhr('show', 'GET', null, `scheme_id=${schemeId}`)
       schemeData = response.model
-    }
-
-    else {
+    } else {
       schemeData = local.fetch()
     }
 
     const scheme = util.convertSchemeEntries(schemeData)
-    const schemeHistory = [{
-      uid: 'zero-step',
-      canvas: [ ...scheme.schemeCanvas ]
-    }]
+    const schemeHistory = [
+      {
+        uid: 'zero-step',
+        canvas: [...scheme.schemeCanvas],
+      },
+    ]
 
     dispatch(act.setActiveTool('Move'))
     dispatch(act.setScheme({ ...EMPTY_SCHEME, ...scheme, schemeHistory }))
   }
 }
 
-export function setSchemesList () {
+export function setSchemesList() {
   return async (dispatch, getState) => {
     const { config } = getState()
 
@@ -155,9 +151,9 @@ export function setSchemesList () {
   }
 }
 
-export function resetScheme () {
-  return dispatch => {
-    const { activeColor } =  CONFIG_STATE
+export function resetScheme() {
+  return (dispatch) => {
+    const { activeColor } = CONFIG_STATE
 
     dispatch(act.setTool({ ...DEFAULT_TOOLS_STATE, activeTool: 'Move' }))
     dispatch(act.setActiveColor(activeColor))
@@ -165,15 +161,15 @@ export function resetScheme () {
   }
 }
 
-export function setSchemeOptions ({ onlyOdd, isRound }) {
-  return dispatch => {
+export function setSchemeOptions({ onlyOdd, isRound }) {
+  return (dispatch) => {
     dispatch(act.setSchemeOnlyOddCells(onlyOdd))
     dispatch(act.setSchemeIsRound(isRound))
   }
 }
 
-export function resetTools () {
-  return dispatch => {
+export function resetTools() {
+  return (dispatch) => {
     const { activeColor } = CONFIG_STATE
 
     dispatch(act.setTool({ ...DEFAULT_TOOLS_STATE, activeTool: 'Move' }))
@@ -181,25 +177,25 @@ export function resetTools () {
   }
 }
 
-export function setSchemeTitle (name) {
-  return dispatch => {
+export function setSchemeTitle(name) {
+  return (dispatch) => {
     dispatch(act.setSchemeTitle(name))
   }
 }
 
-export function setSchemeHistorytStep (uid) {
-  return dispatch => {
+export function setSchemeHistorytStep(uid) {
+  return (dispatch) => {
     dispatch(act.setSchemeHistorytStep(uid))
   }
 }
 
-export function setSchemeCustomCells (cells) {
-  return dispatch => {
+export function setSchemeCustomCells(cells) {
+  return (dispatch) => {
     dispatch(act.setSchemeCustomCells(cells))
   }
 }
 
-export function commitCanvas (canvas, save = true) {
+export function commitCanvas(canvas, save = true) {
   return (dispatch, getState) => {
     const {
       schemeCanvas,
@@ -210,9 +206,10 @@ export function commitCanvas (canvas, save = true) {
 
     dispatch(act.setSchemeCanvas(canvas))
 
-    if (schemeCustomCells?.length &&
-        schemeCanvas[0].length != canvas[0].length) {
-
+    if (
+      schemeCustomCells?.length &&
+      schemeCanvas[0].length != canvas[0].length
+    ) {
       let temp = [...schemeCustomCells]
       const diff = util.getCanvasDiff(schemeCanvas, canvas)
 
@@ -231,7 +228,9 @@ export function commitCanvas (canvas, save = true) {
 
     if (save) {
       const stepUid = uid()
-      const index = schemeHistory.length ? schemeHistory.findIndex(({ uid }) => uid == schemeHistoryStep) : 0
+      const index = schemeHistory.length
+        ? schemeHistory.findIndex(({ uid }) => uid == schemeHistoryStep)
+        : 0
       const temp = schemeHistory.length ? [...schemeHistory] : []
 
       if (index > -1) {
@@ -244,7 +243,7 @@ export function commitCanvas (canvas, save = true) {
   }
 }
 
-export function setReport (report) {
+export function setReport(report) {
   return (dispatch, getState) => {
     const { schemeReports } = getState()
 
@@ -253,43 +252,52 @@ export function setReport (report) {
 }
 
 export function setSchemeLegends(legends) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(act.setCanvasLegend(legends))
   }
 }
 
-export function setCanvasLegendCustomHint (loop, value) {
+export function setCanvasLegendCustomHint(loop, value) {
   return (dispatch, getState) => {
-    const legends = [ ...getState().schemeLegends ]
-    const index = legends.findIndex(el => el.element.loop == loop)
+    const legends = [...getState().schemeLegends]
+    const index = legends.findIndex((el) => el.element.loop == loop)
 
     legends[index].customHint = value
     dispatch(act.setCanvasLegend(legends))
   }
 }
 
-export function removeReport ({ uid }) {
+export function removeReport({ uid }) {
   return (dispatch, getState) => {
     const { schemeReports, schemeCanvas } = getState()
 
-    dispatch(act.setSchemeReports(schemeReports.filter(report => report.uid != uid)))
-    dispatch(act.setSchemeCanvas(schemeCanvas.map(y => y.map(cell => {
-      return cell.report?.uid == uid
-        ? { ...cell, report: null }
-        : { ...cell }
-    }))))
+    dispatch(
+      act.setSchemeReports(schemeReports.filter((report) => report.uid != uid))
+    )
+    dispatch(
+      act.setSchemeCanvas(
+        schemeCanvas.map((y) =>
+          y.map((cell) => {
+            return cell.report?.uid == uid
+              ? { ...cell, report: null }
+              : { ...cell }
+          })
+        )
+      )
+    )
   }
 }
 
-export function setActiveGroup (group) {
+export function setActiveGroup(group) {
   return (dispatch, getState) => {
     const { schemeGroups, plaits } = getState()
 
-    const setActive = array => array.map(g => {
-      return g.uid == group.uid
-        ? { ...g, active: true }
-        : { ...g, active: false }
-    })
+    const setActive = (array) =>
+      array.map((g) => {
+        return g.uid == group.uid
+          ? { ...g, active: true }
+          : { ...g, active: false }
+      })
 
     dispatch(act.setTool(DEFAULT_TOOLS_STATE))
     dispatch(act.setActiveGroup(group))
@@ -299,90 +307,105 @@ export function setActiveGroup (group) {
   }
 }
 
-export function commitNewGroup (canvas) {
+export function commitNewGroup(canvas) {
   return (dispatch, getState) => {
     const { schemeGroups } = getState()
-    dispatch(act.setSchemeGroups([ ...schemeGroups, {
-      uid: uid(),
-      active: false,
-      canvas
-    }]))
+    dispatch(
+      act.setSchemeGroups([
+        ...schemeGroups,
+        {
+          uid: uid(),
+          active: false,
+          canvas,
+        },
+      ])
+    )
   }
 }
 
-export function removeGroup ({ uid }) {
+export function removeGroup({ uid }) {
   return (dispatch, getState) => {
     const { schemeGroups } = getState()
 
-    dispatch(act.setSchemeGroups(schemeGroups.filter(g => g.uid != uid)))
+    dispatch(act.setSchemeGroups(schemeGroups.filter((g) => g.uid != uid)))
     dispatch(act.setActiveGroup(null))
   }
 }
 
-export function setActiveTool (activeTool) {
+export function setActiveTool(activeTool) {
   return (dispatch, getState) => {
     const { schemeGroups } = getState()
 
     dispatch(act.setTool({ ...DEFAULT_TOOLS_STATE, activeTool }))
     dispatch(act.setActiveLoopIcon(''))
     dispatch(act.setActiveGroup(null))
-    dispatch(act.setSchemeGroups(schemeGroups.map(g => ({
-      ...g, active: false
-    }))))
+    dispatch(
+      act.setSchemeGroups(
+        schemeGroups.map((g) => ({
+          ...g,
+          active: false,
+        }))
+      )
+    )
   }
 }
 
-export function setActiveColor (activeColor) {
-  return dispatch => {
+export function setActiveColor(activeColor) {
+  return (dispatch) => {
     dispatch(act.setActiveColor(activeColor))
   }
 }
 
-export function setActiveLoop (activeLoop, icon = '') {
+export function setActiveLoop(activeLoop, icon = '') {
   return (dispatch, getState) => {
     const { schemeGroups } = getState()
 
     dispatch(act.setTool({ ...DEFAULT_TOOLS_STATE, activeLoop }))
     dispatch(act.setActiveLoopIcon(icon))
 
-    dispatch(act.setSchemeGroups(schemeGroups.map(g => ({
-      ...g, active: false
-    }))))
+    dispatch(
+      act.setSchemeGroups(
+        schemeGroups.map((g) => ({
+          ...g,
+          active: false,
+        }))
+      )
+    )
   }
 }
 
-export function setCustomCursor (cursor) {
-  return dispatch => {
+export function setCustomCursor(cursor) {
+  return (dispatch) => {
     dispatch(act.setCustomCursor(cursor))
   }
 }
 
-export function setConfirm (isConfirm) {
-  return dispatch => {
+export function setConfirm(isConfirm) {
+  return (dispatch) => {
     dispatch(act.setConfirm(isConfirm))
   }
 }
 
-export function setSetActiveLoader (activeLoader) {
-  return dispatch => {
+export function setSetActiveLoader(activeLoader) {
+  return (dispatch) => {
     dispatch(act.setActiveLoader(activeLoader))
   }
 }
 
-export function setActiveReportType (activeReportType) {
-  return dispatch => {
+export function setActiveReportType(activeReportType) {
+  return (dispatch) => {
     dispatch(act.setActiveReportType(activeReportType))
   }
 }
 
-export function setDownloadOptions (downloadOptions) {
-  return dispatch => {
+export function setDownloadOptions(downloadOptions) {
+  return (dispatch) => {
     dispatch(act.setDownloadOptions(downloadOptions))
   }
 }
 
-export function setRedirect (redirect) {
-  return dispatch => {
+export function setRedirect(redirect) {
+  return (dispatch) => {
     dispatch(act.setRedirect(redirect))
   }
 }

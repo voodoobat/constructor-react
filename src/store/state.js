@@ -14,7 +14,7 @@ export const CONFIG_STATE = {
   downloadOptions: {
     schemeTitle: true,
     schemeReports: true,
-    schemeLegends: true
+    schemeLegends: true,
   },
 
   tools: [
@@ -47,11 +47,11 @@ export const EMPTY_SCHEME = {
   schemeHistory: [],
   schemeOnlyOddCells: false,
   schemeIsRound: false,
-  schemeCustomCells: []
+  schemeCustomCells: [],
 }
 
 export const INITIAL_STATE = {
   ...CONFIG_STATE,
   ...DEFAULT_TOOLS_STATE,
-  ...EMPTY_SCHEME
+  ...EMPTY_SCHEME,
 }

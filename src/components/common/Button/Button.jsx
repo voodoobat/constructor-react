@@ -3,7 +3,7 @@ import scss from './Button.module.scss'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
-export default function Button ({
+export default function Button({
   className = '',
   tagName = 'button',
   onClick,
@@ -12,9 +12,8 @@ export default function Button ({
   disabled,
   children,
   color,
-  size
+  size,
 }) {
-
   const Tag = tagName
   const classes = classNames(
     className,
@@ -28,10 +27,7 @@ export default function Button ({
       {children}
     </Link>
   ) : (
-    <Tag className={classes}
-         disabled={disabled}
-         onClick={onClick}
-         type={type}>
+    <Tag className={classes} disabled={disabled} onClick={onClick} type={type}>
       {children}
     </Tag>
   )

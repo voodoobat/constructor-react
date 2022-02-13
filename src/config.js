@@ -29,12 +29,18 @@ export const ROUTE_CREATE = '/create/'
 export const ROUTE_SCHEME = '/scheme/'
 
 export const SWATCHES = [
-  '#ffffff', '#7986cb',
-  '#64b5f6', '#4dd0e1',
-  '#ba68c8', '#4db6ac',
-  '#81c784', '#dce775',
-  '#9575cd', '#a1887f',
-  '#ffb74d', '#f06292'
+  '#ffffff',
+  '#7986cb',
+  '#64b5f6',
+  '#4dd0e1',
+  '#ba68c8',
+  '#4db6ac',
+  '#81c784',
+  '#dce775',
+  '#9575cd',
+  '#a1887f',
+  '#ffb74d',
+  '#f06292',
 ]
 
 export const XHR_COMMON_DATA = {
@@ -44,6 +50,6 @@ export const XHR_COMMON_DATA = {
   redirect: 'error',
   headers: {
     'Content-type': 'application/json',
-    'Accept': 'application/json'
-  }
+    Accept: 'application/json',
+  },
 }

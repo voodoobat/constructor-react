@@ -2,7 +2,7 @@ import scss from './Overlay.module.scss'
 
 import classNames from 'classnames'
 
-export default function Overlay ({ className, isDark, transparent, onClick, }) {
+export default function Overlay({ className, isDark, transparent, onClick }) {
   const classes = classNames(
     className,
     scss._,
@@ -10,9 +10,5 @@ export default function Overlay ({ className, isDark, transparent, onClick, }) {
     transparent ? scss.is_transparent : ''
   )
 
-  return (
-    <div className={classes}
-         onClick={onClick}>
-    </div>
-  )
+  return <div className={classes} onClick={onClick}></div>
 }
