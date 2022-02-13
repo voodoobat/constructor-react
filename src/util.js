@@ -1,3 +1,4 @@
+// TODO: выпилить неиспользуемые ф-ии
 import { uid } from 'uid'
 import Noty from 'noty'
 

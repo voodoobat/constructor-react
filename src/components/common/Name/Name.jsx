@@ -34,6 +34,7 @@ function Name({
   }
 
   useEffect(() => {
+    // TODO: убедиться в том что эта хуита нужна
     schemesListActive && dispatch(store.setSchemesList())
   }, [schemesListActive])
 
