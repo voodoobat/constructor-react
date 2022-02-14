@@ -6,29 +6,30 @@ import svgr from 'vite-plugin-svgr'
 import eslint from 'vite-plugin-eslint'
 
 export default defineConfig(({ mode }) => ({
-  plugins: [ eslint({ cache: false }), react(), svgr() ],
+  plugins: [eslint({ cache: false }), react(), svgr()],
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@scss': path.resolve(__dirname, 'src/scss/'),
       '@store': path.resolve(__dirname, 'src/store/'),
-      '@src': path.resolve(__dirname, 'src/')
-    }
+      '@src': path.resolve(__dirname, 'src/'),
+    },
   },
   preview: {
-    port: 3000
+    port: 3000,
   },
   server: {
-    https: true
+    https: true,
   },
   css: {
     modules: {
-      generateScopedName: mode == 'production'
-        ? '[hash:base64:5]'
-        : '[name]_[local]_[hash:base64:5]'
-    }
+      generateScopedName:
+        mode == 'production'
+          ? '[hash:base64:5]'
+          : '[name]_[local]_[hash:base64:5]',
+    },
   },
   build: {
-    outDir: 'build'
-  }
+    outDir: 'build',
+  },
 }))
