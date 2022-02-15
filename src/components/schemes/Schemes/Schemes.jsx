@@ -2,6 +2,7 @@ import scss from './Schemes.module.scss'
 
 import Container from '@components/layout/Container/Container'
 import Dropdown from '@components/common/Dropdown/Dropdown'
+import Pager from '@components/common/Pager/Pager'
 import {
   SchemeButton,
   SchemeButtonCreate,
@@ -26,6 +27,7 @@ export default function Schemes({ schemes }) {
             ))}
           </div>
         </Dropdown>
+        <Pager className={scss.pager} />
         {/*<Dropdown caption="Схемы для вязания крючком">*/}
         {/*  <SchemeButtonCreate lassName={scss.scheme} />*/}
         {/*</Dropdown>*/}

@@ -1,0 +1,55 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+
+}
+
+
+.button {
+  $this: &;
+  $size: 2.1rem;
+
+  @include size($size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.25s ease;
+  color: $medium-gray;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1;
+
+  &:hover {
+    color: $link-color;
+  }
+
+  > svg {
+    @include size(1rem 1.3rem);
+  }
+
+  &:not(.is_active) {
+    cursor: pointer;
+  }
+
+  &.is_number {
+    + #{$this}.is_number {
+      margin-left: $size;
+    }
+  }
+
+  &.is_prev {
+    margin-right: $size * 1.5;
+  }
+
+  &.is_next {
+    margin-left: $size * 1.5;
+    transform: scaleX(-1);
+  }
+
+  &.is_active {
+    cursor: default;
+    color: $link-color;
+    font-weight: normal;
+  }
+}
