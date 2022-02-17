@@ -2,10 +2,9 @@
 @import '@scss/mixins';
 
 ._ {
-  @include position(absolute, -0.75em 0.5em);
+  @include position(absolute, -0.75em 0.5em, 350);
   display: flex;
   transition: opacity .15s ease-in;
-  z-index: 350;
 }
 
 .offset_0 {

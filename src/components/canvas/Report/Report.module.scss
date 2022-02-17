@@ -14,20 +14,20 @@
   $height: get-persent-of-size($canvas-cell-height, 80);
 
   @include size($width $height);
-  min-width: $width;
   position: relative;
+  min-width: $width;
   margin-left: 0.5em;
-  border: 1px solid $text-color;
   overflow: hidden;
+  border: 1px solid $text-color;
 
   &::before {
     @include size(150% 1px);
     @include position(absolute, 0 0);
     content: '';
-    background: $text-color;
-    transform-origin: 100% 100%;
     transform: rotate(-38deg);
+    transform-origin: 100% 100%;
     opacity: 0;
+    background: $text-color;
   }
 
   &:hover {
@@ -52,13 +52,12 @@
 }
 
 .label {
-  @include position(absolute, 0.5em 50%);
+  @include position(absolute, 0.5em 50%, 10);
   display: inline-flex;
   justify-content: center;
   transform: translateX(50%);
-  white-space: nowrap;
   background: $body-bg;
-  z-index: 10;
+  white-space: nowrap;
 }
 
 .remove {

@@ -10,9 +10,9 @@ $icon-size: 1.8rem;
 
 .value {
   min-width: 4.5rem;
-  text-align: center;
   font-size: $text-sm;
   line-height: $icon-size;
+  text-align: center;
 }
 
 .button {
@@ -24,8 +24,8 @@ $icon-size: 1.8rem;
   }
 
   &.disabled {
-    cursor: default;
     opacity: 0.25;
+    cursor: default;
   }
 
   &:not(.disabled) {

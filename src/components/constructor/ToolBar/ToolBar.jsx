@@ -18,7 +18,7 @@ function ToolBar({ className, activeTool, inactive }) {
       {/* <UndoRedo className={scss.history} /> */}
       <nav className={scss.bar}>
         <Tool className={scss.tool} type="Move">
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && (
             <Hint className={scss.hint} caption="Рука">
               Позволяет передвигать рабочее поле схемы
@@ -26,7 +26,7 @@ function ToolBar({ className, activeTool, inactive }) {
           )}
         </Tool>
         <Tool className={scss.tool} type="Eraze">
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && (
             <Hint className={scss.hint} caption="Ластик">
               Удаляет выбранные в поле схемы элементы
@@ -34,7 +34,7 @@ function ToolBar({ className, activeTool, inactive }) {
           )}
         </Tool>
         <Tool className={scss.tool} tool={<ReportType />} type="Report">
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && activeTool != 'Report' && (
             <Hint className={scss.hint} caption="Раппорт">
               Определяет раппорт
@@ -42,7 +42,7 @@ function ToolBar({ className, activeTool, inactive }) {
           )}
         </Tool>
         <Tool className={scss.tool} type="Color" tool={<Swatches />}>
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && activeTool != 'Color' && (
             <Hint className={scss.hint} caption="Заливка цветом">
               Окрашивает цветом необходимые области схемы
@@ -50,7 +50,7 @@ function ToolBar({ className, activeTool, inactive }) {
           )}
         </Tool>
         <Tool className={scss.tool} type="Group">
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && (
             <Hint className={scss.hint} caption="Группировка">
               Группирует выбранные объекты в новый элемент схемы
@@ -58,7 +58,7 @@ function ToolBar({ className, activeTool, inactive }) {
           )}
         </Tool>
         <Tool className={scss.tool} tool={<Resize />} type="Size">
-          <div className={scss.hint_trigger}></div>
+          <div className={scss.hint_trigger} />
           {!IS_TOUCH && activeTool != 'Size' && (
             <Hint className={scss.hint} caption="Редактр размера схемы">
               Позволяет добавлять и удалять необходимое количество рядов или

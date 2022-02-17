@@ -16,17 +16,14 @@ function Copy({ className, state, dispatch }) {
 
     dispatch(store.createScheme(scheme))
   }
-
   return (
-    <>
-      <button
-        onClick={copy}
-        className={classNames(className, scss._)}
-        type="button"
-      >
-        Дублировать
-      </button>
-    </>
+    <button
+      onClick={copy}
+      className={classNames(className, scss._)}
+      type="button"
+    >
+      Дублировать
+    </button>
   )
 }
 

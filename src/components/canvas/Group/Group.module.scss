@@ -2,18 +2,18 @@
 @import '@scss/mixins';
 
 ._ {
-  position: relative;
   display: table;
+  position: relative;
   border-collapse: collapse;
   background: $body-bg;
 }
 
 .canvas {
+  margin: 0 0.5em 0.5em 0;
   padding: 0.5em;
-  margin: 0 .5em .5em 0;
+  transition: border-color 0.15s ease-in;
   border: 1px solid $dark-gray;
   border-radius: $radius;
-  transition: border-color .15s ease-in;
   cursor: pointer;
 
   &:hover {
