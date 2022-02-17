@@ -40,7 +40,7 @@ function Legend({ className, schemeLegends, isPreview, legend, dispatch }) {
 
     setActive(false)
     dispatch(store.setSchemeLegends(fn.mergeLegends(schemeLegends, changed)))
-    dispatch(store.saveScheme())
+    dispatch(store.saveScheme(null, false))
   }
 
   const cansel = () => {
