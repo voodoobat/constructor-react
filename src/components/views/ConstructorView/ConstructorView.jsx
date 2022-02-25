@@ -15,7 +15,7 @@ import { DEFAULT_TITLE, ROUTE_SCHEME } from '@src/config'
 function ConstructorView({ schemeId, config, schemeTitle, dispatch }) {
   const history = useHistory()
   const { uid } = useParams()
-  const isDownload = useRouteMatch('/scheme/:uid/download')
+  const isDownload = useRouteMatch(`${ROUTE_SCHEME}:uid/download`)
 
   useEffect(() => {
     if (config.customer) dispatch(store.setSchemesList())

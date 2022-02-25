@@ -10,6 +10,7 @@ import CreateView from '@components/views/CreateView/CreateView'
 import WelcomeView from '@components/views/WelcomeView/WelcomeView'
 import ErrorView from '@components/views/ErrorView/ErrorView'
 
+import { ROUTE_LIST, ROUTE_CREATE, ROUTE_SCHEME } from '@src/config'
 import store from '@src/store'
 
 export default function App() {
@@ -23,9 +24,13 @@ export default function App() {
               path="/scheme/:uid/download"
               component={ConstructorView}
             />
-            <Route exact path="/scheme/:uid" component={ConstructorView} />
-            <Route exact path="/schemes" component={ListView} />
-            <Route exact path="/create" component={CreateView} />
+            <Route
+              exact
+              path={`${ROUTE_SCHEME}:uid`}
+              component={ConstructorView}
+            />
+            <Route exact path={ROUTE_LIST} component={ListView} />
+            <Route exact path={ROUTE_CREATE} component={CreateView} />
             <Route exact path="/" component={WelcomeView} />
             <Route component={ErrorView} />
           </Switch>

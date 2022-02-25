@@ -25,7 +25,7 @@ export const MAX_SCHEME_NAME_LEN = 50
 export const DEFAULT_TITLE = 'Конструктор схем'
 
 export const ROUTE_LIST = '/schemes'
-export const ROUTE_CREATE = '/create/'
+export const ROUTE_CREATE = '/create'
 export const ROUTE_SCHEME = '/scheme/'
 
 export const SWATCHES = [
