@@ -40,7 +40,7 @@ function Legend({ className, schemeLegends, isPreview, legend, dispatch }) {
 
     setActive(false)
     dispatch(store.setSchemeLegends(fn.mergeLegends(schemeLegends, changed)))
-    dispatch(store.saveScheme(null, false))
+    dispatch(store.saveScheme(null))
   }
 
   const cansel = () => {
@@ -66,8 +66,9 @@ function Legend({ className, schemeLegends, isPreview, legend, dispatch }) {
 
     if (isActive) {
       document.addEventListener('keydown', action)
-    } else {
-      document.removeEventListener('keydown', action)
+      return () => {
+        document.removeEventListener('keydown', action)
+      }
     }
   }, [isActive, hint])
 
