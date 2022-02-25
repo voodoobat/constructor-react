@@ -10,12 +10,12 @@ import DownloadPreview from '@components/constructor/DownloadPreview/DownloadPre
 
 import * as store from '@store/functions'
 
-import { DEFAULT_TITLE, ROUTE_SCHEME } from '@src/config'
+import { DEFAULT_TITLE, ROUTE_DOWNLOAD, ROUTE_SCHEME } from '@src/config'
 
 function ConstructorView({ schemeId, config, schemeTitle, dispatch }) {
   const history = useHistory()
   const { uid } = useParams()
-  const isDownload = useRouteMatch(`${ROUTE_SCHEME}:uid/download`)
+  const isDownload = useRouteMatch(ROUTE_DOWNLOAD)
 
   useEffect(() => {
     if (config.customer) dispatch(store.setSchemesList())
