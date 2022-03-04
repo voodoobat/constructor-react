@@ -4,7 +4,11 @@ import { XHR_COMMON_DATA } from '@src/config'
 import * as act from '@store/actions'
 
 function getCookie(name) {
-  let matches = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)'))
+  const matches = document.cookie.match(
+    new RegExp(
+      '(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)'
+    )
+  )
 
   return matches ? decodeURIComponent(matches[1]) : ''
 }
