@@ -15,7 +15,7 @@ export default function User({ className, customer }) {
     </Link>
   ) : (
     <a
-      href={`${VITE_AUTH_URL}?ref=${VITE_APP_URL}`}
+      href={`${VITE_AUTH_URL}?ref=${VITE_APP_URL}/schemes`}
       className={classNames(className, scss._)}
     >
       <Icon />
