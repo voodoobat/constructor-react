@@ -6,10 +6,10 @@
 }
 
 .number {
-  margin: 0.1rem;
   max-width: $canvas-cell-width - 0.2rem;
-  line-height: $canvas-cell-height - 0.4rem;
+  margin: 0.1rem;
   border: 1px solid $light-gray;
   border-radius: $radius;
+  line-height: $canvas-cell-height - 0.4rem;
   text-align: center;
 }

@@ -19,8 +19,8 @@ $space-x: 2em;
   padding: 0.5em $space-x;
   color: $text-color;
   text-decoration: none;
-  user-select: none;
   font-size: 0.9em;
+  user-select: none;
 
   &.is_create {
     color: $medium-gray;
@@ -32,29 +32,30 @@ $space-x: 2em;
 
 
   &.is_active {
-    pointer-events: none;
     cursor: default;
+    pointer-events: none;
 
     .scheme_name::before {
-      background: $medium-blue;
+      transform: scale(1);
     }
   }
 }
 
 .scheme_name {
-  $point-size: 8px;
-
-  position: relative;
   display: block;
+  position: relative;
   padding-left: 1.5em;
   line-height: 1.1;
 
   &::before {
-    @include size($point-size);
-    @include position(absolute, 50% null null 0);
-    content: '';
+    @include position(absolute, null null null 0);
+    content: '•';
     display: inline-block;
-    margin-top: math.div($point-size, 2);
+    transform: scale(0);
+    transition: transform 0.25s ease;
     border-radius: 50%;
+    color: $medium-blue;
+    font-size: 3rem;
+    line-height: 1.3rem;
   }
 }

@@ -4,37 +4,34 @@
 ._ {
   position: relative;
   min-width: $canvas-cell-width;
-  min-height: $canvas-cell-height;
   height: $canvas-cell-height;
+  min-height: $canvas-cell-height;
   border: solid $light-gray;
   border-width: 1px 1px 0 0;
   text-align: center;
   user-select: none;
-  user-drag: none;
 
   &:not(.no_highlight)::after {
-    @include position(absolute, 0 0 0 0);
+    @include position(absolute, 0 0 0 0, 10);
     content: '';
     display: flex;
+    transition: all 0.35s ease;
     border: 1px solid transparent;
     background: transparent;
-    transition: all 0.35s ease;
-    z-index: 10;
   }
 
   &::before {
-    @include position(absolute, 0 0 0 0);
+    @include position(absolute, 0 0 0 0, 10);
     content: '';
     display: flex;
     border: 1px solid transparent;
     background: transparent;
-    z-index: 10;
   }
 
   &.is_hover::after,
   &:hover::after {
-    background: rgba($medium-blue, .15);
     border-color: $medium-blue;
+    background: rgba($medium-blue, .15);
   }
 }
 
@@ -57,7 +54,9 @@
   }
 }
 
-.stretch {}
+.stretch {
+  // ...
+}
 
 .report_icon {
   @include size(80%);

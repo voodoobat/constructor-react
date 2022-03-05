@@ -10,5 +10,5 @@ export default function Overlay({ className, isDark, transparent, onClick }) {
     transparent ? scss.is_transparent : ''
   )
 
-  return <div className={classes} onClick={onClick}></div>
+  return <div className={classes} onClick={onClick} />
 }

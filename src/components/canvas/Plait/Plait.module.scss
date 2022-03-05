@@ -3,8 +3,8 @@
 
 ._ {
   border-collapse: collapse;
+  transition: border-color 0.15s ease-in;
   border: 1px solid $light-gray;
-  transition: border-color .15s ease-in;
   cursor: pointer;
 
   &:hover {

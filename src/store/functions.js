@@ -67,7 +67,8 @@ export function createScheme(scheme) {
   }
 }
 
-export function saveScheme(onSave = () => {}) {
+// TODO: выпилить параметр "nofity" после выполнения 231015/6607020
+export function saveScheme(onSave = false) {
   return async (dispatch, getState) => {
     const state = getState()
     const schemeData = util.getSchemeData(state)
@@ -84,9 +85,8 @@ export function saveScheme(onSave = () => {}) {
 
     const { schemeTitle } = schemeData
 
-    onSave(schemeData)
-
     util.notyfy(`Схема «${schemeTitle}» сохранена`)
+    if (onSave) onSave(schemeData)
   }
 }
 
