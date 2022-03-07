@@ -8,7 +8,7 @@ import {
   SchemeButtonCreate,
 } from '@src/components/schemes/SchemeButton/SchemeButton'
 
-export default function Schemes({ schemes }) {
+export default function Schemes({ schemes, paginator }) {
   return (
     <div className={scss._}>
       <Container>
@@ -27,7 +27,9 @@ export default function Schemes({ schemes }) {
             ))}
           </div>
         </Dropdown>
-        <Pager className={scss.pager} />
+        {paginator && paginator.limit < paginator.total && (
+          <Pager className={scss.pager} />
+        )}
         {/*<Dropdown caption="Схемы для вязания крючком">*/}
         {/*  <SchemeButtonCreate lassName={scss.scheme} />*/}
         {/*</Dropdown>*/}

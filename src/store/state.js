@@ -9,6 +9,8 @@ export const CONFIG_STATE = {
   plaits: [],
   activeLoader: false,
   schemesList: [],
+  activePage: 1,
+  paginator: null,
   activeReportType: null,
   activeColor: null,
   downloadOptions: {

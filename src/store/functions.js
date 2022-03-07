@@ -138,16 +138,19 @@ export function setSchemeByUid(schemeId) {
   }
 }
 
-export function setSchemesList() {
+export function setSchemesList(page = NaN) {
   return async (dispatch, getState) => {
     const { config } = getState()
+    const query = page ? `page=${page}` : ''
 
     if (config.customer) {
-      const response = await xhr('list', 'GET')
+      const response = await xhr('list', 'GET', null, query)
       const schemes = response.items.map(util.convertSchemeEntries)
 
       dispatch(act.setSchemesList(schemes))
       dispatch(act.setActiveTool({ activeTool: 'Move' }))
+      dispatch(act.setPaginator(response.paginator))
+      dispatch(act.setActivePage(response.paginator.page))
     }
   }
 }

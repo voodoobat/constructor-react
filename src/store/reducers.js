@@ -29,6 +29,8 @@ export default function reducers(state = INITIAL_STATE, { type, payload }) {
     'SET_SCHEME_ONLY_ODD_ROWS',
     'SET_SCHEME_CUSTOM_CELLS',
     'SET_SCHEMES_LIST',
+    'SET_PAGINATOR',
+    'SET_ACTIVE_PAGE',
     'SET_ACTIVE_LOADER',
     'SET_DOWNLOAD_OPTIONS',
     'SET_IS_AUTH',

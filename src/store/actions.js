@@ -134,6 +134,16 @@ export const setSchemesList = (schemesList) => ({
   payload: { schemesList },
 })
 
+export const setPaginator = (paginator) => ({
+  type: 'SET_PAGINATOR',
+  payload: { paginator },
+})
+
+export const setActivePage = (activePage) => ({
+  type: 'SET_ACTIVE_PAGE',
+  payload: { activePage },
+})
+
 export const setActiveReportType = (activeReportType) => ({
   type: 'SET_ACTIVE_REPORT_TYPE',
   payload: { activeReportType },

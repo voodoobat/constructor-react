@@ -48,8 +48,9 @@
   }
 
   &.is_active {
-    cursor: default;
     color: $link-color;
     font-weight: normal;
+    cursor: default;
+    pointer-events: none;
   }
 }
