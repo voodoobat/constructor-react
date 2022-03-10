@@ -200,7 +200,7 @@ function Resize({
             <Checkbox
               disabled={isRound}
               className={scss.options_checkbox}
-              checked={onlyOdd}
+              checked={!!onlyOdd}
               setter={setOnlyOdd}
               label="Схема узора только для лицевых рядов"
             />
@@ -209,7 +209,7 @@ function Resize({
             <Checkbox
               disabled={onlyOdd}
               className={scss.options_checkbox}
-              checked={isRound}
+              checked={!!isRound}
               setter={setRound}
               label="Схема для вязания по кругу"
             />
